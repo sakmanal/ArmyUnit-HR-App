@@ -1,0 +1,31 @@
+ul li {
+  list-style: none;
+  margin: auto;
+}
+
+.title{
+  margin-left: 5px;
+}
+
+.logo{
+  width: 30px;
+  margin-left: 5px;
+}
+
+.vl {
+  border-left: 1px solid rgb(238, 245, 238);
+  height: 30px;
+  margin-top: 5px;
+}
+
+.UserPic{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border:1px solid white;
+  vertical-align: middle;
+}
+
+.userName{
+  font-size: small;
+}

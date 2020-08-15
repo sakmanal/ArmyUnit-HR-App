@@ -1,0 +1,35 @@
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+      <button mat-icon-button (click)="toggleSideBar()">
+          <mat-icon>menu</mat-icon>
+      </button>
+
+        <img src="../../../assets/1200px-Hellenic_Army_Engineer_Corps.svg.png" alt="EnginnerLogo" class="logo">
+        <span class="title"> {{title}} </span>
+
+
+      <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+          <ul fxLayout="row" fxLayoutGap="10px">
+              <li>
+                  <button mat-icon-button>
+                      <mat-icon>email</mat-icon>
+                  </button>
+              </li>
+              <div class="vl"></div>
+              <li>
+                <span class="userName"> {{userInfo.userFullNameTitle}}</span>
+              </li>
+              <li>
+                <img src={{userInfo.userAvatar}} alt="logo" class="UserPic" [matMenuTriggerFor]="menu">
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item>
+                      <mat-icon>exit_to_app</mat-icon>
+                      Sign out
+                  </button>
+                 </mat-menu>
+              </li>
+          </ul>
+      </div>
+  </mat-toolbar-row>
+</mat-toolbar>

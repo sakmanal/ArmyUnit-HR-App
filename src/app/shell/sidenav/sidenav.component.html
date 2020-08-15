@@ -1,0 +1,14 @@
+<mat-sidenav-container style="position: relative;" class="example-sidenav-container">
+  <mat-sidenav #snav [opened]="sideBarOpen" [mode]="navMode">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="hero">
+
+
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- display footer outside sidenav-content (like fixed toolbar on the bottom of the page) -->
+<!--   <app-footer></app-footer> -->
