@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
         userAvatar: '',
         userFullNameTitle:''
   }
+  @Input() smallerScreen:boolean = false;
 
   constructor() { }
 

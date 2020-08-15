@@ -24,7 +24,10 @@ export class ShellComponent implements OnDestroy {
 
   constructor(private changeDetectionRef: ChangeDetectorRef, private media: MediaMatcher) {
     this.viewportMobileQuery = media.matchMedia('(max-width: 700px)');
-    this._viewportQueryListener = () => changeDetectionRef.detectChanges();
+    this._viewportQueryListener = () =>{
+      changeDetectionRef.detectChanges();
+      this.sideNavState();
+    }
     this.viewportMobileQuery.addEventListener('change', this._viewportQueryListener);
   }
 
@@ -32,10 +35,20 @@ export class ShellComponent implements OnDestroy {
     this.viewportMobileQuery.removeEventListener('change', this._viewportQueryListener);
   }
 
-  sideBarToggler(event?:string) {
-
+  sideBarToggler(event?:string):void {
     this.sideBarOpen = !this.sideBarOpen;
-    console.log(this.sideBarOpen)
+  }
+
+  sideNavState():void{
+       if (this.viewportMobileQuery.matches){
+            this.sideBarOpen = false;
+            this.navMode = 'over';
+            this.smallerScreen = true;
+       }else{
+            this.sideBarOpen = true;
+            this.navMode = 'side';
+            this.smallerScreen = false;
+       }
   }
 
 }

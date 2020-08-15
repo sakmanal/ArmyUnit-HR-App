@@ -9,7 +9,7 @@
         <span class="title"> {{title}} </span>
 
 
-      <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+      <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" *ngIf="!smallerScreen">
           <ul fxLayout="row" fxLayoutGap="10px">
               <li>
                   <button mat-icon-button>
