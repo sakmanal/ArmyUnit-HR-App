@@ -1,4 +1,4 @@
 <div class="example-container">
   <app-header (toggleSideBarForMe)="sideBarToggler($event)" [userInfo]="userInfo"></app-header>
-  <app-sidenav [sideBarOpen]="sideBarOpen" [navMode]="navMode"></app-sidenav>
+  <app-sidenav [sideBarOpen]="!viewportMobileQuery.matches" [navMode]="!viewportMobileQuery.matches ? 'side' : 'over'"></app-sidenav>
 </div>
