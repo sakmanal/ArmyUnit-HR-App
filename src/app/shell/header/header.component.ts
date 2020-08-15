@@ -9,9 +9,9 @@ export class HeaderComponent implements OnInit {
 
   @Output() toggleSideBarForMe: EventEmitter<string> = new EventEmitter();
   title:string = '744 Engineer Company';
-  @Input() userInfo:  { userAvatar?:string, userFullNameTitle:string} = {
-        userAvatar: '',
-        userFullNameTitle:''
+  userInfo: { userAvatar?:string, userFullNameTitle:string} =  {
+    userAvatar: '../../../assets/Flag_of_Greece.jpg',
+    userFullNameTitle:'Master Sergeant(ENG) Nikalaos Papas'
   }
   @Input() smallerScreen:boolean = false;
 

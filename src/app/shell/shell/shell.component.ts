@@ -13,11 +13,6 @@ export class ShellComponent implements OnDestroy {
 
   smallerScreen:boolean = false;
 
-  userInfo: { userAvatar?:string, userFullNameTitle:string} =  {
-    userAvatar: '../../../assets/Flag_of_Greece.jpg',
-    userFullNameTitle:'Master Sergeant(ENG) Nikalaos Papas'
-  }
-
   viewportMobileQuery: MediaQueryList;
 
   private _viewportQueryListener: () => void;

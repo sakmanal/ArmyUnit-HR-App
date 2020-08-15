@@ -1,4 +1,4 @@
-<div class="example-container">
-  <app-header (toggleSideBarForMe)="sideBarToggler($event)" [userInfo]="userInfo" [smallerScreen]="smallerScreen"></app-header>
+<div class="container">
+  <app-header (toggleSideBarForMe)="sideBarToggler($event)" [smallerScreen]="smallerScreen"></app-header>
   <app-sidenav [sideBarOpen]="sideBarOpen" [navMode]="!viewportMobileQuery.matches ? 'side' : 'over'"></app-sidenav>
 </div>

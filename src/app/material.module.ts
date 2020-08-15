@@ -13,9 +13,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 const modules = [ MatInputModule, MatProgressBarModule, MatButtonModule,
-                  MatCardModule, MatIconModule, MatToolbarModule, MatSidenavModule,
+                  MatCardModule, MatIconModule, MatToolbarModule, MatSidenavModule, MatExpansionModule,
                   MatListModule, MatTableModule, MatDividerModule, MatMenuModule, MatProgressSpinnerModule, MatTabsModule ]
 @NgModule({
 imports: [...modules ],

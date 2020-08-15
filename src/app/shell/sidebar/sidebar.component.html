@@ -1,32 +1,48 @@
-<mat-nav-list>
-  <div class="profile-card">
-      <div class="header">
-          <h2>Soufiane FADIL</h2>
-          <h4>example@email.com</h4>
-      </div>
-      <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Soufiane FADIL">
+<div class="container">
+  <div fxLayout="column" fxLayoutAlign="space-around center" class="content">
+    <img src={{userInfo.userAvatar}} alt="logo" class="UserPic">
+    <span class="NameTitle">{{userInfo.userFullNameTitle}}</span>
+   <mat-divider></mat-divider>
+    <mat-nav-list dense>
+      <mat-list-item routerLink="#"><mat-icon>exit_to_app</mat-icon>Sign Out</mat-list-item>
+      <mat-divider class="mdiv"></mat-divider>
+      <mat-list-item routerLink="#"><mat-icon>military_tech</mat-icon>Commander</mat-list-item>
+      <mat-list-item routerLink="#"><mat-icon>star_half</mat-icon>Deputy Commander</mat-list-item>
+      <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+          <mat-expansion-panel-header>
+              1st office
+          </mat-expansion-panel-header>
+          <mat-nav-list dense>
+              <a mat-list-item routerLink="#"><mat-icon>dashboard</mat-icon>Dashboard</a>
+              <a mat-list-item routerLink="#"><mat-icon>import_contacts</mat-icon>Daily Unit Command</a>
+              <a mat-list-item routerLink="#"><mat-icon>text_snippet</mat-icon>Document Protocol</a>
+              <a mat-list-item routerLink="#"><mat-icon>insert_chart</mat-icon>Daily Roster</a>
+              <a mat-list-item routerLink="#"><mat-icon>person</mat-icon>Staff Information</a>
+              <a mat-list-item routerLink="#"><mat-icon>folder_shared</mat-icon>Individual Soldier File</a>
+              <a mat-list-item routerLink="#"><mat-icon>add_location_alt</mat-icon>Route/Transition Document Sheet</a>
+              <a mat-list-item routerLink="#"><mat-icon>work_off</mat-icon>Day off Request</a>
+          </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+          <mat-expansion-panel-header>
+            2nd, 3rd office
+          </mat-expansion-panel-header>
+          <mat-nav-list dense>
+              <a mat-list-item routerLink="#"><mat-icon>add</mat-icon>New Document</a>
+
+          </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+        <mat-expansion-panel-header>
+          4th office
+        </mat-expansion-panel-header>
+        <mat-nav-list dense>
+            <a mat-list-item routerLink="#"><mat-icon>add</mat-icon>New Document</a>
+
+        </mat-nav-list>
+    </mat-expansion-panel>
+  </mat-nav-list>
+
+
   </div>
-
-  <mat-divider></mat-divider>
-
-  <h2 matSubheader>Pages</h2>
-
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Dashboard</a>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/posts">Posts</a>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/articles">Articles</a>
-
-  <mat-divider></mat-divider>
-
-  <h2 matSubheader>Tools</h2>
-
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
-      <mat-icon>import_contacts</mat-icon>
-      Contacts
-  </a>
-
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
-      <mat-icon>contact_phone</mat-icon>
-      Leads
-  </a>
-
-</mat-nav-list>
+</div>

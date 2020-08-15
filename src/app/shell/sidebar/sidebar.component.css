@@ -1,0 +1,39 @@
+.container{
+   width: 250px;
+   height: 100%;
+   background: #EBEBEB;
+}
+
+.content{
+  padding-top: 20px;
+}
+
+.mat-nav-list{
+  width: 100%;
+}
+
+.mat-icon{
+  padding-right: 10px;
+}
+
+.mat-divider{
+  width: 90%;
+}
+
+.mdiv {
+  margin-left:12px;
+}
+
+.UserPic{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border:1px solid white;
+  vertical-align: middle;
+}
+
+.NameTitle{
+   font-weight: bold;
+   padding: 10px 20px;
+}
+
