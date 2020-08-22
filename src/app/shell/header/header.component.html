@@ -5,7 +5,7 @@
           <mat-icon>menu</mat-icon>
       </button>
 
-        <img src="../../../assets/1200px-Hellenic_Army_Engineer_Corps.svg.png" alt="EnginnerLogo" class="logo">
+        <img src="../../../assets/images/logo.png" alt="EnginnerLogo" class="logo">
         <span class="title"> {{title}} </span>
 
 
@@ -23,7 +23,7 @@
               <li>
                 <img src={{userInfo.userAvatar}} alt="logo" class="UserPic" [matMenuTriggerFor]="menu">
                 <mat-menu #menu="matMenu">
-                  <button mat-menu-item>
+                  <button mat-menu-item (click)="logOut()">
                       <mat-icon>exit_to_app</mat-icon>
                       Sign out
                   </button>

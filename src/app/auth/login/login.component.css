@@ -1,0 +1,47 @@
+.container{
+  height: 100%;
+  width: 100%;
+  background: rgb(53, 53, 51);
+  position: absolute;
+}
+
+mat-card{
+  position: relative;
+  width: 35%;
+  margin: 50px auto;
+}
+
+mat-card-title
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+mat-form-field{
+  /* margin-bottom: -0.8em; */
+  width: 100%;
+}
+
+.btn{
+  width: 100%;
+}
+
+.alert{
+  max-width: 100%;
+  color: red;
+}
+
+.errorMessage{
+  margin-left: 5px;
+}
+
+
+@media only screen and (max-width: 800px) {
+  mat-card{
+    width: 80%;
+  }
+}
+
+
+

@@ -1,0 +1,67 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title>
+      <p>
+        <img src="../../../assets/images/logo.png" alt="logo" width="80rm">
+      </p>
+      <p>
+        744 Engineer Company
+      </p>
+    </mat-card-title>
+    <mat-card-content>
+    <form novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label class="label">Military Register Number</mat-label>
+          <input type="string"
+                 matInput
+                 placeholder="135000009714"
+                 maxlength="12"
+                 formControlName="militaryRegistryNum" />
+                 <mat-icon matSuffix>person</mat-icon>
+                 <!-- <mat-error *ngIf="formError.militaryRegistryNum"> {{formError.militaryRegistryNum}}</mat-error> -->
+                 <mat-error *ngIf="f.militaryRegistryNum.invalid">{{getValidationError()}}</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label class="label">Password</mat-label>
+          <input type="password"
+                 matInput
+                 placeholder="password"
+                 formControlName="password"
+                 [type]="hidePassword ? 'text' : 'password'" />
+                 <button mat-icon-button matSuffix
+                             type="button"
+                             (click)="hidePassword = !hidePassword"
+                             [attr.aria-label]="'Hide password'"
+                             [attr.aria-pressed]="hidePassword">
+                             <i [ngClass]="(hidePassword)?'fas fa-eye':'fas fa-eye-slash'"></i>
+                 </button>
+                 <!-- <mat-error *ngIf="formError.password">{{formError.password}}</mat-error> -->
+                 <mat-error *ngIf="f.password.invalid">Password is required</mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <button [disabled]="loading || !loginForm.valid"
+                mat-raised-button
+                type="submit"
+                color="primary"
+                class="btn">
+                <i *ngIf="loading" class="fas fa-spinner fa-spin fa-lg fa-fw"></i>
+          Login
+       </button>
+      </p>
+      <p class="alert" *ngIf="errorMessage">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span class="errorMessage">{{errorMessage}}</span>
+      </p>
+
+    </form >
+
+
+
+    </mat-card-content>
+  </mat-card>
+</div>

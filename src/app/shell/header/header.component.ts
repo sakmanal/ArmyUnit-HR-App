@@ -1,4 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { AuthenticationService } from '../../auth/services/authentication.service';
+import { Router } from '@angular/router';
+import { UserInfoService } from '../../shared/services/user-info.service';
 
 @Component({
   selector: 'app-header',
@@ -9,19 +12,30 @@ export class HeaderComponent implements OnInit {
 
   @Output() toggleSideBarForMe: EventEmitter<string> = new EventEmitter();
   title:string = '744 Engineer Company';
-  userInfo: { userAvatar?:string, userFullNameTitle:string} =  {
-    userAvatar: '../../../assets/Flag_of_Greece.jpg',
-    userFullNameTitle:'Master Sergeant(ENG) Nikalaos Papas'
+  userInfo: { userAvatar:string, userFullNameTitle:string} =  {
+    userAvatar: '',
+    userFullNameTitle:''
   }
   @Input() smallerScreen:boolean = false;
 
-  constructor() { }
+  constructor(
+         private authenticationService: AuthenticationService,
+         private router: Router,
+         private userInfoService: UserInfoService
+         ) { }
 
   ngOnInit(): void {
+      this.userInfo = this.userInfoService.TakeUserInfo();
   }
 
-  toggleSideBar() {
+
+  public toggleSideBar() {
     this.toggleSideBarForMe.emit("toogle-sideBar");
+  }
+
+  public logOut(){
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

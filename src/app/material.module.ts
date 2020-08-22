@@ -14,8 +14,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatGridListModule} from '@angular/material/grid-list';
 
-const modules = [ MatInputModule, MatProgressBarModule, MatButtonModule,
+const modules = [ MatInputModule, MatProgressBarModule, MatButtonModule, MatGridListModule,
                   MatCardModule, MatIconModule, MatToolbarModule, MatSidenavModule, MatExpansionModule,
                   MatListModule, MatTableModule, MatDividerModule, MatMenuModule, MatProgressSpinnerModule, MatTabsModule ]
 @NgModule({

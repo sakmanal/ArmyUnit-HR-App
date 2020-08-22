@@ -30,11 +30,11 @@ export class ShellComponent implements OnDestroy {
     this.viewportMobileQuery.removeEventListener('change', this._viewportQueryListener);
   }
 
-  sideBarToggler(event?:string):void {
+  public sideBarToggler(event?:string):void {
     this.sideBarOpen = !this.sideBarOpen;
   }
 
-  sideNavState():void{
+  private sideNavState():void{
        if (this.viewportMobileQuery.matches){
             this.sideBarOpen = false;
             this.navMode = 'over';

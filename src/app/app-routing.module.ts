@@ -2,11 +2,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ShellComponent } from './shell/shell/shell.component';
+import { AuthGuard } from './auth/helpers/auth.guard'
+import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
     {
-      path:'', component: ShellComponent
-    }
+      path: '',
+      canActivate: [AuthGuard],
+      component: ShellComponent
+    },
+    { path: 'login', component: LoginComponent}
+
 ];
 
 @NgModule({
@@ -14,3 +20,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
