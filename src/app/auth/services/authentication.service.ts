@@ -23,15 +23,15 @@ export class AuthenticationService {
   }
 
   public login(militaryRegistryNum: string, password: string):Observable<User> {
-    return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { militaryRegistryNum, password })
-        .pipe(
-            map(user => {
-                  localStorage.setItem('currentUser', JSON.stringify(user));
-                  this.currentUserSubject.next(user);
-                  return user;
-             }),
-            // catchError(this.handleError)
-        );
+    // return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { militaryRegistryNum, password })
+    //     .pipe(
+    //         map(user => {
+    //               localStorage.setItem('currentUser', JSON.stringify(user));
+    //               this.currentUserSubject.next(user);
+    //               return user;
+    //          }),
+    //         // catchError(this.handleError)
+    //     );
 
         const user:User = {
             id: 'str12356',
