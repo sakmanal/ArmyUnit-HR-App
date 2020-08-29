@@ -3,25 +3,37 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-
+/* custom scrollbar (works on chrome only) */
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
 }
-
 /* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
   border-radius:0;
 }
-
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #7683c4;
   border-radius: 0;
 }
-
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #7683c4;
+}
+
+/* notification snackbar styles */
+.error{
+  background: #da5151;
+  color:white
+}
+
+.success{
+  background: #4baa50;
+  color:white
+}
+
+.mat-simple-snackbar-action {
+  color: white;
 }

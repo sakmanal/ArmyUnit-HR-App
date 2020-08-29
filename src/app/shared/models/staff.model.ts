@@ -1,4 +1,4 @@
-export interface staff{
+export interface Staff{
   id: string;
   firstName: string;
   lastName: string;
@@ -8,12 +8,12 @@ export interface staff{
   class_I: "I1" | "I2" | "I3" | "I4";
   specialty: string[];
   armed: boolean;
-  class_info: classInfo;
+  class_info?: classInfo;
   foto?: string;
 }
 
 interface classInfo{
-  training_series?: string;
+  training_series: string;
   start_date: Date;
   dismissal_date : Date;
   months_of_service: number;

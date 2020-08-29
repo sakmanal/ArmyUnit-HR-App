@@ -33,11 +33,15 @@ export class AuthenticationService {
     //         // catchError(this.handleError)
     //     );
 
+       if ( militaryRegistryNum !== "12345" || password !== "1993"){
+          return throwError("Wrong Military ID or Password")
+       }
+
         const user:User = {
             id: 'str12356',
             firstName: 'Nikolaos',
             lastName: 'Papas',
-            rank: 'Master Sergeant(ENG)',
+            rank: 'Master Sergeant',
             MilitaryRegisterNumber: militaryRegistryNum,
             token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzUwMDAwMDk3MTQiLCJuYW1lIjoiTmlrb2xhb3MgUGFwYXMiLCJpYXQiOjE1MTYyMzkwMjJ9.Kl6KfICgBHeqyRGpNwwFifM4AhkuYgHu9bQipkyDmh0',
             role: 'admin'

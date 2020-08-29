@@ -1,4 +1,4 @@
-export interface day_off{
+export interface Day_off{
   type: "regular leave" |
         "student leave" |
         "short duration leave" |

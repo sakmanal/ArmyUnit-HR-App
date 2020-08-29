@@ -9,15 +9,28 @@ import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 
+import { RouterModule, Routes } from '@angular/router';
 
-
+const ShellRoutes: Routes = [
+  {
+    path: '',
+    component: ShellComponent,
+    children: [
+      {
+        path: 'staff',
+        loadChildren: () => import('../staff/staff-info.module').then(m => m.StaffInfoModule)
+      }
+    ]
+  }
+]
 
 @NgModule({
   declarations: [ShellComponent, HeaderComponent, FooterComponent, SidebarComponent, SidenavComponent],
   imports: [
     CommonModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    RouterModule.forChild(ShellRoutes)
   ]
 })
 export class ShellModule { }

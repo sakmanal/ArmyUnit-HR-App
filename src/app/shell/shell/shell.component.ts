@@ -8,17 +8,18 @@ import { MediaMatcher } from '@angular/cdk/layout';
 })
 export class ShellComponent implements OnDestroy {
 
-  sideBarOpen:boolean = true;
-  navMode: 'side' | 'over' = "side";
 
-  smallerScreen:boolean = false;
 
   viewportMobileQuery: MediaQueryList;
+  sideBarOpen:boolean;
+  navMode: 'side' | 'over';
+  smallerScreen:boolean;
 
   private _viewportQueryListener: () => void;
 
   constructor(private changeDetectionRef: ChangeDetectorRef, private media: MediaMatcher) {
-    this.viewportMobileQuery = media.matchMedia('(max-width: 700px)');
+    this.viewportMobileQuery = media.matchMedia('(max-width: 800px)');
+    this.sideNavState();
     this._viewportQueryListener = () =>{
       changeDetectionRef.detectChanges();
       this.sideNavState();

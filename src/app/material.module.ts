@@ -15,10 +15,14 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
-const modules = [ MatInputModule, MatProgressBarModule, MatButtonModule, MatGridListModule,
+const modules = [ MatInputModule, MatProgressBarModule, MatButtonModule, MatGridListModule, MatSortModule,
                   MatCardModule, MatIconModule, MatToolbarModule, MatSidenavModule, MatExpansionModule,
-                  MatListModule, MatTableModule, MatDividerModule, MatMenuModule, MatProgressSpinnerModule, MatTabsModule ]
+                  MatListModule, MatTableModule, MatDividerModule, MatMenuModule, MatProgressSpinnerModule,
+                  MatTooltipModule, MatTabsModule, MatSnackBarModule ]
 @NgModule({
 imports: [...modules ],
 

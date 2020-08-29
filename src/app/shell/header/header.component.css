@@ -3,6 +3,11 @@ ul li {
   margin: auto;
 }
 
+mat-toolbar{
+  position: relative;
+  z-index: 2
+}
+
 .title{
   margin-left: 5px;
 }

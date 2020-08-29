@@ -1,7 +1,5 @@
 .container{
    width: 250px;
-   height: 100%;
-   background: #EBEBEB;
 }
 
 .content{
@@ -37,3 +35,7 @@
    padding: 10px 20px;
 }
 
+.mat-nav-list a.active {
+  background: #3F51B5;
+  color:white;
+}

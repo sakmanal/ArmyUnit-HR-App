@@ -1,4 +1,4 @@
-export interface personal_info{
+export interface Personal_info{
     fatherName: string;
     motherName: string;
     ID_number: string;

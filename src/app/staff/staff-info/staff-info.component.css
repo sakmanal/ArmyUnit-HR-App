@@ -1,0 +1,84 @@
+.container {
+  height: calc(100vh - 160px);
+  overflow: auto;
+  position: relative;
+}
+
+table {
+  width: 100%;
+  min-width: 100%;
+}
+
+.mat-table-sticky:first-child {
+  border-right: 1px solid #e0e0e0;
+  width: 20px;
+}
+
+/* th.mat-column-lastName, td.mat-column-lastName {
+  padding-left: 8px;
+} */
+
+tr.mat-header-row {
+  background-color: #d1d1d1;
+}
+
+td.mat-cell, th.mat-header-cell{
+  padding-left: 8px;
+}
+
+.grey {
+  background-color: #EBEBEB;
+}
+
+.loading-shade {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.UserPic{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border:1px solid rgb(0, 0, 0);
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
+.row{
+  display: flex;
+  align-items: center;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.new{
+  margin-left: 10px;
+}
+
+.header{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search{
+  width: 500px;
+}
+
+.new-btn{
+  margin-right: 20px;
+}
+
+

@@ -1,4 +1,4 @@
-export interface training{
+export interface Training{
   type: string;
   start_date: Date;
   complete_date: Date;

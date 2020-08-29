@@ -1,10 +1,10 @@
-<mat-sidenav-container style="position: relative;" class="example-sidenav-container">
+<mat-sidenav-container>
   <mat-sidenav #snav [opened]="sideBarOpen" [mode]="navMode" [class.mat-elevation-z4]="true">
     <app-sidebar></app-sidebar>
   </mat-sidenav>
 
-  <mat-sidenav-content class="hero">
-
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
 
     <app-footer></app-footer>
   </mat-sidenav-content>
