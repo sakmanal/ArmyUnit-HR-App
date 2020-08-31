@@ -1,5 +1,5 @@
 export interface tableData {
-  no:number;
+  id: string;
   fullname:string;
   rank: string;
   platton: "1st" | "2nd" | "3rd" | "command" | "maintenance"

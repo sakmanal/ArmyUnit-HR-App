@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-
+import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -22,7 +22,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 const modules = [ MatInputModule, MatProgressBarModule, MatButtonModule, MatGridListModule, MatSortModule,
                   MatCardModule, MatIconModule, MatToolbarModule, MatSidenavModule, MatExpansionModule,
                   MatListModule, MatTableModule, MatDividerModule, MatMenuModule, MatProgressSpinnerModule,
-                  MatTooltipModule, MatTabsModule, MatSnackBarModule ]
+                  MatTooltipModule, MatTabsModule, MatSnackBarModule, MatDialogModule ]
 @NgModule({
 imports: [...modules ],
 

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse  } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders  } from '@angular/common/http';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-
 import { environment } from '@environments/environment';
 import { User } from '../models/user.model';
 
@@ -12,6 +11,7 @@ import { User } from '../models/user.model';
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
+
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -23,7 +23,8 @@ export class AuthenticationService {
   }
 
   public login(militaryRegistryNum: string, password: string):Observable<User> {
-    // return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { militaryRegistryNum, password })
+    // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    // return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { militaryRegistryNum, password }, {headers})
     //     .pipe(
     //         map(user => {
     //               localStorage.setItem('currentUser', JSON.stringify(user));
@@ -53,7 +54,7 @@ export class AuthenticationService {
           this.currentUserSubject.next(user);
            setTimeout(() => {
               observer.next(user)
-           }, 2000);
+           }, 1000);
         })
 
   }

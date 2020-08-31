@@ -96,7 +96,7 @@ export class LoginComponent implements OnInit {
         .pipe(first())
         .subscribe({
             next: () => {
-                this.loginForm.reset();
+                //this.loginForm.reset();
                 this.router.navigate(['/']);
             },
             error: error => {

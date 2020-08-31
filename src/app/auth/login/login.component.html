@@ -15,7 +15,8 @@
           <mat-label class="label">Military ID</mat-label>
           <input type="string"
                  matInput
-                 placeholder="135000009714"
+                 numbersOnly
+                 placeholder="e.g 135000009714"
                  maxlength="12"
                  formControlName="militaryRegistryNum" />
                  <mat-icon matSuffix>person</mat-icon>
@@ -28,7 +29,7 @@
           <mat-label class="label">Password</mat-label>
           <input type="password"
                  matInput
-                 placeholder="password"
+                 placeholder="type your password"
                  formControlName="password"
                  [type]="hidePassword ? 'text' : 'password'" />
                  <button mat-icon-button matSuffix

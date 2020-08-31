@@ -7,7 +7,7 @@ export interface Staff{
   platton: "1st" | "2nd" | "3rd" | "command" | "maintenance";
   class_I: "I1" | "I2" | "I3" | "I4";
   specialty: string[];
-  armed: boolean;
+  armed?: boolean;
   class_info?: classInfo;
   foto?: string;
 }

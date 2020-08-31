@@ -13,12 +13,12 @@
       <mat-spinner *ngIf="loading"></mat-spinner>
   </div>
 
-  <table mat-table [dataSource]="data" matSort>
+  <table mat-table [dataSource]="dataSourse" matSort>
 
 
     <ng-container matColumnDef="no" [sticky]="true">
       <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.no}} </td>
+      <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
     </ng-container>
 
     <ng-container matColumnDef="fullname">
@@ -65,7 +65,7 @@
           <button mat-icon-button matTooltip="Edit" matTooltipPosition="below" color="primary">
              <mat-icon aria-label="Edit">edit</mat-icon>
           </button>
-          <button mat-icon-button matTooltip="Delete" matTooltipPosition="right" color="warn">
+          <button mat-icon-button matTooltip="Delete" matTooltipPosition="right" color="warn" (click)="deleteStaffmember(element)">
             <mat-icon aria-label="Edit">delete</mat-icon>
           </button>
         </span>
@@ -79,7 +79,7 @@
   </table>
 
   <table>
-    <tr *ngIf="!data.data.length">
+    <tr *ngIf="!dataSourse.data.length">
       <td style="text-align: center;" [attr.colspan]="displayedColumns.length">
         No Records Found!
       </td>
