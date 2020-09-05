@@ -1,0 +1,32 @@
+.foto{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border:1px solid rgb(0, 0, 0);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+mat-form-field, app-options-input{
+  margin: 10px;
+}
+
+.titlecontainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form_container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:center;
+}
+
+.submitButton{
+  margin-right: 10px;
+}
+
+
+

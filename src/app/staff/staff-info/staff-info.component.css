@@ -74,11 +74,16 @@ th.mat-sort-header-sorted {
 }
 
 .search{
-  width: 500px;
+  width: 400px;
 }
 
 .new-btn{
   margin-right: 20px;
+}
+
+/* disable autofocus on mat-icon-button (if not overall disabled in mat-dialog options) */
+.mat-icon-button ::ng-deep .mat-button-focus-overlay {
+  display: none;
 }
 
 

@@ -60,7 +60,7 @@ export class StaffInfoService {
     //  staff.id = null;
     //  return this.http.post<Staff>(`${environment.apiUrl}/staff`, staff, { headers });
 
-     const _staff:Staff ={
+     const _staff: Staff = {
       id: '497F5D21-AEC0-89T4-ED67-6FD0D6AC70AA',
       firstName: staff.firstName,
       lastName: staff.lastName,
@@ -85,7 +85,7 @@ export class StaffInfoService {
   private updateStaff(staff:Staff, headers: HttpHeaders): Observable<Staff>{
     //  return this.http.put<Staff>(`${environment.apiUrl}/staff/${staff.id}`, { headers });
 
-     const _staff:Staff ={
+     const _staff: Staff = {
       id: staff.id,
       firstName: staff.firstName,
       lastName: staff.lastName,
@@ -104,6 +104,19 @@ export class StaffInfoService {
          observer.next(_staff)
       }, 1000);
    })
+  }
+
+  public getEmptyStaff(): Staff {
+    return {
+      id: '0',
+      firstName: '',
+      lastName: '',
+      rank: '',
+      MilitaryRegisterNumber: '',
+      platton: '1st',
+      class_I: 'I1',
+      specialty: ['']
+    }
   }
 
 

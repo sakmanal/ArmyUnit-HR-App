@@ -1,0 +1,21 @@
+<form>
+  <mat-form-field novalidate appearance="outline">
+    <mat-label>{{label}}</mat-label>
+    <input type="text"
+           placeholder={{placeholder}}
+           aria-label="Number"
+           matInput
+           required
+           [formControl]="myControl"
+           [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+    <!-- <mat-error *ngIf="myControl.invalid">{{getValidationError()}}</mat-error> -->
+    <mat-error *ngIf="myControl.invalid">
+      {{placeholder}} is <strong>required</strong>.
+    </mat-error>
+  </mat-form-field>
+</form>
