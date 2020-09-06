@@ -25,7 +25,7 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Fullname </th>
       <td mat-cell *matCellDef="let element">
         <span class="row">
-          <img src={{element.foto}} alt="avatar" class="UserPic"> {{element.lastName}} {{element.firstName}}
+          <img [src]="element.foto || avatarFoto"  alt="avatar" class="UserPic"> {{element.lastName}} {{element.firstName}}
         </span>
       </td>
     </ng-container>
@@ -40,9 +40,9 @@
       <td mat-cell *matCellDef="let element"> {{element.MilitaryRegisterNumber}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="platton">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Platton </th>
-      <td mat-cell *matCellDef="let element"> {{element.platton}} </td>
+    <ng-container matColumnDef="platoon">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Platoon </th>
+      <td mat-cell *matCellDef="let element"> {{element.platoon}} </td>
     </ng-container>
 
     <ng-container matColumnDef="class_I">

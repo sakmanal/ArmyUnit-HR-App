@@ -2,7 +2,7 @@ import { Component, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Staff } from 'src/app/shared/models/staff.model';
 import { NgForm } from '@angular/forms';
-import { rank, specialty } from '../../shared/options/options';
+import { rank, specialty, platoon, class_I } from '../../shared/options/options';
 
 interface dialogBox{
   title: string;
@@ -25,6 +25,10 @@ export class EditDialogComponent {
 
    rank_options: string[] = rank;
    specialty_options: string[] = specialty;
+   platoon_options: string[] = platoon;
+   classI_options: string[] = class_I;
+
+   x = 'I1'
 
   constructor(public dialogRef: MatDialogRef<EditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: dialogBox) {
@@ -32,27 +36,28 @@ export class EditDialogComponent {
             this.avatar = this.member.foto || '../../../assets/images/Useravatar.jpg';
             this.title = data.title || 'Edit';
             this.buttonText = data.buttonText || { ok: 'Save', cancel:'Cancel'};
-            //this.initmatoptions()
-          //  this.member.firstName = 'Sakis'
-          //  this.member.lastName = 'Manal'
-          //  //this.member.id = '78f345t7-4vi5t-854ytv'
-          //  this.confirm()
     }
 
     public cancel(): void {
       this.dialogRef.close();
     }
 
-    public xxx(value:string){
-      console.log(value);
-
+    public confirm() {
+      if (this.IsValid()){
+        console.log('valid');
+        this.dialogRef.close(this.member)
+      }else{
+        console.log('error');
+      }
     }
 
-    // private confirm() {
-    //   this.dialogRef.close(this.member)
-    // }
-
-
-
+    IsValid(): boolean{
+       if (this.staffForm && this.staffForm.valid && this.member &&
+           this.member.rank != '' && this.member.specialty[0] != '' &&
+          this.member.class_I){
+         return true
+       }
+       return false
+    }
 
 }

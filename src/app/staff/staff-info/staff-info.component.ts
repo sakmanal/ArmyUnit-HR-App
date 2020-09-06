@@ -19,7 +19,8 @@ export class StaffInfoComponent implements OnInit {
 
   loading:boolean;
   load:boolean;
-  displayedColumns = ['no', "fullname", "rank", "military_ID", "platton", "class_I", "specialty", 'actions']
+  avatarFoto:string = '../../../assets/images/Useravatar.jpg';
+  displayedColumns = ['no', "fullname", "rank", "military_ID", "platoon", "class_I", "specialty", 'actions']
   dataSource = new MatTableDataSource<Staff>();
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 

@@ -8,7 +8,7 @@ export class NotificationService {
 
   constructor(private snackBar: MatSnackBar) { }
 
-  public showSuccess(message: string, action:string = "X"): void {
+  public showSuccess(message: string, action:string = "close"): void {
     this.snackBar.open(message, action, {
       duration: 2000,
       panelClass: ['success'],
@@ -17,7 +17,7 @@ export class NotificationService {
     });
   }
 
-  public showError(message: string, action:string = "X"): void {
+  public showError(message: string, action:string = "close"): void {
     this.snackBar.open(message, action, {
       duration: 4000,
       panelClass: ['error'],

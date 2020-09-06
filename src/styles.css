@@ -25,13 +25,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* notification snackbar styles */
 .error{
-  background: #da5151;
-  color:white
+  border-left: 10px solid  #ce3333;
+  /* background: #da5151; */
+  /* color:white */
 }
 
 .success{
-  background: #4baa50;
-  color:white
+  border-left: 10px solid #47cc4e;
+  /* background: #4baa50; */
+  /* color:white */
 }
 
 .mat-simple-snackbar-action {

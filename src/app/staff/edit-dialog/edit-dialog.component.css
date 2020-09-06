@@ -28,5 +28,26 @@ mat-form-field, app-options-input{
   margin-right: 10px;
 }
 
+.mat-radio-button {
+  margin: 8px 8px 0 0;
+}
+
+.classDiv{
+  border: 2px solid #EBEBEB;
+  border-radius: 5px;
+  color: grey;
+}
+
+.classDiv:hover {
+  border: 2px solid black
+}
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+
 
 

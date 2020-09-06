@@ -79,17 +79,42 @@
         <app-options-input [options]="rank_options"
                            placeholder="Rank"
                            label="Member Rank"
-                           [inputValue]="member.rank"
-                           (outputValue)="xxx($event)">
+                           [(option)]="member.rank">
         </app-options-input>
 
         <app-options-input [options]="specialty_options"
                            placeholder="Specialty"
                            label="Member Specialty"
-                           [inputValue]="member.specialty[0]"
-                           (outputValue)="xxx($event)">
+                           [(option)]="member.specialty[0]">
         </app-options-input>
 
+        <mat-form-field appearance="outline">
+          <mat-label>Platoon</mat-label>
+          <mat-select [(ngModel)]="member.platoon"
+                      name="platton"
+                      required
+                      #platoonVar="ngModel">
+            <mat-option *ngFor="let option of platoon_options" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="platoonVar.errors?.required">
+            Platoon is <strong>required</strong>.
+          </mat-error>
+        </mat-form-field>
+
+
+        <fieldset class="classDiv">
+          <legend>physical fitness class&lowast;</legend>
+          <mat-radio-group class="radio-group"
+                           aria-labelledby="classlabel"
+                           name="class_I"
+                           [(ngModel)]="member.class_I">
+              <mat-radio-button *ngFor="let option of classI_options" [value]="option" required>
+                {{option}}
+              </mat-radio-button>
+          </mat-radio-group>
+        </fieldset>
 
 
   </div>
@@ -99,7 +124,8 @@
 
 <div mat-dialog-actions class="form_container">
     <button mat-raised-button
-            type="submit"
+            (click)="confirm()"
+            [disabled]="!IsValid()"
             color="primary"
             class="submitButton">
             {{buttonText.ok}}

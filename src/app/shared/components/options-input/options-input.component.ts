@@ -14,12 +14,14 @@ export class OptionsInputComponent implements OnInit {
   @Input() options: string[] = [];
   @Input() label: string = '';
   @Input() placeholder: string = 'Pick one';
-  @Input() inputValue:string = '';
+  @Input() set option(value: string) {
+    this.myControl.setValue(value);
+  }
+  @Output() optionChange = new EventEmitter<string>();
   filteredOptions: Observable<string[]>;
-  @Output() outputValue = new EventEmitter<string>();
 
   ngOnInit() {
-    this.myControl.setValue(this.inputValue);
+    // this.myControl.setValue(this.inputValue);
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
@@ -28,7 +30,7 @@ export class OptionsInputComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    this.outputValue.emit(this.myControl.value);
+    this.optionChange.emit(this.myControl.value);
     return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
   }
 

@@ -66,7 +66,7 @@ export class StaffInfoService {
       lastName: staff.lastName,
       rank: staff.rank,
       MilitaryRegisterNumber: staff.MilitaryRegisterNumber,
-      platton: staff.platton,
+      platoon: staff.platoon,
       class_I: staff.class_I,
       specialty: staff.specialty,
       armed: staff.armed,
@@ -91,7 +91,7 @@ export class StaffInfoService {
       lastName: staff.lastName,
       rank: staff.rank,
       MilitaryRegisterNumber: staff.MilitaryRegisterNumber,
-      platton: staff.platton,
+      platoon: staff.platoon,
       class_I: staff.class_I,
       specialty: staff.specialty,
       armed: staff.armed,
@@ -113,7 +113,7 @@ export class StaffInfoService {
       lastName: '',
       rank: '',
       MilitaryRegisterNumber: '',
-      platton: '1st',
+      platoon: null,
       class_I: 'I1',
       specialty: ['']
     }

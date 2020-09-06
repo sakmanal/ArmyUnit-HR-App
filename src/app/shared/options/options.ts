@@ -13,7 +13,7 @@ export const rank: string[] = [
   "Lieutenant colonel"
 ]
 
-export const platton: string[] = ["1st", "2nd", "3rd", "command", "maintenance"]
+export const platoon: string[] = ["1st", "2nd", "3rd", "command", "maintenance"]
 
 export const class_I: string[] = ["I1", "I2", "I3", "I4"]
 

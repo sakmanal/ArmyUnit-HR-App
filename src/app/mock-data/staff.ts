@@ -6,7 +6,7 @@ export const staff:Staff[] = [
       "firstName": "Alex",
       "lastName": "Rios",
       "MilitaryRegisterNumber": "168212104577",
-      "platton": "command",
+      "platoon": "command",
       "rank": "Major",
       "class_I": "I1",
       "specialty": [
@@ -21,7 +21,7 @@ export const staff:Staff[] = [
       "firstName": "Russell",
       "lastName": "Gates",
       "MilitaryRegisterNumber": "161405149459",
-      "platton": "3rd",
+      "platoon": "3rd",
       "rank": "Captain",
       "class_I": "I1",
       "specialty": [
@@ -36,7 +36,7 @@ export const staff:Staff[] = [
       "firstName": "Tyrone",
       "lastName": "Burt",
       "MilitaryRegisterNumber": "167303115567",
-      "platton": "2nd",
+      "platoon": "2nd",
       "rank": "Captain",
       "class_I": "I1",
       "specialty": [
@@ -51,7 +51,7 @@ export const staff:Staff[] = [
       "firstName": "Zane",
       "lastName": "Henry",
       "MilitaryRegisterNumber": "163901172241",
-      "platton": "command",
+      "platoon": "command",
       "rank": "First Lieutenant",
       "class_I": "I1",
       "specialty": [
@@ -65,7 +65,7 @@ export const staff:Staff[] = [
       "firstName": "Ralph",
       "lastName": "Cohen",
       "MilitaryRegisterNumber": "169911295336",
-      "platton": "maintenance",
+      "platoon": "maintenance",
       "rank": "First Lieutenant",
       "class_I": "I1",
       "specialty": [
@@ -79,7 +79,7 @@ export const staff:Staff[] = [
       "firstName": "Abraham",
       "lastName": "Martin",
       "MilitaryRegisterNumber": "168302067346",
-      "platton": "command",
+      "platoon": "command",
       "rank": "First Lieutenant",
       "class_I": "I1",
       "specialty": [
@@ -93,7 +93,7 @@ export const staff:Staff[] = [
       "firstName": "Benjamin",
       "lastName": "Byers",
       "MilitaryRegisterNumber": "160711273029",
-      "platton": "maintenance",
+      "platoon": "maintenance",
       "rank": "Second Lieutenant",
       "class_I": "I1",
       "specialty": [
@@ -107,7 +107,7 @@ export const staff:Staff[] = [
       "firstName": "Dale",
       "lastName": "Harper",
       "MilitaryRegisterNumber": "162010303408",
-      "platton": "command",
+      "platoon": "command",
       "rank": "Second Lieutenant",
       "class_I": "I1",
       "specialty": [
@@ -121,7 +121,7 @@ export const staff:Staff[] = [
       "firstName": "Timon",
       "lastName": "Oconnor",
       "MilitaryRegisterNumber": "168503125331",
-      "platton": "3rd",
+      "platoon": "3rd",
       "rank": "Warrant Officer",
       "class_I": "I1",
       "specialty": [
@@ -135,7 +135,7 @@ export const staff:Staff[] = [
       "firstName": "Ulysses",
       "lastName": "Hawkins",
       "MilitaryRegisterNumber": "168704293813",
-      "platton": "maintenance",
+      "platoon": "maintenance",
       "rank": "Warrant Officer",
       "class_I": "I1",
       "specialty": [
@@ -149,7 +149,7 @@ export const staff:Staff[] = [
       "firstName": "Channing",
       "lastName": "Clements",
       "MilitaryRegisterNumber": "167512052080",
-      "platton": "2nd",
+      "platoon": "2nd",
       "rank": "Warrant Officer",
       "class_I": "I1",
       "specialty": [
@@ -163,7 +163,7 @@ export const staff:Staff[] = [
       "firstName": "Brandon",
       "lastName": "Hicks",
       "MilitaryRegisterNumber": "166702292993",
-      "platton": "3rd",
+      "platoon": "3rd",
       "rank": "Warrant Officer",
       "class_I": "I1",
       "specialty": [
@@ -177,7 +177,7 @@ export const staff:Staff[] = [
       "firstName": "Keaton",
       "lastName": "Landry",
       "MilitaryRegisterNumber": "163901069967",
-      "platton": "2nd",
+      "platoon": "2nd",
       "rank": "Master Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -191,7 +191,7 @@ export const staff:Staff[] = [
       "firstName": "Zachery",
       "lastName": "Ramsey",
       "MilitaryRegisterNumber": "167012304916",
-      "platton": "command",
+      "platoon": "command",
       "rank": "Master Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -205,7 +205,7 @@ export const staff:Staff[] = [
       "firstName": "Yoshio",
       "lastName": "Ruiz",
       "MilitaryRegisterNumber": "163406065882",
-      "platton": "1st",
+      "platoon": "1st",
       "rank": "Master Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -219,7 +219,7 @@ export const staff:Staff[] = [
       "firstName": "Cameron",
       "lastName": "Fox",
       "MilitaryRegisterNumber": "167812126063",
-      "platton": "2nd",
+      "platoon": "2nd",
       "rank": "Master Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -233,7 +233,7 @@ export const staff:Staff[] = [
       "firstName": "Joel",
       "lastName": "Pierce",
       "MilitaryRegisterNumber": "165308037679",
-      "platton": "command",
+      "platoon": "command",
       "rank": "Master Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -247,7 +247,7 @@ export const staff:Staff[] = [
       "firstName": "Ashton",
       "lastName": "Downs",
       "MilitaryRegisterNumber": "160507147072",
-      "platton": "2nd",
+      "platoon": "2nd",
       "rank": "Staff Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -261,7 +261,7 @@ export const staff:Staff[] = [
       "firstName": "Hasad",
       "lastName": "Walsh",
       "MilitaryRegisterNumber": "160305060329",
-      "platton": "maintenance",
+      "platoon": "maintenance",
       "rank": "Staff Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -275,7 +275,7 @@ export const staff:Staff[] = [
       "firstName": "Chadwick",
       "lastName": "Cameron",
       "MilitaryRegisterNumber": "164802300402",
-      "platton": "2nd",
+      "platoon": "2nd",
       "rank": "Staff Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -289,7 +289,7 @@ export const staff:Staff[] = [
       "firstName": "Ezra",
       "lastName": "Chavez",
       "MilitaryRegisterNumber": "167803205454",
-      "platton": "1st",
+      "platoon": "1st",
       "rank": "Staff Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -303,7 +303,7 @@ export const staff:Staff[] = [
       "firstName": "Stuart",
       "lastName": "Haney",
       "MilitaryRegisterNumber": "162208046389",
-      "platton": "3rd",
+      "platoon": "3rd",
       "rank": "Staff Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -317,7 +317,7 @@ export const staff:Staff[] = [
       "firstName": "Patrick",
       "lastName": "Price",
       "MilitaryRegisterNumber": "160103198487",
-      "platton": "maintenance",
+      "platoon": "maintenance",
       "rank": "Staff Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -331,7 +331,7 @@ export const staff:Staff[] = [
       "firstName": "Zephania",
       "lastName": "Mcknight",
       "MilitaryRegisterNumber": "160211018361",
-      "platton": "3rd",
+      "platoon": "3rd",
       "rank": "Staff Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -345,7 +345,7 @@ export const staff:Staff[] = [
       "firstName": "Cameron",
       "lastName": "Morrison",
       "MilitaryRegisterNumber": "165003150041",
-      "platton": "1st",
+      "platoon": "1st",
       "rank": "Staff Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -359,7 +359,7 @@ export const staff:Staff[] = [
       "firstName": "Perry",
       "lastName": "Shannon",
       "MilitaryRegisterNumber": "164803258195",
-      "platton": "1st",
+      "platoon": "1st",
       "rank": "Staff Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -373,7 +373,7 @@ export const staff:Staff[] = [
       "firstName": "Igor",
       "lastName": "Hood",
       "MilitaryRegisterNumber": "169804173434",
-      "platton": "3rd",
+      "platoon": "3rd",
       "rank": "Staff Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -387,7 +387,7 @@ export const staff:Staff[] = [
       "firstName": "Richard",
       "lastName": "Alvarado",
       "MilitaryRegisterNumber": "162711013454",
-      "platton": "2nd",
+      "platoon": "2nd",
       "rank": "Staff Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -401,7 +401,7 @@ export const staff:Staff[] = [
       "firstName": "Kieran",
       "lastName": "Armstrong",
       "MilitaryRegisterNumber": "162301267361",
-      "platton": "2nd",
+      "platoon": "2nd",
       "rank": "Staff Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -415,7 +415,7 @@ export const staff:Staff[] = [
       "firstName": "Caleb",
       "lastName": "Grant",
       "MilitaryRegisterNumber": "163504168661",
-      "platton": "maintenance",
+      "platoon": "maintenance",
       "rank": "Staff Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -429,7 +429,7 @@ export const staff:Staff[] = [
       "firstName": "Dustin",
       "lastName": "Weiss",
       "MilitaryRegisterNumber": "161212194862",
-      "platton": "maintenance",
+      "platoon": "maintenance",
       "rank": "Staff Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -443,7 +443,7 @@ export const staff:Staff[] = [
       "firstName": "Abbot",
       "lastName": "Huff",
       "MilitaryRegisterNumber": "167606085954",
-      "platton": "1st",
+      "platoon": "1st",
       "rank": "Staff Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -457,7 +457,7 @@ export const staff:Staff[] = [
       "firstName": "Myles",
       "lastName": "Decker",
       "MilitaryRegisterNumber": "161901082139",
-      "platton": "3rd",
+      "platoon": "3rd",
       "rank": "Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -471,7 +471,7 @@ export const staff:Staff[] = [
       "firstName": "Tucker",
       "lastName": "Bates",
       "MilitaryRegisterNumber": "163804288755",
-      "platton": "command",
+      "platoon": "command",
       "rank": "Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -485,7 +485,7 @@ export const staff:Staff[] = [
       "firstName": "Lester",
       "lastName": "Reid",
       "MilitaryRegisterNumber": "163401090505",
-      "platton": "3rd",
+      "platoon": "3rd",
       "rank": "Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -499,7 +499,7 @@ export const staff:Staff[] = [
       "firstName": "Jarrod",
       "lastName": "Raymond",
       "MilitaryRegisterNumber": "167608276338",
-      "platton": "maintenance",
+      "platoon": "maintenance",
       "rank": "Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -513,7 +513,7 @@ export const staff:Staff[] = [
       "firstName": "Laith",
       "lastName": "Fowler",
       "MilitaryRegisterNumber": "165702195107",
-      "platton": "3rd",
+      "platoon": "3rd",
       "rank": "Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -527,7 +527,7 @@ export const staff:Staff[] = [
       "firstName": "Odysseus",
       "lastName": "Farmer",
       "MilitaryRegisterNumber": "161512074970",
-      "platton": "maintenance",
+      "platoon": "maintenance",
       "rank": "Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -541,7 +541,7 @@ export const staff:Staff[] = [
       "firstName": "Judah",
       "lastName": "Hanson",
       "MilitaryRegisterNumber": "166606095252",
-      "platton": "command",
+      "platoon": "command",
       "rank": "Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -555,7 +555,7 @@ export const staff:Staff[] = [
       "firstName": "Ivor",
       "lastName": "Fisher",
       "MilitaryRegisterNumber": "161510307604",
-      "platton": "maintenance",
+      "platoon": "maintenance",
       "rank": "Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -569,7 +569,7 @@ export const staff:Staff[] = [
       "firstName": "Phillip",
       "lastName": "Jenkins",
       "MilitaryRegisterNumber": "164010204156",
-      "platton": "2nd",
+      "platoon": "2nd",
       "rank": "Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -583,7 +583,7 @@ export const staff:Staff[] = [
       "firstName": "Ralph",
       "lastName": "Hahn",
       "MilitaryRegisterNumber": "161004125967",
-      "platton": "2nd",
+      "platoon": "2nd",
       "rank": "Sergeant",
       "class_I": "I1",
       "specialty": [
@@ -597,7 +597,7 @@ export const staff:Staff[] = [
       "firstName": "Lance",
       "lastName": "Hayes",
       "MilitaryRegisterNumber": "162804223713",
-      "platton": "1st",
+      "platoon": "1st",
       "rank": "Lance Corporal",
       "class_I": "I1",
       "specialty": [
@@ -611,7 +611,7 @@ export const staff:Staff[] = [
       "firstName": "Bruno",
       "lastName": "Berg",
       "MilitaryRegisterNumber": "162002092019",
-      "platton": "command",
+      "platoon": "command",
       "rank": "Lance Corporal",
       "class_I": "I1",
       "specialty": [
@@ -625,7 +625,7 @@ export const staff:Staff[] = [
       "firstName": "Jack",
       "lastName": "Hammond",
       "MilitaryRegisterNumber": "167711071428",
-      "platton": "1st",
+      "platoon": "1st",
       "rank": "Private",
       "class_I": "I1",
       "specialty": [
@@ -639,7 +639,7 @@ export const staff:Staff[] = [
       "firstName": "Kuame",
       "lastName": "Diaz",
       "MilitaryRegisterNumber": "162309023246",
-      "platton": "maintenance",
+      "platoon": "maintenance",
       "rank": "Private",
       "class_I": "I1",
       "specialty": [
@@ -653,7 +653,7 @@ export const staff:Staff[] = [
       "firstName": "Sean",
       "lastName": "Osborn",
       "MilitaryRegisterNumber": "162502029271",
-      "platton": "maintenance",
+      "platoon": "maintenance",
       "rank": "Private",
       "class_I": "I1",
       "specialty": [
@@ -667,7 +667,7 @@ export const staff:Staff[] = [
       "firstName": "Octavius",
       "lastName": "Armstrong",
       "MilitaryRegisterNumber": "165906271282",
-      "platton": "command",
+      "platoon": "command",
       "rank": "Private",
       "class_I": "I1",
       "specialty": [
@@ -681,7 +681,7 @@ export const staff:Staff[] = [
       "firstName": "Harlan",
       "lastName": "Merritt",
       "MilitaryRegisterNumber": "168710099956",
-      "platton": "2nd",
+      "platoon": "2nd",
       "rank": "Private",
       "class_I": "I1",
       "specialty": [
@@ -695,7 +695,7 @@ export const staff:Staff[] = [
       "firstName": "Malcolm",
       "lastName": "Silva",
       "MilitaryRegisterNumber": "163510143385",
-      "platton": "command",
+      "platoon": "command",
       "rank": "Private",
       "class_I": "I1",
       "specialty": [
@@ -709,7 +709,7 @@ export const staff:Staff[] = [
       "firstName": "Wayne",
       "lastName": "Valdez",
       "MilitaryRegisterNumber": "161901130011",
-      "platton": "3rd",
+      "platoon": "3rd",
       "rank": "Private",
       "class_I": "I3",
       "specialty": [
@@ -723,7 +723,7 @@ export const staff:Staff[] = [
       "firstName": "Aquila",
       "lastName": "Howard",
       "MilitaryRegisterNumber": "165803274702",
-      "platton": "1st",
+      "platoon": "1st",
       "rank": "Private",
       "class_I": "I3",
       "specialty": [
@@ -737,7 +737,7 @@ export const staff:Staff[] = [
       "firstName": "Berk",
       "lastName": "Hancock",
       "MilitaryRegisterNumber": "168412164736",
-      "platton": "3rd",
+      "platoon": "3rd",
       "rank": "Private",
       "class_I": "I4",
       "specialty": [
@@ -751,7 +751,7 @@ export const staff:Staff[] = [
       "firstName": "David",
       "lastName": "Martinez",
       "MilitaryRegisterNumber": "165903019403",
-      "platton": "3rd",
+      "platoon": "3rd",
       "rank": "Private",
       "class_I": "I1",
       "specialty": [
@@ -765,7 +765,7 @@ export const staff:Staff[] = [
       "firstName": "Tanek",
       "lastName": "Manning",
       "MilitaryRegisterNumber": "168812044116",
-      "platton": "command",
+      "platoon": "command",
       "rank": "Private",
       "class_I": "I1",
       "specialty": [
@@ -779,7 +779,7 @@ export const staff:Staff[] = [
       "firstName": "Branden",
       "lastName": "Crosby",
       "MilitaryRegisterNumber": "167406153804",
-      "platton": "maintenance",
+      "platoon": "maintenance",
       "rank": "Private",
       "class_I": "I1",
       "specialty": [
@@ -793,7 +793,7 @@ export const staff:Staff[] = [
       "firstName": "Tanek",
       "lastName": "Weber",
       "MilitaryRegisterNumber": "166206150796",
-      "platton": "3rd",
+      "platoon": "3rd",
       "rank": "Private",
       "class_I": "I1",
       "specialty": [
@@ -807,7 +807,7 @@ export const staff:Staff[] = [
       "firstName": "Jasper",
       "lastName": "Davenport",
       "MilitaryRegisterNumber": "161605180312",
-      "platton": "command",
+      "platoon": "command",
       "rank": "Private",
       "class_I": "I1",
       "specialty": [
@@ -821,7 +821,7 @@ export const staff:Staff[] = [
       "firstName": "Octavius",
       "lastName": "Willis",
       "MilitaryRegisterNumber": "162408114359",
-      "platton": "maintenance",
+      "platoon": "maintenance",
       "rank": "Private",
       "class_I": "I1",
       "specialty": [
