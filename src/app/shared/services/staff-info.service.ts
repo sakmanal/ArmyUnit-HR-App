@@ -115,7 +115,7 @@ export class StaffInfoService {
       MilitaryRegisterNumber: '',
       platoon: null,
       class_I: null,
-      specialty: ['']
+      specialty: []
     }
   }
 

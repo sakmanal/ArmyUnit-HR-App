@@ -18,6 +18,7 @@ interface dialogBox{
 export class EditDialogComponent {
 
    member: Staff;
+   original_member: Staff;
    @ViewChild(NgForm, { static: true }) staffForm: NgForm;
    title: string;
    buttonText: { ok: string, cancel: string};
@@ -30,7 +31,8 @@ export class EditDialogComponent {
 
   constructor(public dialogRef: MatDialogRef<EditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: dialogBox) {
-            this.member = data.staff;
+            this.member = {...data.staff};
+            this.original_member = {...this.member};
             this.avatar = this.member.foto || '../../../assets/images/Useravatar.jpg';
             this.title = data.title || 'Edit';
             this.buttonText = data.buttonText || { ok: 'Save', cancel:'Cancel'};
@@ -49,12 +51,17 @@ export class EditDialogComponent {
       }
     }
 
-    IsValid(): boolean{
+    public IsValid(): boolean{
        if (this.staffForm && this.staffForm.valid && this.member &&
-           this.member.rank != '' && this.member.specialty[0] != ''){
+           this.member.rank != '' && this.member.specialty[0] != '' &&
+           this.member.specialty.length > 0){
          return true
        }
        return false
+    }
+
+    public get isDirty(): boolean {
+      return JSON.stringify(this.member) !== JSON.stringify(this.original_member)
     }
 
 }

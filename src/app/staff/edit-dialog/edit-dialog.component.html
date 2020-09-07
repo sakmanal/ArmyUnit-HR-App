@@ -82,12 +82,6 @@
                            [(option)]="member.rank">
         </app-options-input>
 
-        <app-options-input [options]="specialty_options"
-                           placeholder="Specialty"
-                           label="Member Specialty"
-                           [(option)]="member.specialty[0]">
-        </app-options-input>
-
         <mat-form-field appearance="outline">
           <mat-label>Platoon</mat-label>
           <mat-select [(ngModel)]="member.platoon"
@@ -118,6 +112,11 @@
           </mat-error>
         </mat-form-field>
 
+        <app-chips-autocomplete [alloptions]="specialty_options"
+                                placeholder="New Specialty..."
+                                [(options)]="member.specialty">
+        </app-chips-autocomplete>
+
   </div>
   </form>
 </span>
@@ -126,7 +125,7 @@
 <div mat-dialog-actions class="form_container">
     <button mat-raised-button
             (click)="confirm()"
-            [disabled]="!IsValid()"
+            [disabled]="!IsValid() || !isDirty"
             color="primary"
             class="submitButton">
             {{buttonText.ok}}

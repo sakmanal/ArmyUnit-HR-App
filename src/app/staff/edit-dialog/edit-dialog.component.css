@@ -9,8 +9,12 @@
   margin-top: 10px;
 }
 
-mat-form-field, app-options-input{
+mat-form-field, app-options-input, app-chips-autocomplete{
   margin: 10px;
+}
+
+app-chips-autocomplete{
+  width: 500px;
 }
 
 .titlecontainer {

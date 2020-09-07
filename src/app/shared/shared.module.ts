@@ -6,9 +6,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NumberDirective } from './helpers/numbersOnly.directive';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { OptionsInputComponent } from './components/options-input/options-input.component';
+import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chips-autocomplete.component';
 
 @NgModule({
-  declarations: [SearchComponent, NumberDirective, DeleteDialogComponent, OptionsInputComponent],
+  declarations: [
+    SearchComponent,
+    NumberDirective,
+    DeleteDialogComponent,
+    OptionsInputComponent,
+    ChipsAutocompleteComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -19,7 +25,8 @@ import { OptionsInputComponent } from './components/options-input/options-input.
     NumberDirective,
     SearchComponent,
     DeleteDialogComponent,
-    OptionsInputComponent
+    OptionsInputComponent,
+    ChipsAutocompleteComponent
   ],
   entryComponents: [
     DeleteDialogComponent
