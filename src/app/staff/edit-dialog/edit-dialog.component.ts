@@ -28,8 +28,6 @@ export class EditDialogComponent {
    platoon_options: string[] = platoon;
    classI_options: string[] = class_I;
 
-   x = 'I1'
-
   constructor(public dialogRef: MatDialogRef<EditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: dialogBox) {
             this.member = data.staff;
@@ -53,8 +51,7 @@ export class EditDialogComponent {
 
     IsValid(): boolean{
        if (this.staffForm && this.staffForm.valid && this.member &&
-           this.member.rank != '' && this.member.specialty[0] != '' &&
-          this.member.class_I){
+           this.member.rank != '' && this.member.specialty[0] != ''){
          return true
        }
        return false

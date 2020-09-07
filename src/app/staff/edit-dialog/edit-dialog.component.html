@@ -103,19 +103,20 @@
           </mat-error>
         </mat-form-field>
 
-
-        <fieldset class="classDiv">
-          <legend>physical fitness class&lowast;</legend>
-          <mat-radio-group class="radio-group"
-                           aria-labelledby="classlabel"
-                           name="class_I"
-                           [(ngModel)]="member.class_I">
-              <mat-radio-button *ngFor="let option of classI_options" [value]="option" required>
-                {{option}}
-              </mat-radio-button>
-          </mat-radio-group>
-        </fieldset>
-
+        <mat-form-field appearance="outline">
+          <mat-label>Physical fitness class</mat-label>
+          <mat-select [(ngModel)]="member.class_I"
+                      name="class_I"
+                      required
+                      #classIVar="ngModel">
+            <mat-option *ngFor="let option of classI_options" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="classIVar.errors?.required">
+            Physical fitness class is <strong>required</strong>.
+          </mat-error>
+        </mat-form-field>
 
   </div>
   </form>

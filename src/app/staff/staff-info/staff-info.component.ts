@@ -8,6 +8,7 @@ import { NotificationService } from '../../shared/services/notification.service'
 import { DeleteDialogComponent } from '../../shared/components/delete-dialog/delete-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import {switchMap, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-staff-info',
@@ -136,24 +137,41 @@ export class StaffInfoComponent implements OnInit {
   private _editStaffmember(options: MatDialogConfig){
     const dialogRef = this.dialog.open(EditDialogComponent, options);
 
-    dialogRef.afterClosed().subscribe( (member: Staff) => {
-      if (member){
-        this.load = true;
-        this.staffInfoService.saveStaff(member)
-           .subscribe(
-             (staffmember) => {
-                this.updateTableWithMember(staffmember);
-                this.load = false;
-                this.notificationService.showSuccess('Staff Updated');
-             },
-             (error) => {
-                this.load = false;
-                this.notificationService.showError(error);
-             }
-           )
-      }
+    /* working but we have nested subscribe into subscribe */
+    // dialogRef.afterClosed().subscribe( (member: Staff) => {
+    //   if (member){
+    //     this.load = true;
+    //     this.staffInfoService.saveStaff(member)
+    //        .subscribe(
+    //          (staffmember) => {
+    //             this.updateTableWithMember(staffmember);
+    //             this.load = false;
+    //             this.notificationService.showSuccess('Staff Updated');
+    //          },
+    //          (error) => {
+    //             this.load = false;
+    //             this.notificationService.showError(error);
+    //          }
+    //        )
+    //   }
 
-    });
+    dialogRef.afterClosed().pipe(
+      filter( member => member ),
+      switchMap((member: Staff) => {
+          this.load = true;
+          return this.staffInfoService.saveStaff(member)
+      }),
+    ).subscribe(
+        (staffmember) => {
+          this.updateTableWithMember(staffmember);
+          this.load = false;
+          this.notificationService.showSuccess('Staff Updated');
+        },
+        (error) => {
+          this.load = false;
+          this.notificationService.showError(error);
+        }
+    );
 
   }
 
