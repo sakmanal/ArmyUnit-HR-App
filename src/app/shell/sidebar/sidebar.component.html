@@ -68,7 +68,7 @@
       </mat-expansion-panel>
     </mat-nav-list> -->
 
-    <mat-nav-list dense>
+    <mat-nav-list dense (click)="closeSidebarOnSmallerScreens()">
       <mat-list-item (click)="logOut()">
         <mat-icon>exit_to_app</mat-icon>Sign Out
       </mat-list-item>

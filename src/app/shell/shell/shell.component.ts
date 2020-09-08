@@ -1,5 +1,6 @@
 import { Component, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { SidenavControlService } from '../services/sidenav-control.service';
 
 @Component({
   selector: 'app-shell',
@@ -8,16 +9,12 @@ import { MediaMatcher } from '@angular/cdk/layout';
 })
 export class ShellComponent implements OnDestroy {
 
-
-
   viewportMobileQuery: MediaQueryList;
-  sideBarOpen:boolean;
-  navMode: 'side' | 'over';
-  smallerScreen:boolean;
-
   private _viewportQueryListener: () => void;
 
-  constructor(private changeDetectionRef: ChangeDetectorRef, private media: MediaMatcher) {
+  constructor(private changeDetectionRef: ChangeDetectorRef,
+              private media: MediaMatcher,
+              private sidenavControlService: SidenavControlService) {
     this.viewportMobileQuery = media.matchMedia('(max-width: 800px)');
     this.sideNavState();
     this._viewportQueryListener = () =>{
@@ -31,19 +28,15 @@ export class ShellComponent implements OnDestroy {
     this.viewportMobileQuery.removeEventListener('change', this._viewportQueryListener);
   }
 
-  public sideBarToggler(event?:string):void {
-    this.sideBarOpen = !this.sideBarOpen;
-  }
-
   private sideNavState():void{
        if (this.viewportMobileQuery.matches){
-            this.sideBarOpen = false;
-            this.navMode = 'over';
-            this.smallerScreen = true;
+            this.sidenavControlService.setSideBarState(false);
+            this.sidenavControlService.setNavModeState('over');
+            this.sidenavControlService.setSmallScreenState(true);
        }else{
-            this.sideBarOpen = true;
-            this.navMode = 'side';
-            this.smallerScreen = false;
+            this.sidenavControlService.setSideBarState(true);
+            this.sidenavControlService.setNavModeState('side');
+            this.sidenavControlService.setSmallScreenState(false);
        }
   }
 

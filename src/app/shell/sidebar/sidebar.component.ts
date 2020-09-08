@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../auth/services/authentication.service';
 import { Router } from '@angular/router';
 import { UserInfoService } from '../../shared/services/user-info.service';
+import { SidenavControlService } from '../services/sidenav-control.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -18,7 +19,8 @@ export class SidebarComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router,
-    private userInfoService: UserInfoService
+    private userInfoService: UserInfoService,
+    private sidenavControlService: SidenavControlService
     ) { }
 
   ngOnInit(): void {
@@ -28,6 +30,13 @@ export class SidebarComponent implements OnInit {
   public logOut(){
     this.authenticationService.logout();
     this.router.navigate(['/login']);
+  }
+
+  closeSidebarOnSmallerScreens(){
+    if (this.sidenavControlService.smallScreenState){
+      this.sidenavControlService.setSideBarState(false)
+    }
+
   }
 
 }

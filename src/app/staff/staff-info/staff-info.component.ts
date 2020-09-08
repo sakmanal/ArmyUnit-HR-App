@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { StaffInfoService } from '../../shared/services/staff-info.service';
+import { DeleteDiaologService } from '../../shared/services/delete-diaolog.service';
 // import { tableData } from '../models/tableData.model';
 import { Staff } from '../../shared/models/staff.model';
 import { MatTableDataSource } from '@angular/material/table';
@@ -8,7 +9,7 @@ import { NotificationService } from '../../shared/services/notification.service'
 import { DeleteDialogComponent } from '../../shared/components/delete-dialog/delete-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
-import {switchMap, filter } from 'rxjs/operators';
+import { switchMap, filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-staff-info',
@@ -28,7 +29,8 @@ export class StaffInfoComponent implements OnInit {
   constructor(
               private staffInfoService: StaffInfoService,
               private notificationService: NotificationService,
-              private dialog: MatDialog
+              private dialog: MatDialog,
+              private deleteDiaologService : DeleteDiaologService
               ) { }
 
   ngOnInit(): void {
@@ -80,32 +82,44 @@ export class StaffInfoComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe( (confirmed:boolean) => {
-      if (confirmed){
-        this.load = true;
-        this.staffInfoService.deleteStaff(member.id)
-           .subscribe(
-             (success) => {
-                /* 1st way */
-                this.removeMemberFromTable(member.id);
+    dialogRef.afterClosed().pipe(
+      filter( (confirmed: boolean) => confirmed ),
+      switchMap(() => {
+          this.load = true;
+          return this.staffInfoService.deleteStaff(member.id)
+      })
+    ).subscribe(
+        (success) => {
+          /* 1st way */
+          this.removeMemberFromTable(member.id);
 
-                 /* 2nd way */
-                // const data = this.dataSource.data;
-                // const index = data.indexOf(member);
-                // data.splice(index, 1);
-                // this.dataSource.data = data;
+          /* 2nd way */
+          // const data = this.dataSource.data;
+          // const index = data.indexOf(member);
+          // data.splice(index, 1);
+          // this.dataSource.data = data;
 
-                this.load = false;
-                this.notificationService.showSuccess(success.message);
-             },
-             (error) => {
-                this.load = false;
-                this.notificationService.showError(error);
-             }
-           )
-      }
+          this.load = false;
+          this.notificationService.showSuccess(success.message);
+        },
+        (error) => {
+          this.load = false;
+          this.notificationService.showError(error);
+        }
+    );
 
-    });
+
+    /* open dialog from deleteDiaologService */
+    /* works but we can't begin the load-bar after the diolog is closed */
+    // this.deleteDiaologService.deleteStaffmember(member).subscribe(
+    //          (success) => {
+    //             this.removeMemberFromTable(member.id);
+    //             this.notificationService.showSuccess(success.message);
+    //          },
+    //          (error) => {
+    //             this.notificationService.showError(error);
+    //          }
+    // )
   }
 
   private removeMemberFromTable(id: string){
@@ -137,11 +151,11 @@ export class StaffInfoComponent implements OnInit {
   private _editStaffmember(options: MatDialogConfig){
     const dialogRef = this.dialog.open(EditDialogComponent, options);
 
-    /* working but we have nested subscribe into subscribe */
-    // dialogRef.afterClosed().subscribe( (member: Staff) => {
-    //   if (member){
+    /* works but we have nested subscribe into subscribe */
+    // dialogRef.afterClosed().subscribe( (data) => {
+    //   if (data.event == 'Confirm'){
     //     this.load = true;
-    //     this.staffInfoService.saveStaff(member)
+    //     this.staffInfoService.saveStaff(data.member)
     //        .subscribe(
     //          (staffmember) => {
     //             this.updateTableWithMember(staffmember);
@@ -156,11 +170,12 @@ export class StaffInfoComponent implements OnInit {
     //   }
 
     dialogRef.afterClosed().pipe(
-      filter( member => member ),
+      filter( (data: {event: string, member: Staff} ) => data.event == 'Confirm' ),
+      map( data => { return data.member }),
       switchMap((member: Staff) => {
           this.load = true;
           return this.staffInfoService.saveStaff(member)
-      }),
+      })
     ).subscribe(
         (staffmember) => {
           this.updateTableWithMember(staffmember);

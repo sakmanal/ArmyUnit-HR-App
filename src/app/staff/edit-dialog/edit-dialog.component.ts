@@ -39,15 +39,12 @@ export class EditDialogComponent {
     }
 
     public cancel(): void {
-      this.dialogRef.close();
+      this.dialogRef.close({event:'Cancel'});
     }
 
     public confirm() {
       if (this.IsValid()){
-        console.log('valid');
-        this.dialogRef.close(this.member)
-      }else{
-        console.log('error');
+        this.dialogRef.close({event:'Confirm', member:this.member})
       }
     }
 
