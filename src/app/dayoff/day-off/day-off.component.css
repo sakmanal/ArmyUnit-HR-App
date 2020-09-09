@@ -1,0 +1,14 @@
+.container{
+  height: 100vh;
+  padding: 10px;
+}
+
+.main{
+  margin-top: 10px;
+}
+
+.form_container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:center;
+}

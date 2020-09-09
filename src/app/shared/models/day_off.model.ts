@@ -10,5 +10,4 @@ export interface Day_off{
         "oath taking leave";
   total_days: number;
   start_date: Date;
-  unit_of_issue: string;
 }

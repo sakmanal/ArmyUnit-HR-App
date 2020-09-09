@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
 import { ShellComponent } from './shell/shell.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -19,6 +18,10 @@ const ShellRoutes: Routes = [
       {
         path: 'staff',
         loadChildren: () => import('../staff/staff-info.module').then(m => m.StaffInfoModule)
+      },
+      {
+        path: 'dayoff',
+        loadChildren: () => import('../dayoff/dayoff.module').then(m => m.DayoffModule)
       }
     ]
   }

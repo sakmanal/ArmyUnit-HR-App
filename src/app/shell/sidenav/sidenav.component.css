@@ -9,7 +9,7 @@ mat-sidenav-container {
   }
 }
 
-mat-sidenav-content{
+.main{
   padding: 20px;
 }
 
