@@ -1,4 +1,5 @@
-export interface staffnames{
+export interface Staffnames{
   id: string;
-  fullnameTitle: string
+  fullnameTitle: string;
+  foto?: string;
 }

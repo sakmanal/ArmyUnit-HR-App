@@ -22,15 +22,33 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatMomentDateModule} from "@angular/material-moment-adapter";
+import {MAT_DATE_FORMATS} from '@angular/material/core';
+
+const MY_FORMATS = {
+  parse: {
+    dateInput: 'DD MMMM YYYY',
+  },
+  display: {
+    dateInput: 'DD MMMM YYYY',
+    monthYearLabel: 'MMMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 const modules = [ MatInputModule, MatProgressBarModule, MatButtonModule, MatGridListModule, MatSortModule,
                   MatCardModule, MatIconModule, MatToolbarModule, MatSidenavModule, MatExpansionModule,
                   MatListModule, MatTableModule, MatDividerModule, MatMenuModule, MatProgressSpinnerModule,
                   MatTooltipModule, MatTabsModule, MatSnackBarModule, MatDialogModule, MatAutocompleteModule,
-                  MatSelectModule, MatRadioModule, MatChipsModule ]
+                  MatSelectModule, MatRadioModule, MatChipsModule, MatDatepickerModule, MatMomentDateModule ]
 @NgModule({
 imports: [...modules ],
 
 exports: [...modules],
+providers: [
+  { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+]
 })
 export class MaterialModule { }

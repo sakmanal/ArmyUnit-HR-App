@@ -14,7 +14,8 @@ import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chip
     NumberDirective,
     DeleteDialogComponent,
     OptionsInputComponent,
-    ChipsAutocompleteComponent],
+    ChipsAutocompleteComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,

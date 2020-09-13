@@ -7,8 +7,48 @@
   margin-top: 10px;
 }
 
-.form_container{
+
+.ng-autocomplete {
+  width:100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+.item {
   display: flex;
-  flex-wrap: wrap;
-  justify-content:center;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 45px;
+  height: 45px;
+  padding: 0 16px;
+  text-align: left;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+span {
+  margin-left: 5px;
+}
+
+.invalid{
+  color: rgb(233, 57, 57);
+  font-size: 12px;
+  margin-left: 3px;
+}
+
+.datefield{
+  margin: 0 auto;
+  margin-top:10px;
+  max-width: 600px;
+}
+
+.typefield{
+  margin: 0 auto;
+  margin-top:30px;
+  max-width: 600px;
+}
+
+mat-form-field{
+  width: 100%;
 }

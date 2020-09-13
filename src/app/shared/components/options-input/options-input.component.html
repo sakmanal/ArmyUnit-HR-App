@@ -13,9 +13,9 @@
         {{option}}
       </mat-option>
     </mat-autocomplete>
-    <!-- <mat-error *ngIf="myControl.invalid">{{getValidationError()}}</mat-error> -->
-    <mat-error *ngIf="myControl.invalid">
-      {{placeholder}} is <strong>required</strong>.
-    </mat-error>
+    <mat-error *ngIf="myControl.invalid" [innerHTML]="getValidationError()"></mat-error>
+    <!-- <mat-error *ngIf="myControl.invalid">
+      form is <strong>invalid</strong>.
+    </mat-error> -->
   </mat-form-field>
 </form>

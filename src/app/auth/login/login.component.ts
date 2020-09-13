@@ -41,9 +41,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
 
-  get f() { return this.loginForm.controls; }
+  public get f() { return this.loginForm.controls; }
 
-  onSubmit() {
+  public onSubmit() {
 
     // stop here if form is invalid
     if (this.loginForm.invalid) {

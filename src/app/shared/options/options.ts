@@ -31,6 +31,18 @@ export const specialty: string[] = [
       "Explosion Enginner",
       "Mechanic",
       "Minefield Engineer"
-      ]
+]
+
+export const dayoffTypes: string[] = [
+      "regular leave",
+      "student leave",
+      "short duration leave",
+      "special honorary border permit",
+      "blood donation permit",
+      "sick leave",
+      "honorary leave",
+      "agricultural permit",
+      "oath taking leave"
+]
 
 

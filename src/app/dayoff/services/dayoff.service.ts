@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { StaffInfoService } from '../../shared/services/staff-info.service';
-import { staffnames } from '../models/staffnames.model';
+import { Staffnames } from '../models/staffnames.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +15,13 @@ export class DayoffService {
 
   constructor(private http: HttpClient, private staffInfoService: StaffInfoService) { }
 
-  public getAllStaffnames(): Observable<staffnames[]>{
+  public getAllStaffnames(): Observable<Staffnames[]>{
     return this.staffInfoService.getAllStaff().pipe(
       map((staff: Staff[]) => staff.map(member => {
         return  {
           id: member.id,
-          fullnameTitle: `${member.rank} ${member.lastName} ${member.firstName}`
+          fullnameTitle: `(${member.rank}) ${member.lastName} ${member.firstName}`,
+          foto: member.foto
         }
       }))
     )
@@ -39,6 +40,20 @@ export class DayoffService {
     })
 
   }
+
+  public cancelDayOffDocument(id: string): Observable<{message:string}>{
+      // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      // return this.http.delete<{message:string}>(`${environment.apiUrl}/dayoff/${id}`, { headers });
+
+      return new Observable(observer => {
+        setTimeout(() => {
+          observer.next({message: "request canceled successfully!"})
+        }, 500);
+      })
+
+  }
+
+
 
 
 

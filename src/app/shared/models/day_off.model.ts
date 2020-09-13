@@ -1,4 +1,5 @@
 export interface Day_off{
+  id: string;
   type: "regular leave" |
         "student leave" |
         "short duration leave" |
@@ -8,6 +9,6 @@ export interface Day_off{
         "honorary leave" |
         "agricultural permit" |
         "oath taking leave";
-  total_days: number;
+  end_date: Date;
   start_date: Date;
 }

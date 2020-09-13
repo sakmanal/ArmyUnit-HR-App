@@ -13,6 +13,7 @@ export class OptionsInputComponent implements OnInit {
   myControl = new FormControl();
   @Input() options: string[] = [];
   @Input() label: string = '';
+  @Input() allowRandomOption: boolean = true;
   @Input() placeholder: string = 'Pick one';
   @Input() set option(value: string) {
     this.myControl.setValue(value);
@@ -21,7 +22,7 @@ export class OptionsInputComponent implements OnInit {
   filteredOptions: Observable<string[]>;
 
   ngOnInit() {
-    // this.myControl.setValue(this.inputValue);
+    // this.myControl.setValue("some @input initvalue");
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
@@ -30,14 +31,31 @@ export class OptionsInputComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    this.optionChange.emit(this.myControl.value);
-    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+    const filteredOptions = this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+
+    if (!this.allowRandomOption){
+      this.control(filteredOptions)
+    }else{
+      this.optionChange.emit(this.myControl.value);
+    }
+    return filteredOptions
   }
 
-  // public getValidationError(){
-  //   if (this.myControl.hasError('required')){
-  //     return 'selection is required';
-  //   }
-  // }
+  private control(filteredOptions: string[]){
+    if (filteredOptions.length > 0){
+      this.optionChange.emit(this.myControl.value);
+    }else{
+      this.myControl.setErrors({ notexist: true});
+    }
+  }
+
+  public getValidationError(): string{
+    if (this.myControl.hasError('required')){
+      return this.placeholder + ' is <strong>required</strong>';
+    }
+    if (this.myControl.hasError('notexist')){
+      return this.placeholder + ' <strong>not found</strong>';
+    }
+  }
 
 }

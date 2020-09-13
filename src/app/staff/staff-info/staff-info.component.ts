@@ -26,12 +26,10 @@ export class StaffInfoComponent implements OnInit {
   dataSource = new MatTableDataSource<Staff>();
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor(
-              private staffInfoService: StaffInfoService,
-              private notificationService: NotificationService,
-              private dialog: MatDialog,
-              private deleteDiaologService : DeleteDiaologService
-              ) { }
+  constructor( private staffInfoService: StaffInfoService,
+               private notificationService: NotificationService,
+               private dialog: MatDialog,
+               private deleteDiaologService : DeleteDiaologService ) { }
 
   ngOnInit(): void {
     this.loading = true;

@@ -3,9 +3,71 @@
     <h2>Day off Request</h2>
   </header>
   <mat-divider></mat-divider>
-  <div class="main">
-    <div class="form_container">
+  <mat-progress-bar *ngIf="loading" mode="indeterminate" color="warn"></mat-progress-bar>
+  <mat-card class="main" *ngIf="staffnames">
 
-    </div>
-  </div>
+      <form novalidate [formGroup]="dayOffForm" autocomplete="off">
+
+        <div class="ng-autocomplete">
+          <ng-autocomplete
+            [data]="staffnames"
+            formControlName="fullname"
+            searchKeyword="fullnameTitle"
+            placeHolder="Enter the Staff member Name"
+            [itemTemplate]="itemTemplate"
+            [notFoundTemplate]="notFoundTemplate">
+          </ng-autocomplete>
+          <ng-template #itemTemplate let-item>
+            <div class="item">
+              <img src="{{item.foto}}" height="25">
+              <span [innerHTML]="item.fullnameTitle"></span>
+            </div>
+          </ng-template>
+          <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+          </ng-template>
+          <div class="invalid" *ngIf="form.fullname.hasError('notexist')">
+            Staff member <strong>not found</strong>
+          </div>
+        </div>
+
+          <p class="typefield">
+            <mat-form-field appearance="outline">
+              <mat-label>Type</mat-label>
+              <mat-select name="type" formControlName="type">
+                <mat-option *ngFor="let type of dayoff_Types" [value]="type">
+                  {{type}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="form.type.invalid">
+                Type <strong>required</strong>.
+              </mat-error>
+            </mat-form-field>
+          </p>
+
+          <p class="datefield">
+            <mat-form-field appearance="outline">
+              <mat-label>Select Dates</mat-label>
+              <mat-date-range-input [min]="minDate" [max]="maxDate" [rangePicker]="picker">
+                <input matStartDate formControlName="start_date" placeholder="Start date">
+                <input matEndDate formControlName="end_date" placeholder="End date">
+              </mat-date-range-input>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+              <mat-error *ngIf="form.start_date.hasError('required')">Start date is <strong>required</strong></mat-error>
+              <mat-error *ngIf="form.end_date.hasError('required')">End date is <strong>required</strong></mat-error>
+              <mat-error *ngIf="form.start_date.hasError('matDatepickerMin')">Invalid start date</mat-error>
+              <mat-error *ngIf="form.end_date.hasError('matDatepickerMax')">Invalid end date</mat-error>
+            </mat-form-field>
+          </p>
+          <button mat-raised-button
+                  color="primary"
+                  [disabled]='dayOffForm.invalid'
+                  (click)="xxx()">
+          Submit
+         </button>
+        </form>
+  </mat-card>
+
+
 </div>
