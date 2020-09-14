@@ -20,7 +20,7 @@ export class DayoffService {
       map((staff: Staff[]) => staff.map(member => {
         return  {
           id: member.id,
-          fullnameTitle: `(${member.rank}) ${member.lastName} ${member.firstName}`,
+          fullnameTitle: `${member.rank} - ${member.lastName} ${member.firstName}`,
           foto: member.foto
         }
       }))

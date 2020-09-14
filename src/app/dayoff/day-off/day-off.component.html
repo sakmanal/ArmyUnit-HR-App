@@ -6,28 +6,28 @@
   <mat-progress-bar *ngIf="loading" mode="indeterminate" color="warn"></mat-progress-bar>
   <mat-card class="main" *ngIf="staffnames">
 
-      <form novalidate [formGroup]="dayOffForm" autocomplete="off">
+      <form novalidate [formGroup]="dayOffForm" (ngSubmit)="onSubmit()" autocomplete="off">
 
-        <div class="ng-autocomplete">
-          <ng-autocomplete
-            [data]="staffnames"
-            formControlName="fullname"
-            searchKeyword="fullnameTitle"
-            placeHolder="Enter the Staff member Name"
-            [itemTemplate]="itemTemplate"
-            [notFoundTemplate]="notFoundTemplate">
-          </ng-autocomplete>
-          <ng-template #itemTemplate let-item>
-            <div class="item">
-              <img src="{{item.foto}}" height="25">
-              <span [innerHTML]="item.fullnameTitle"></span>
-            </div>
-          </ng-template>
-          <ng-template #notFoundTemplate let-notFound>
-            <div [innerHTML]="notFound"></div>
-          </ng-template>
-          <div class="invalid" *ngIf="form.fullname.hasError('notexist')">
-            Staff member <strong>not found</strong>
+        <div class="ng-select">
+          <p>
+            <ng-select appearance="outline"
+                       [items]="staffnames"
+                       [selectOnTab]="true"
+                       #select
+                       bindLabel="fullnameTitle"
+                       placeholder="Select staff memeber"
+                       [virtualScroll]="true"
+                       bindValue="id"
+                       formControlName="fullname"
+                       [ngClass]="{'ng-invalid': form.fullname.invalid}">
+                       <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+                        <div class="item"><img src="{{item.foto}}" height="25"><span>{{item.fullnameTitle}}</span></div>
+                       </ng-template>
+
+            </ng-select>
+          </p>
+          <div class="invalid" *ngIf="form.fullname.invalid && form.fullname.touched">
+            Staff member <strong>not found.</strong>
           </div>
         </div>
 
@@ -54,16 +54,16 @@
               </mat-date-range-input>
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-date-range-picker #picker></mat-date-range-picker>
-              <mat-error *ngIf="form.start_date.hasError('required')">Start date is <strong>required</strong></mat-error>
-              <mat-error *ngIf="form.end_date.hasError('required')">End date is <strong>required</strong></mat-error>
-              <mat-error *ngIf="form.start_date.hasError('matDatepickerMin')">Invalid start date</mat-error>
-              <mat-error *ngIf="form.end_date.hasError('matDatepickerMax')">Invalid end date</mat-error>
+              <mat-error *ngIf="form.start_date.hasError('required')  && form.start_date.touched">Start date is <strong>required.</strong></mat-error>
+              <mat-error *ngIf="form.end_date.hasError('required')">End date is <strong>required.</strong></mat-error>
+              <mat-error *ngIf="form.start_date.hasError('matDatepickerMin')">Invalid start date.</mat-error>
+              <mat-error *ngIf="form.end_date.hasError('matDatepickerMax')">Invalid end date.</mat-error>
             </mat-form-field>
           </p>
           <button mat-raised-button
                   color="primary"
-                  [disabled]='dayOffForm.invalid'
-                  (click)="xxx()">
+                  type="submit"
+                  [disabled]='dayOffForm.invalid'>
           Submit
          </button>
         </form>

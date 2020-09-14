@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import { SharedModule } from '../shared/shared.module';
 import { DayOffComponent } from './day-off/day-off.component';
-import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 const dayoffRoutes: Routes = [
   { path: '', component: DayOffComponent }
@@ -19,7 +19,7 @@ const dayoffRoutes: Routes = [
     MaterialModule,
     SharedModule,
     ReactiveFormsModule,
-    AutocompleteLibModule
+    NgSelectModule
   ]
 })
 export class DayoffModule { }

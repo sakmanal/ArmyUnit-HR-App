@@ -36,7 +36,7 @@ export class DayOffComponent implements OnInit {
 
     this.form.fullname.valueChanges
     .subscribe(value => {
-      if (!value.id){
+      if (!value){
         this.form.fullname.setErrors({ notexist: true })
       }
     });
@@ -58,12 +58,6 @@ export class DayOffComponent implements OnInit {
 
   public get form() { return this.dayOffForm.controls; }
 
-  xxx(){
-     console.log(this.form.fullname.value.id);
-     console.log(this.form.type.value);
-     console.log(this.form.start_date.value._i);
-  }
-
   public onSubmit() {
     if (this.dayOffForm.invalid) {
       return;
@@ -73,10 +67,10 @@ export class DayOffComponent implements OnInit {
     const doc: Day_off = {
       id: null,
       type: this.form.type.value,
-      start_date: this.form.start_date.value,
-      end_date: this.form.end_date.value
+      start_date: this.form.start_date.value.toDate(),
+      end_date: this.form.end_date.value.toDate()
     }
-    const staffID = this.form.fullname.value.id;
+    const staffID = this.form.fullname.value;
     this.dayoffService.saveDayOffDocument(doc, staffID).subscribe(
       (success) => {
         this.loading = false;
