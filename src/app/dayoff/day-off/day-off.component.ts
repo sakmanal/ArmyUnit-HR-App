@@ -33,14 +33,6 @@ export class DayOffComponent implements OnInit {
       start_date: [null, Validators.required],
       end_date: [null, Validators.required]
     });
-
-    this.form.fullname.valueChanges
-    .subscribe(value => {
-      if (!value){
-        this.form.fullname.setErrors({ notexist: true })
-      }
-    });
-
   }
 
   ngOnInit(): void {
