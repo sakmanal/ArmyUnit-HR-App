@@ -1,6 +1,6 @@
 <div class="container">
   <header>
-    <h2>Day off Request</h2>
+    <h2>Day off Document</h2>
   </header>
   <mat-divider></mat-divider>
   <mat-progress-bar *ngIf="loading" mode="indeterminate" color="warn"></mat-progress-bar>
@@ -45,7 +45,21 @@
             </mat-form-field>
           </p>
 
-          <p class="datefield">
+          <p class="formfield">
+            <mat-form-field appearance="outline">
+              <mat-label class="label">Destination</mat-label>
+              <input type="text"
+                     matInput
+                     placeholder="e.g Athens"
+                     formControlName="destination" />
+                     <mat-icon matSuffix>place</mat-icon>
+                     <mat-error *ngIf="form.destination.invalid">
+                       Destination is <strong>required.</strong>
+                     </mat-error>
+            </mat-form-field>
+          </p>
+
+          <p class="formfield">
             <mat-form-field appearance="outline">
               <mat-label>Select Dates</mat-label>
               <mat-date-range-input [min]="minDate" [max]="maxDate" [rangePicker]="picker">
@@ -54,20 +68,46 @@
               </mat-date-range-input>
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-date-range-picker #picker></mat-date-range-picker>
-              <mat-error *ngIf="form.start_date.hasError('required')  && form.start_date.touched">Start date is <strong>required.</strong></mat-error>
-              <mat-error *ngIf="form.end_date.hasError('required')">End date is <strong>required.</strong></mat-error>
-              <mat-error *ngIf="form.start_date.hasError('matDatepickerMin')">Invalid start date.</mat-error>
-              <mat-error *ngIf="form.end_date.hasError('matDatepickerMax')">Invalid end date.</mat-error>
+              <mat-error *ngIf="form.start_date.hasError('required') && form.start_date.touched">
+                  Start date is <strong>required.</strong>
+              </mat-error>
+              <mat-error *ngIf="form.end_date.hasError('required') && form.end_date.touched">
+                End date is <strong>required.</strong>
+              </mat-error>
+              <mat-error *ngIf="form.start_date.hasError('matDatepickerMin')">
+                Invalid start date.
+              </mat-error>
+              <mat-error *ngIf="form.end_date.hasError('matDatepickerMax')">
+                Invalid end date.
+              </mat-error>
             </mat-form-field>
           </p>
-          <button mat-raised-button
-                  color="primary"
-                  type="submit"
-                  [disabled]='dayOffForm.invalid'>
-          Submit
-         </button>
+
+          <div class="actionbtns">
+            <button mat-raised-button
+                    color="primary"
+                    type="submit"
+                    [disabled]='dayOffForm.invalid'>
+                      Submit
+            </button>
+            <button mat-raised-button
+                    color="primary"
+                    type="button"
+                    (click)="createpdf('export')"
+                    [disabled]='!submited || dayOffForm.invalid'>
+              <i class="fas fa-file-export"></i>
+              Export as pdf
+            </button>
+            <button mat-raised-button
+                    color="primary"
+                    type="button"
+                    (click)="createpdf('print')"
+                    [disabled]='!submited || dayOffForm.invalid'>
+              <mat-icon>print</mat-icon>
+              Print Document
+            </button>
+          </div>
+
         </form>
   </mat-card>
-
-
 </div>

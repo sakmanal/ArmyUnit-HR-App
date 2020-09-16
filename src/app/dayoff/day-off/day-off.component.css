@@ -10,8 +10,8 @@
 
 .ng-select {
   width:100%;
-  max-width: 600px;
   margin: 0 auto;
+  position: relative;
 }
 
 
@@ -35,23 +35,33 @@ span {
   color: rgb(233, 57, 57);
   font-size: 11px;
   margin-left: 12px;
-  margin-top:-10px
+  margin-top:-10px;
+  position: absolute;
 }
 
-.datefield{
+.formfield{
   margin: 0 auto;
   margin-top:10px;
-  max-width: 600px;
 }
 
 .typefield{
   margin: 0 auto;
   margin-top:30px;
-  max-width: 600px;
 }
+
 
 mat-form-field{
   width: 100%;
+}
+
+.actionbtns{
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.actionbtns > button {
+  margin: 5px;
 }
 
 

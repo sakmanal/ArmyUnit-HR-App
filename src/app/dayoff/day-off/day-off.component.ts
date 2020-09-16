@@ -5,6 +5,8 @@ import { Staffnames } from '../models/staffnames.model';
 import { NotificationService } from '../../shared/services/notification.service';
 import { Day_off } from '../../shared/models/day_off.model';
 import { dayoffTypes } from '../../shared/options/options';
+import { CreatepdfService } from '../../shared/services/createpdf.service';
+import { DayoffDoc } from '../../dayoff/models//dayoffdoc.model';
 
 @Component({
   selector: 'app-day-off',
@@ -19,19 +21,29 @@ export class DayOffComponent implements OnInit {
   dayoff_Types: string[] = dayoffTypes;
   minDate: Date = new Date();
   maxDate: Date = new Date(new Date().getFullYear() + 1, 11, 31);
+  submited: boolean = false;
 
   constructor( private formBuilder: FormBuilder,
                private dayoffService: DayoffService,
-               private notificationService: NotificationService ) {
+               private notificationService: NotificationService,
+               private createpdfService: CreatepdfService ) {
     this.createForm();
+    this.onChanges();
   }
 
-  private createForm() {
+  private createForm(): void {
     this.dayOffForm = this.formBuilder.group({
       fullname: [null, Validators.required],
       type: ['', Validators.required],
+      destination: ['', Validators.required],
       start_date: [null, Validators.required],
       end_date: [null, Validators.required]
+    });
+  }
+
+  private onChanges(): void {
+    this.dayOffForm.valueChanges.subscribe(() => {
+         this.submited = false;
     });
   }
 
@@ -50,15 +62,17 @@ export class DayOffComponent implements OnInit {
 
   public get form() { return this.dayOffForm.controls; }
 
-  public onSubmit() {
+  public onSubmit(): void {
     if (this.dayOffForm.invalid) {
       return;
     }
 
     this.loading = true;
+    this.submited = false;
     const doc: Day_off = {
       id: null,
       type: this.form.type.value,
+      destination: this.form.destination.value,
       start_date: this.form.start_date.value.toDate(),
       end_date: this.form.end_date.value.toDate()
     }
@@ -67,6 +81,7 @@ export class DayOffComponent implements OnInit {
       (success) => {
         this.loading = false;
         this.notificationService.showSuccess(success.message);
+        this.submited = true;
       },
       (error) => {
         this.loading = false;
@@ -74,6 +89,19 @@ export class DayOffComponent implements OnInit {
       }
     )
 
+  }
+
+  public createpdf(action: 'export' | 'print'){
+      if (this.submited){
+        const pdfdoc: DayoffDoc = {
+          fullnameTitle: this.staffnames.find( name => name.id == this.form.fullname.value).fullnameTitle,
+          destination: this.form.destination.value,
+          startDate: this.form.start_date.value,
+          endDate: this.form.end_date.value,
+          type: this.form.type.value
+        }
+        this.createpdfService.dayoffPdf(pdfdoc, action);
+      }
   }
 
 }

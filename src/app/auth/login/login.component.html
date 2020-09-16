@@ -38,7 +38,6 @@
                              [attr.aria-pressed]="hidePassword">
                              <i [ngClass]="(hidePassword)?'fas fa-eye':'fas fa-eye-slash'"></i>
                  </button>
-                 <!-- <mat-error *ngIf="formError.password">{{formError.password}}</mat-error> -->
                  <mat-error *ngIf="f.password.invalid">Password is required</mat-error>
         </mat-form-field>
       </p>

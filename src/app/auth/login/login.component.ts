@@ -59,7 +59,6 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['/']);
             },
             error: error => {
-              // Reset the form to clear the flags
                 this.errorMessage = error;
                 this.loading = false;
             }

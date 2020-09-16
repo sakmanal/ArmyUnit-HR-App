@@ -11,4 +11,5 @@ export interface Day_off{
         "oath taking leave";
   end_date: Date;
   start_date: Date;
+  destination: string;
 }

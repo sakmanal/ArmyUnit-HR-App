@@ -37,11 +37,11 @@ export const dayoffTypes: string[] = [
       "regular leave",
       "student leave",
       "short duration leave",
-      "special honorary border permit",
-      "blood donation permit",
+      "special honorary border leave",
+      "blood donation leave",
       "sick leave",
       "honorary leave",
-      "agricultural permit",
+      "agricultural leave",
       "oath taking leave"
 ]
 
