@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DeleteDiaologService } from './delete-diaolog.service';
+import { DeleteDiaologService } from './delete-dialog.service';
 
 describe('DeleteDiaologService', () => {
   let service: DeleteDiaologService;

@@ -1,13 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './auth/auth.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ErrorInterceptor } from './shared/helpers/error.interceptor';
-import { JwtInterceptor } from './shared/helpers/jwt.interceptor'
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -17,11 +14,8 @@ import { JwtInterceptor } from './shared/helpers/jwt.interceptor'
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AuthModule
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    AuthModule,
+    CoreModule
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { DeleteDialogComponent } from '../components/delete-dialog/delete-dialog.component';
-import { StaffInfoService } from './staff-info.service';
-import { Staff } from '../models/staff.model';
+import { DeleteDialogComponent } from '../../../shared/components/delete-dialog/delete-dialog.component';
+import { StaffInfoService } from '../staff/staff-info.service';
+import { Staff } from '../../models/staff.model';
 import { switchMap, filter } from 'rxjs/operators';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DeleteDiaologService {
+export class DeleteDialogService {
 
   constructor(private dialog: MatDialog, private staffInfoService: StaffInfoService,) { }
 

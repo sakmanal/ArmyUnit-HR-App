@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Staff } from '../models/staff.model';
-import { staff } from '../../mock-data/staff';
+import { Staff } from '../../models/staff.model';
+import { staff } from '../../../mock-data/staff';
 import { environment } from '@environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';

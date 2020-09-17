@@ -1,4 +1,4 @@
-import { Staff } from '../shared/models/staff.model';
+import { Staff } from '../core/models/staff.model';
 
 export const staff:Staff[] = [
   {

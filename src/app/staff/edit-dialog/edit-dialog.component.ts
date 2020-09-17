@@ -1,6 +1,6 @@
 import { Component, Inject, ViewChild } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Staff } from 'src/app/shared/models/staff.model';
+import { Staff } from 'src/app/core/models/staff.model';
 import { NgForm } from '@angular/forms';
 import { rank, specialty, platoon, class_I } from '../../shared/options/options';
 

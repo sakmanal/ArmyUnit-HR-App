@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DayoffService } from '../services/dayoff.service';
 import { Staffnames } from '../models/staffnames.model';
-import { NotificationService } from '../../shared/services/notification.service';
-import { Day_off } from '../../shared/models/day_off.model';
+import { NotificationService } from '../../core/services/notification/notification.service';
+import { Day_off } from '../../core/models/day_off.model';
 import { dayoffTypes } from '../../shared/options/options';
-import { CreatepdfService } from '../../shared/services/createpdf.service';
+import { CreatepdfService } from '../../core/services/createPdf/createpdf.service';
 import { DayoffDoc } from '../../dayoff/models//dayoffdoc.model';
 
 @Component({

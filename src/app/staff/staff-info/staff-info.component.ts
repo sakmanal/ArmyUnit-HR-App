@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { StaffInfoService } from '../../shared/services/staff-info.service';
-import { DeleteDiaologService } from '../../shared/services/delete-diaolog.service';
+import { StaffInfoService } from '../../core/services/staff/staff-info.service';
+import { DeleteDialogService } from '../../core/services/deleteDialog/delete-dialog.service';
 // import { tableData } from '../models/tableData.model';
-import { Staff } from '../../shared/models/staff.model';
+import { Staff } from '../../core/models/staff.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { NotificationService } from '../../shared/services/notification.service';
+import { NotificationService } from '../../core/services/notification/notification.service';
 import { DeleteDialogComponent } from '../../shared/components/delete-dialog/delete-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
@@ -29,7 +29,7 @@ export class StaffInfoComponent implements OnInit {
   constructor( private staffInfoService: StaffInfoService,
                private notificationService: NotificationService,
                private dialog: MatDialog,
-               private deleteDiaologService : DeleteDiaologService ) { }
+               private deleteDialogService : DeleteDialogService ) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -107,9 +107,9 @@ export class StaffInfoComponent implements OnInit {
     );
 
 
-    /* open dialog from deleteDiaologService */
+    /* open dialog from deleteDialogService */
     /* works but we can't begin the load-bar after the diolog is closed */
-    // this.deleteDiaologService.deleteStaffmember(member).subscribe(
+    // this.deleteDialogService.deleteStaffmember(member).subscribe(
     //          (success) => {
     //             this.removeMemberFromTable(member.id);
     //             this.notificationService.showSuccess(success.message);

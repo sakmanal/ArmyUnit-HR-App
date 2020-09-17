@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { DayoffDoc } from '../../dayoff/models//dayoffdoc.model';
-import { dayoff_pdf_def } from '../../shared/pdf-definitions/dayoff.pdfDefinitions';
+import { DayoffDoc } from '../../../dayoff/models/dayoffdoc.model';
+import { dayoff_pdf_def } from '../createPdf/pdf-definitions/dayoff.pdfDefinitions';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;

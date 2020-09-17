@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Staff } from '../../shared/models/staff.model';
-import { Day_off } from '../../shared/models/day_off.model';
+import { Staff } from '../../core/models/staff.model';
+import { Day_off } from '../../core/models/day_off.model';
 import { environment } from '@environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { StaffInfoService } from '../../shared/services/staff-info.service';
+import { StaffInfoService } from '../../core/services/staff/staff-info.service';
 import { Staffnames } from '../models/staffnames.model';
 
 @Injectable({
@@ -52,9 +52,5 @@ export class DayoffService {
       })
 
   }
-
-
-
-
 
 }
