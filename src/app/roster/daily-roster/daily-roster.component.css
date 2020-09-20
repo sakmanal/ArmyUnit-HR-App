@@ -1,0 +1,14 @@
+.container{
+  height: 100vh;
+  padding: 10px;
+}
+
+header{
+  display: flex;
+  align-items: center;
+}
+
+h2{
+  margin-right: 10px;
+  margin-bottom: -3px;
+}

@@ -22,6 +22,10 @@ const ShellRoutes: Routes = [
       {
         path: 'dayoff',
         loadChildren: () => import('../dayoff/dayoff.module').then(m => m.DayoffModule)
+      },
+      {
+        path: 'dailyRoster',
+        loadChildren: () => import('../roster/roster.module').then(m => m.RosterModule)
       }
     ]
   }

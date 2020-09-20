@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DayoffService } from '../services/dayoff.service';
-import { Staffnames } from '../models/staffnames.model';
+import { DayoffService } from '../../core/services/dayOff/dayoff.service';
+import { Staffbasic } from '../../core/models/staff.model';
 import { NotificationService } from '../../core/services/notification/notification.service';
 import { Day_off } from '../../core/models/day_off.model';
 import { dayoffTypes } from '../../shared/options/options';
@@ -17,7 +17,7 @@ export class DayOffComponent implements OnInit {
 
   dayOffForm: FormGroup;
   loading:boolean = false;
-  staffnames: Staffnames[];
+  staffnames: Staffbasic[];
   dayoff_Types: string[] = dayoffTypes;
   minDate: Date = new Date();
   maxDate: Date = new Date(new Date().getFullYear() + 1, 11, 31);
@@ -55,6 +55,7 @@ export class DayOffComponent implements OnInit {
         this.loading = false;
       },
       (error) => {
+        this.loading = false;
         this.notificationService.showError(error);
       }
     )
@@ -74,10 +75,11 @@ export class DayOffComponent implements OnInit {
       type: this.form.type.value,
       destination: this.form.destination.value,
       start_date: this.form.start_date.value.toDate(),
-      end_date: this.form.end_date.value.toDate()
+      end_date: this.form.end_date.value.toDate(),
+      staffmember: { staff_id: this.form.fullname.value }
     }
-    const staffID = this.form.fullname.value;
-    this.dayoffService.saveDayOffDocument(doc, staffID).subscribe(
+
+    this.dayoffService.saveDayOffDocument(doc).subscribe(
       (success) => {
         this.loading = false;
         this.notificationService.showSuccess(success.message);

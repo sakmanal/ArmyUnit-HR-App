@@ -1,4 +1,4 @@
-export interface Day_off{
+export interface Day_off {
   id: string;
   type: "regular leave" |
         "student leave" |
@@ -12,4 +12,11 @@ export interface Day_off{
   end_date: Date;
   start_date: Date;
   destination: string;
+  staffmember: Staffmember;
+}
+
+interface Staffmember {
+  staff_id: string;
+  rank?: string;
+  fullname?: string;
 }

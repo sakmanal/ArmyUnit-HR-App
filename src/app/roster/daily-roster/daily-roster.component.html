@@ -1,0 +1,19 @@
+<div class="container">
+  <header>
+    <h2>Daily Roster:</h2>
+    <mat-form-field appearance="fill">
+
+      <input matInput
+             [matDatepicker]="picker"
+             autocomplete="off"
+             [formControl]="selectedDate"
+             (dateInput)="onDateChange()"
+             >
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-datepicker #picker></mat-datepicker>
+  </header>
+  <mat-divider></mat-divider>
+  <mat-progress-bar *ngIf="loading" mode="indeterminate" color="warn"></mat-progress-bar>
+</div>

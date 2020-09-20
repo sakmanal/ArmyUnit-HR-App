@@ -7,7 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { FormsModule } from '@angular/forms';
 
-const firstOfficeRoutes: Routes = [
+const staffRoutes: Routes = [
   { path: '', component: StaffInfoComponent }
 ]
 
@@ -15,7 +15,7 @@ const firstOfficeRoutes: Routes = [
   declarations: [StaffInfoComponent, EditDialogComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(firstOfficeRoutes),
+    RouterModule.forChild(staffRoutes),
     MaterialModule,
     SharedModule,
     FormsModule
