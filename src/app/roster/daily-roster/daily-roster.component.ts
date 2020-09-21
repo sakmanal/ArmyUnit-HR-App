@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DayoffService } from '../../core/services/dayOff/dayoff.service';
 import { FormControl } from '@angular/forms';
 import { NotificationService } from '../../core/services/notification/notification.service';
+import { DailyRoster } from '../models/dailyRoster.model';
 
 @Component({
   selector: 'app-daily-roster',
@@ -12,6 +13,8 @@ export class DailyRosterComponent implements OnInit {
 
   selectedDate = new FormControl(new Date());
   loading:boolean;
+  officersRoster: DailyRoster[] = [];
+  soldiersRoster: DailyRoster[]= [];
 
   constructor( private dayoffService: DayoffService,
                private notificationService: NotificationService ) { }
@@ -31,7 +34,7 @@ export class DailyRosterComponent implements OnInit {
     this.dayoffService.getDailyRoster(date).subscribe(
       (roster) => {
          this.loading = false;
-         console.log(roster);
+         this.separateRoster([...roster]);
        },
        (error) => {
         this.loading = false;
@@ -40,6 +43,16 @@ export class DailyRosterComponent implements OnInit {
     )
   }
 
-
+  private separateRoster(roster: DailyRoster[]){
+     this.officersRoster = [];
+     this.soldiersRoster = [];
+     roster.forEach( member => {
+       if (member.rank == 'Lance Corporal' || member.rank == 'Private'){
+          this.soldiersRoster.push(member);
+       }else{
+         this.officersRoster.push(member);
+       }
+     })
+  }
 
 }

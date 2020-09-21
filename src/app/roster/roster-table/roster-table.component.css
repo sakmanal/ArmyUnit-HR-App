@@ -1,0 +1,31 @@
+.container {
+  height: auto;
+  overflow: auto;
+  position: relative;
+}
+
+table {
+  width: 100%;
+  min-width: 100%;
+}
+
+tr.mat-header-row {
+  background-color: #d1d1d1;
+}
+
+td.mat-cell, th.mat-header-cell{
+  padding-left: 8px;
+}
+
+.grey {
+  background-color: #EBEBEB;
+}
+
+span{
+  display: flex;
+  align-items: center;
+}
+
+.state{
+  margin-left: 4px;
+}

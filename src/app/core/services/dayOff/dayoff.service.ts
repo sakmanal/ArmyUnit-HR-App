@@ -97,8 +97,7 @@ export class DayoffService {
                 return {
                   rank: member.rank,
                   fullname: `${member.lastName} ${member.firstName}`,
-                  isPresent: isPresent,
-                  reasonOfUnpresent: isPresent? null : `day-off until ${moment(dayoff.end_date).format('DD/MM/YYYY')}`
+                  state: isPresent? 'Present' : `day-off until ${moment(dayoff.end_date).format('DD/MM/YYYY')}`
                 }
             })
           )

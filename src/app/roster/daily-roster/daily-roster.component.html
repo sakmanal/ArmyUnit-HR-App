@@ -16,4 +16,13 @@
   </header>
   <mat-divider></mat-divider>
   <mat-progress-bar *ngIf="loading" mode="indeterminate" color="warn"></mat-progress-bar>
+
+  <span class="main">
+  <ng-container *ngIf="soldiersRoster.length">
+    <app-roster-table [data]="soldiersRoster"></app-roster-table>
+  </ng-container>
+  </span>
+
+
 </div>
+
