@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DayoffService } from '../../core/services/dayOff/dayoff.service';
+import { DailyRosterService } from '../../core/services/roster/daily-roster.service';
 import { FormControl } from '@angular/forms';
 import { NotificationService } from '../../core/services/notification/notification.service';
 import { DailyRoster, MemberDailyState, DailyRosterReport } from '../models/dailyRoster.model';
@@ -18,7 +18,7 @@ export class DailyRosterComponent implements OnInit {
   dailyRosterReport: DailyRosterReport;
   filterValue: string;
 
-  constructor( private dayoffService: DayoffService,
+  constructor( private dailyRosterService: DailyRosterService,
                private notificationService: NotificationService ) { }
 
   ngOnInit(): void {
@@ -33,10 +33,9 @@ export class DailyRosterComponent implements OnInit {
 
   private getDailyRoster(date: Date){
     this.loading = true;
-    this.dayoffService.getDailyRoster(date).subscribe(
+    this.dailyRosterService.getDailyRoster(date).subscribe(
       (roster: DailyRoster) => {
          this.loading = false;
-         //console.log(roster);
          this.officersRoster = [...roster.officersRoster];
          this.soldiersRoster = [...roster.soldiersRoster];
          this.dailyRosterReport = {...roster.report};

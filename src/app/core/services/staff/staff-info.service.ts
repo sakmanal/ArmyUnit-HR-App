@@ -4,6 +4,8 @@ import { staff } from '../../../mock-data/staff';
 import { environment } from '@environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { Staffbasic } from '../../models/staff.model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +26,20 @@ export class StaffInfoService {
     })
   }
 
-
+  public getAllStaffnames(): Observable<Staffbasic[]>{
+    return this.getAllStaff().pipe(
+      map((staff: Staff[]) => staff.map(member => {
+        return  {
+          id: member.id,
+          firstName: member.firstName,
+          lastName: member.lastName,
+          rank: member.rank,
+          fullnameTitle: `${member.rank} - ${member.lastName} ${member.firstName}`,
+          foto: member.foto
+        }
+      }))
+    )
+  }
 
   public deleteStaff(id: string): Observable<{message:string}> {
     //  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

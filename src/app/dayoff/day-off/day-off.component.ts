@@ -7,6 +7,7 @@ import { Day_off } from '../../core/models/day_off.model';
 import { dayoffTypes } from '../../shared/options/options';
 import { CreatepdfService } from '../../core/services/createPdf/createpdf.service';
 import { DayoffDoc } from '../../dayoff/models//dayoffdoc.model';
+import { StaffInfoService } from '../../core/services/staff/staff-info.service';
 
 @Component({
   selector: 'app-day-off',
@@ -26,6 +27,7 @@ export class DayOffComponent implements OnInit {
   constructor( private formBuilder: FormBuilder,
                private dayoffService: DayoffService,
                private notificationService: NotificationService,
+               private staffInfoService: StaffInfoService,
                private createpdfService: CreatepdfService ) {
     this.createForm();
     this.onChanges();
@@ -49,7 +51,7 @@ export class DayOffComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.dayoffService.getAllStaffnames().subscribe(
+    this.staffInfoService.getAllStaffnames().subscribe(
       (staffnames) => {
         this.staffnames = staffnames;
         this.loading = false;

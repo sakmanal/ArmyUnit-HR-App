@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Staff } from '../../models/staff.model';
 import { Day_off } from '../../models/day_off.model';
 import { environment } from '@environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { combineLatest, Observable, of, throwError } from 'rxjs';
-import { delay, map, tap } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { StaffInfoService } from '../staff/staff-info.service';
-import { Staffbasic } from '../../models/staff.model';
 import { daysOff } from '../../../mock-data/dayoff';
-import { MemberDailyState, DailyRoster } from '../../../roster/models/dailyRoster.model';
-import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,21 +13,6 @@ import * as moment from 'moment';
 export class DayoffService {
 
   constructor(private http: HttpClient, private staffInfoService: StaffInfoService) { }
-
-  public getAllStaffnames(): Observable<Staffbasic[]>{
-    return this.staffInfoService.getAllStaff().pipe(
-      map((staff: Staff[]) => staff.map(member => {
-        return  {
-          id: member.id,
-          firstName: member.firstName,
-          lastName: member.lastName,
-          rank: member.rank,
-          fullnameTitle: `${member.rank} - ${member.lastName} ${member.firstName}`,
-          foto: member.foto
-        }
-      }))
-    )
-  }
 
   public saveDayOffDocument(doc: Day_off): Observable<{message:string}>{
     // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -58,7 +39,7 @@ export class DayoffService {
       })
   }
 
-  private getDaysOff(): Observable<Day_off[]>{
+  public getDaysOff(): Observable<Day_off[]>{
     // return this.http.get<Day_off[]>(`${environment.apiUrl}/daysoff`)
 
     // return new Observable(observer => {
@@ -69,73 +50,5 @@ export class DayoffService {
 
     return of([...daysOff]).pipe(delay(500));
   }
-
-  private IsBetween(start: Date, end: Date, current: Date): boolean{
-    return moment(current).isBetween(moment(start), moment(end), 'days', '[]')
-  }
-
-  public getDailyRoster(date: Date): Observable<DailyRoster>{
-     const daysOff$ =  this.getDaysOff()
-     .pipe(
-        // tap(() => console.log('daysoff retrieved')),
-        map( daysOff =>
-          daysOff.filter( (dayOff: Day_off) =>
-              this.IsBetween(dayOff.start_date, dayOff.end_date, date)
-              )
-          )
-      );
-
-      const staffmembers$ = this.getAllStaffnames()
-            // .pipe(tap(() => console.log('Staffnames retrieved')));
-
-      return combineLatest( [daysOff$, staffmembers$] )
-      .pipe(
-        map( ([daysOff, staffmembers]) =>
-            staffmembers.map((member: Staffbasic) => {
-                const dayoff = daysOff.find(dayoff => dayoff.staffmember.staff_id == member.id);
-                const isPresent = !dayoff;
-                return {
-                  rank: member.rank,
-                  fullname: `${member.lastName} ${member.firstName}`,
-                  state: isPresent? 'Present' : `day-off until ${moment(dayoff.end_date).format('DD/MM/YYYY')}`
-                }
-            })
-          ),
-          map((membersState: MemberDailyState[]) => {
-            return this.separateRoster(membersState)
-          })
-
-      )
-
-  }
-
-  private separateRoster(membersState: MemberDailyState[]): DailyRoster {
-    const officersRoster = [];
-    const soldiersRoster = [];
-    let count = 0
-    membersState.forEach( member => {
-
-      // seperate members
-      if (member.rank == 'Lance Corporal' || member.rank == 'Private'){
-         soldiersRoster.push(member);
-      }else{
-        officersRoster.push(member);
-      }
-
-      // count members
-      if (member.state == 'Present'){
-        count ++;
-      }
-    })
-    return {
-      soldiersRoster: soldiersRoster,
-      officersRoster: officersRoster,
-      report: {
-        count_total: membersState.length,
-        count_present: count,
-        count_unpresent: membersState.length - count
-      }
-    }
- }
 
 }
