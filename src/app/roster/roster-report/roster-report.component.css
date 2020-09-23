@@ -1,0 +1,4 @@
+.report {
+  display: flex;
+  flex-direction: column;
+}

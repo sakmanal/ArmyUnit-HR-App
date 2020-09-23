@@ -7,6 +7,7 @@ import { NumberDirective } from './directives/numbersOnly.directive';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 import { OptionsInputComponent } from './components/options-input/options-input.component';
 import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chips-autocomplete.component';
+import { FloatingSearchComponent } from './components/floating-search/floating-search.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chip
     NumberDirective,
     DeleteDialogComponent,
     OptionsInputComponent,
-    ChipsAutocompleteComponent
+    ChipsAutocompleteComponent,
+    FloatingSearchComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chip
     SearchComponent,
     DeleteDialogComponent,
     OptionsInputComponent,
-    ChipsAutocompleteComponent
+    ChipsAutocompleteComponent,
+    FloatingSearchComponent
   ],
   entryComponents: [
     DeleteDialogComponent

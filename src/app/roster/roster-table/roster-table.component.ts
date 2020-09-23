@@ -21,6 +21,7 @@ export class RosterTableComponent implements OnChanges {
   // }
 
   @Input() data: DailyRoster[];
+  @Input() filterValue: string;
   dataSource = new MatTableDataSource<DailyRoster>();
   displayedColumns = ['no', 'rank', 'fullname', 'state'];
 
@@ -28,6 +29,9 @@ export class RosterTableComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = new MatTableDataSource(this.data);
+    if (this.filterValue){
+      this.dataSource.filter = this.filterValue.trim().toLowerCase();
+    }
   }
 
 }

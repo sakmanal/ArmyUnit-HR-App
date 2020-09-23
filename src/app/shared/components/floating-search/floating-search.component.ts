@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  selector: 'app-floating-search',
+  templateUrl: './floating-search.component.html',
+  styleUrls: ['./floating-search.component.css']
 })
-export class SearchComponent implements OnInit {
+export class FloatingSearchComponent implements OnInit {
 
   @Output() searchValue = new EventEmitter<string>();
 
@@ -17,5 +17,6 @@ export class SearchComponent implements OnInit {
   public set search(value: string) {
       this.searchValue.emit(value)
   }
+
 
 }

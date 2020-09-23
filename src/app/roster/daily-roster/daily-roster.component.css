@@ -1,8 +1,3 @@
-.container{
-  height: 100vh;
-  padding: 10px;
-}
-
 header{
   display: flex;
   align-items: center;
@@ -13,6 +8,36 @@ h2{
   margin-bottom: -3px;
 }
 
-.main{
-  padding: 10px;
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.side {
+  flex: 50%;
+}
+
+.main {
+  flex: 50%;
+}
+
+@media only screen and (max-width: 500px) {
+  .row {
+      flex-direction: column;
+  }
+}
+
+.roster-title{
+  width: 100%;
+  padding-left: 10px;
+}
+
+.info{
+  margin: 10px;
+  display: flex;
+}
+
+.info > button {
+  margin-right: 10px;
 }

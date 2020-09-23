@@ -1,28 +1,47 @@
-<div class="container">
-  <header>
-    <h2>Daily Roster:</h2>
-    <mat-form-field appearance="fill">
+<header>
+  <h2>Daily Roster:</h2>
+  <mat-form-field appearance="fill">
 
-      <input matInput
-             [matDatepicker]="picker"
-             autocomplete="off"
-             [formControl]="selectedDate"
-             (dateInput)="onDateChange()"
-             >
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+    <input matInput
+            [matDatepicker]="picker"
+            autocomplete="off"
+            [formControl]="selectedDate"
+            (dateInput)="onDateChange()"
+            >
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-  </header>
-  <mat-divider></mat-divider>
-  <mat-progress-bar *ngIf="loading" mode="indeterminate" color="warn"></mat-progress-bar>
+  </mat-form-field>
+  <mat-datepicker #picker></mat-datepicker>
+</header>
+<mat-divider></mat-divider>
+<mat-progress-bar *ngIf="loading" mode="indeterminate" color="warn"></mat-progress-bar>
 
-  <span class="main">
-  <ng-container *ngIf="soldiersRoster.length">
-    <app-roster-table [data]="soldiersRoster"></app-roster-table>
-  </ng-container>
-  </span>
-
-
+<div *ngIf="dailyRosterReport" class="info">
+  <button mat-raised-button color="primary" (click)="createpdf('print')">
+      <mat-icon>print</mat-icon>
+      Print Daily Roster
+  </button>
+  <app-roster-report [dailyRosterReport]="dailyRosterReport"></app-roster-report>
 </div>
+
+<mat-divider></mat-divider>
+
+<app-floating-search (searchValue)="onFilter($event)"></app-floating-search>
+
+<div class="row">
+  <div class="side" *ngIf="officersRoster.length">
+      <span class="roster-title">Officers roster</span>
+      <app-roster-table [data]="officersRoster" [filterValue]="filterValue"></app-roster-table>
+  </div>
+
+  <div class="main" *ngIf="soldiersRoster.length">
+      <span class="roster-title">Soldiers roster</span>
+      <app-roster-table [data]="soldiersRoster" [filterValue]="filterValue"></app-roster-table>
+  </div>
+</div>
+
+
+
+
+
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DayoffService } from '../../core/services/dayOff/dayoff.service';
 import { FormControl } from '@angular/forms';
 import { NotificationService } from '../../core/services/notification/notification.service';
-import { DailyRoster } from '../models/dailyRoster.model';
+import { DailyRoster, MemberDailyState, DailyRosterReport } from '../models/dailyRoster.model';
 
 @Component({
   selector: 'app-daily-roster',
@@ -12,9 +12,11 @@ import { DailyRoster } from '../models/dailyRoster.model';
 export class DailyRosterComponent implements OnInit {
 
   selectedDate = new FormControl(new Date());
-  loading:boolean;
-  officersRoster: DailyRoster[] = [];
-  soldiersRoster: DailyRoster[]= [];
+  loading: boolean;
+  officersRoster: MemberDailyState[] = [];
+  soldiersRoster: MemberDailyState[] = [];
+  dailyRosterReport: DailyRosterReport;
+  filterValue: string;
 
   constructor( private dayoffService: DayoffService,
                private notificationService: NotificationService ) { }
@@ -23,7 +25,7 @@ export class DailyRosterComponent implements OnInit {
       this.getDailyRoster(this.selectedDate.value);
   }
 
-  onDateChange(){
+  public onDateChange(){
     if (this.selectedDate.valid){
       this.getDailyRoster(this.selectedDate.value)
     }
@@ -32,9 +34,12 @@ export class DailyRosterComponent implements OnInit {
   private getDailyRoster(date: Date){
     this.loading = true;
     this.dayoffService.getDailyRoster(date).subscribe(
-      (roster) => {
+      (roster: DailyRoster) => {
          this.loading = false;
-         this.separateRoster([...roster]);
+         //console.log(roster);
+         this.officersRoster = [...roster.officersRoster];
+         this.soldiersRoster = [...roster.soldiersRoster];
+         this.dailyRosterReport = {...roster.report};
        },
        (error) => {
         this.loading = false;
@@ -43,16 +48,14 @@ export class DailyRosterComponent implements OnInit {
     )
   }
 
-  private separateRoster(roster: DailyRoster[]){
-     this.officersRoster = [];
-     this.soldiersRoster = [];
-     roster.forEach( member => {
-       if (member.rank == 'Lance Corporal' || member.rank == 'Private'){
-          this.soldiersRoster.push(member);
-       }else{
-         this.officersRoster.push(member);
-       }
-     })
+  public onFilter(filterValue: string){
+     this.filterValue = filterValue;
+  }
+
+  public createpdf(action: 'export' | 'print'){
+
   }
 
 }
+
+
