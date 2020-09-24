@@ -40,7 +40,7 @@ export function  dayoff_pdf_def(data: DayoffDoc): {content:any[], styles:any} {
             },
             {
               stack: [
-                `${currentDate}`,
+                currentDate,
                 {text: 'Commander', style: 'subfooter'},
                 {text: 'Major Rios Alex', style:'subfooter'},
                 {image: signaturedataURL}
@@ -72,8 +72,6 @@ export function  dayoff_pdf_def(data: DayoffDoc): {content:any[], styles:any} {
       subfooter: {
          margin: [0, 10, 0, 10]
       }
-
-
     }
   }
 }

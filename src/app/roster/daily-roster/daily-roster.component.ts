@@ -3,6 +3,8 @@ import { DailyRosterService } from '../../core/services/roster/daily-roster.serv
 import { FormControl } from '@angular/forms';
 import { NotificationService } from '../../core/services/notification/notification.service';
 import { DailyRoster, MemberDailyState, DailyRosterReport } from '../models/dailyRoster.model';
+import { DailyRosterDoc } from '../models/dailyRosterDoc.model';
+import { CreatepdfService } from '../../core/services/createPdf/createpdf.service';
 
 @Component({
   selector: 'app-daily-roster',
@@ -19,6 +21,7 @@ export class DailyRosterComponent implements OnInit {
   filterValue: string;
 
   constructor( private dailyRosterService: DailyRosterService,
+               private createpdfService: CreatepdfService,
                private notificationService: NotificationService ) { }
 
   ngOnInit(): void {
@@ -52,7 +55,15 @@ export class DailyRosterComponent implements OnInit {
   }
 
   public createpdf(action: 'export' | 'print'){
-
+     const rosterDoc: DailyRosterDoc = {
+       date: this.selectedDate.value,
+       roster: {
+        soldiersRoster: this.soldiersRoster,
+        officersRoster: this.officersRoster,
+        report: this.dailyRosterReport
+       }
+     }
+     this.createpdfService.dailyRosterPdf(rosterDoc, action);
   }
 
 }

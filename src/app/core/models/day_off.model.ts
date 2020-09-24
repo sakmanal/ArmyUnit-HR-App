@@ -15,7 +15,7 @@ export interface Day_off {
   staffmember: Staffmember;
 }
 
-interface Staffmember {
+type Staffmember = {
   staff_id: string;
   rank?: string;
   fullname?: string;
