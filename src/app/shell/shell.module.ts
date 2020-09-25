@@ -26,6 +26,10 @@ const ShellRoutes: Routes = [
       {
         path: 'dailyRoster',
         loadChildren: () => import('../roster/roster.module').then(m => m.RosterModule)
+      },
+      {
+        path: 'membeFile',
+        loadChildren: () => import('../memberfile/memberfile.module').then(m => m.MemberfileModule)
       }
     ]
   }

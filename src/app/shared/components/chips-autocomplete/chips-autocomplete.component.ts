@@ -34,7 +34,7 @@ export class ChipsAutocompleteComponent {
   constructor() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
         startWith(null),
-        map((fruit: string | null) => fruit ? this._filter(fruit) : this.alloptions.slice()));
+        map((val: string | null) => val ? this._filter(val) : this.alloptions.slice()));
   }
 
   add(event: MatChipInputEvent): void {

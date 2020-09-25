@@ -1,0 +1,44 @@
+.file{
+  margin-bottom: 10px;
+  background: #EBEBEB;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media only screen and (max-width: 500px) {
+  .file {
+    display: flex;
+    flex-direction: column;
+  }
+  div > button {
+    margin-top: 7px;
+  }
+}
+
+.names{
+  display: flex;
+  flex-direction: column;
+}
+
+.name{
+  font-weight: bold;
+  font-size: large;
+}
+
+.info{
+  display: flex;
+}
+
+.UserPic{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border:2px solid #3F51B5;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
+div > button {
+  margin-right: 7px;
+}

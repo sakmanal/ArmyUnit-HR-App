@@ -1,0 +1,26 @@
+<app-search (searchValue)="getfilter($event)"></app-search>
+<mat-progress-bar *ngIf="loading" mode="indeterminate" color="warn"></mat-progress-bar>
+
+<div *ngFor="let staffname of filteredStaffnames; let i = index">
+
+   <mat-card class="file">
+    <!-- {{staffname.rank}} {{staffname.lastName}} {{staffname.firstName}} -->
+    <div class="info">
+        <img [src]="staffname.foto || avatarFoto" class="UserPic">
+        <div class="names">
+          <span>{{staffname.rank}}</span>
+          <span class="name">{{staffname.lastName}} {{staffname.firstName}}</span>
+        </div>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" [routerLink]="['/membeFile', staffname.id]">
+        <i class="fas fa-folder-open"></i>
+         Open file
+      </button>
+      <button mat-raised-button color="primary" [routerLink]="['/membeFile', staffname.id, 'edit']">
+        <i class="fas fa-user-edit"></i>
+        Edit
+      </button>
+    </div>
+   </mat-card>
+</div>
