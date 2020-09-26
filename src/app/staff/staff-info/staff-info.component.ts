@@ -37,7 +37,7 @@ export class StaffInfoComponent implements OnInit {
       (staff) => {
         // this.dataSource = new MatTableDataSource(this.mapData(staff));
         this.dataSource = new MatTableDataSource(staff);
-        this.dataSource.sort = this.sort;
+        this.initDataSort();
         this.loading = false;
       },
       (error) => {
@@ -45,6 +45,17 @@ export class StaffInfoComponent implements OnInit {
         this.notificationService.showError(error);
       }
     )
+  }
+
+  private initDataSort(){
+    this.dataSource.sort = this.sort;
+    this.dataSource.sortingDataAccessor = (item, property) => {
+      if (property === 'fullname') {
+        return item.lastName;
+      } else {
+        return item[property];
+      }
+    }
   }
 
   // private mapData(staffdata: Staff[]): tableData[]{
