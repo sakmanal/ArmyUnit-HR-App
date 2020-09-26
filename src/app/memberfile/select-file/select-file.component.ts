@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { StaffInfoService } from '../../core/services/staff/staff-info.service';
 import { Staffbasic } from '../../core/models/staff.model';
 import { NotificationService } from '../../core/services/notification/notification.service';
+import { MatSelectChange } from '@angular/material/select';
+import { compareValues } from '../../shared/helpers/compareValues';
+import { rankIndex } from '../../shared/options/options';
 
+type orderBy = 'lastname'| 'firstname'| 'rank (descending)' | 'rank (ascending)';
 @Component({
   selector: 'app-select-file',
   templateUrl: './select-file.component.html',
@@ -15,6 +19,8 @@ export class SelectFileComponent implements OnInit {
   loading:boolean = false;
   private filterBy:string = '';
   avatarFoto = '../../../assets/images/Useravatar.jpg';
+  order_options: orderBy[] = ['lastname', 'firstname', 'rank (descending)', 'rank (ascending)'];
+  orderBy: orderBy = 'rank (descending)';
 
   constructor(private staffInfoService: StaffInfoService,
               private notificationService: NotificationService) { }
@@ -33,7 +39,7 @@ export class SelectFileComponent implements OnInit {
     this.staffInfoService.getAllStaffnames().subscribe(
       (staffnames) => {
         this.staffnames = staffnames;
-        this.filteredStaffnames = this.performFilter(this.listFilter)
+        this.filteredStaffnames = this.performFilter(this.listFilter);
         this.loading = false;
       },
       (error) => {
@@ -65,6 +71,18 @@ export class SelectFileComponent implements OnInit {
     //       return o[k].toLowerCase().includes(filterBy.toLowerCase());
     //   })
     // );
+  }
+
+  public onOrderByChange(orderBy:MatSelectChange ){
+    if (orderBy.value === 'lastname'){
+      this.filteredStaffnames.sort(compareValues('lastName'));
+    }else if (orderBy.value === 'firstname'){
+      this.filteredStaffnames.sort(compareValues('firstName'));
+    }else if (orderBy.value === 'rank (descending)'){
+      this.filteredStaffnames.sort(compareValues('rank', "descending", rankIndex));
+    }else{
+      this.filteredStaffnames.sort(compareValues('rank', "ascending", rankIndex));
+    }
   }
 
 }

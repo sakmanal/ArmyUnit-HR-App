@@ -1,10 +1,17 @@
 <app-search (searchValue)="getfilter($event)"></app-search>
 <mat-progress-bar *ngIf="loading" mode="indeterminate" color="warn"></mat-progress-bar>
 
-<div *ngFor="let staffname of filteredStaffnames; let i = index">
+<mat-form-field *ngIf="filteredStaffnames">
+  <mat-label>order by</mat-label>
+  <mat-select [(ngModel)]="orderBy" name="orderBy" (selectionChange)="onOrderByChange($event)">
+    <mat-option *ngFor="let order of order_options" [value]="order">
+      {{order}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
+<div *ngFor="let staffname of filteredStaffnames; let i = index">
    <mat-card class="file">
-    <!-- {{staffname.rank}} {{staffname.lastName}} {{staffname.firstName}} -->
     <div class="info">
         <img [src]="staffname.foto || avatarFoto" class="UserPic">
         <div class="names">

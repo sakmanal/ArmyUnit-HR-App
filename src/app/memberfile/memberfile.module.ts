@@ -4,6 +4,7 @@ import { SelectFileComponent } from './select-file/select-file.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../material.module';
+import { FormsModule } from '@angular/forms';
 
 const memberfileRoutes: Routes = [
   { path: '', component: SelectFileComponent }
@@ -15,7 +16,8 @@ const memberfileRoutes: Routes = [
     CommonModule,
     RouterModule.forChild(memberfileRoutes),
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ]
 })
 export class MemberfileModule { }
