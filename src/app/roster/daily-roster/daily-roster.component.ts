@@ -18,7 +18,7 @@ export class DailyRosterComponent implements OnInit {
   officersRoster: MemberDailyState[] = [];
   soldiersRoster: MemberDailyState[] = [];
   dailyRosterReport: DailyRosterReport;
-  filterValue: string;
+  filterValue: string = '';
 
   constructor( private dailyRosterService: DailyRosterService,
                private createpdfService: CreatepdfService,

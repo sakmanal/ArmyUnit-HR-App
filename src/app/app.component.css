@@ -1,0 +1,18 @@
+ * {
+  box-sizing: border-box;
+}
+
+.spinner {
+  height: 60px;
+  width: 60px;
+  z-index: 99 !important;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+}
+
+@media only screen and (max-width: 800px) {
+  .spinner {
+    left: 38%;
+  }
+}

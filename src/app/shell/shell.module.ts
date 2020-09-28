@@ -7,7 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const ShellRoutes: Routes = [
@@ -36,7 +36,13 @@ const ShellRoutes: Routes = [
 ]
 
 @NgModule({
-  declarations: [ShellComponent, HeaderComponent, FooterComponent, SidebarComponent, SidenavComponent],
+  declarations: [
+    ShellComponent,
+    HeaderComponent,
+    FooterComponent,
+    SidebarComponent,
+    PageNotFoundComponent,
+    SidenavComponent],
   imports: [
     CommonModule,
     MaterialModule,

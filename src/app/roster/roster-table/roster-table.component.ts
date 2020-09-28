@@ -28,8 +28,12 @@ export class RosterTableComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.dataSource = new MatTableDataSource(this.data);
-    if (this.filterValue){
+    // this.dataSource = new MatTableDataSource(this.data);
+    // if (this.filterValue) this.dataSource.filter = this.filterValue.trim().toLowerCase();
+    if (changes.data){
+       this.dataSource = new MatTableDataSource(this.data);
+    }
+    if (changes.filterValue){
       this.dataSource.filter = this.filterValue.trim().toLowerCase();
     }
   }

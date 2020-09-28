@@ -75,7 +75,6 @@ export class StaffInfoService {
       class_I: staff.class_I,
       specialty: staff.specialty,
       armed: staff.armed,
-      class_info: staff.class_info,
       foto: staff.foto
      }
 
@@ -100,7 +99,6 @@ export class StaffInfoService {
       class_I: staff.class_I,
       specialty: staff.specialty,
       armed: staff.armed,
-      class_info: staff.class_info,
       foto: staff.foto
      }
 

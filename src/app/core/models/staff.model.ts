@@ -14,14 +14,6 @@ export interface Staff extends Staffbasic{
   class_I: "I1" | "I2" | "I3" | "I4";
   specialty: string[];
   armed?: boolean;
-  class_info?: classInfo;
-}
-
-interface classInfo{
-  training_series: string;
-  start_date: Date;
-  dismissal_date : Date;
-  months_of_service: number;
 }
 
 
