@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { DayoffDoc } from '../../../dayoff/models/dayoffdoc.model';
-import { DailyRosterDoc } from '../../../roster/models/dailyRosterDoc.model';
+import { DayoffDoc } from '@app/dayoff/models/dayoffdoc.model';
+import { DailyRosterDoc } from '@app/roster/models/dailyRosterDoc.model';
 import { dayoff_pdf_def } from './pdf-definitions/dayoff.pdfDefinitions';
 import { dailyRoster_pdf_def } from './pdf-definitions/dailyRotser.pdfDefinitions';
 import * as pdfMake from 'pdfmake/build/pdfmake';

@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay } from 'rxjs/operators';
 import { StaffInfoService } from '../staff/staff-info.service';
-import { daysOff } from '../../../mock-data/dayoff';
+import { daysOff } from '@mock/dayoff';
 
 @Injectable({
   providedIn: 'root'

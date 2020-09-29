@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { StaffInfoService } from '../../core/services/staff/staff-info.service';
-import { Staffbasic } from '../../core/models/staff.model';
-import { NotificationService } from '../../core/services/notification/notification.service';
+import { StaffInfoService } from '@core/services/staff/staff-info.service';
+import { Staffbasic } from '@core/models/staff.model';
+import { NotificationService } from '@core/services/notification/notification.service';
 import { MatSelectChange } from '@angular/material/select';
-import { compareValues } from '../../shared/helpers/compareValues';
-import { rankIndex } from '../../shared/options/options';
+import { compareValues } from '@shared/helpers/compareValues';
+import { rankIndex } from '@shared/options/options';
 
 type orderBy = 'lastname'| 'firstname'| 'rank (descending)' | 'rank (ascending)';
 @Component({

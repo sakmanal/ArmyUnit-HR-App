@@ -1,7 +1,7 @@
-import { signaturedataURL } from '../../../../../assets/images/signature.dataurl';
-import { stamp } from '../../../../../assets/images/stamp.dataurl';
-import { DayoffDoc } from '../../../../dayoff/models/dayoffdoc.model';
-import { convertToWord } from '../../../../shared/helpers/numberToText';
+import { signaturedataURL } from '@assets/images/signature.dataurl';
+import { stamp } from '@assets/images/stamp.dataurl';
+import { DayoffDoc } from '@app/dayoff/models/dayoffdoc.model';
+import { convertToWord } from '@shared/helpers/numberToText';
 import * as moment from 'moment';
 
 export function  dayoff_pdf_def(data: DayoffDoc): {content:any[], styles:any} {

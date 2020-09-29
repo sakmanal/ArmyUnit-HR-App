@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DayoffService } from '../../core/services/dayOff/dayoff.service';
-import { Staffbasic } from '../../core/models/staff.model';
-import { NotificationService } from '../../core/services/notification/notification.service';
-import { Day_off } from '../../core/models/day_off.model';
-import { dayoffTypes } from '../../shared/options/options';
-import { CreatepdfService } from '../../core/services/createPdf/createpdf.service';
-import { DayoffDoc } from '../../dayoff/models//dayoffdoc.model';
-import { StaffInfoService } from '../../core/services/staff/staff-info.service';
+import { DayoffService } from '@core/services/dayOff/dayoff.service';
+import { Staffbasic } from '@core/models/staff.model';
+import { NotificationService } from '@core/services/notification/notification.service';
+import { Day_off } from '@core/models/day_off.model';
+import { dayoffTypes } from '@shared/options/options';
+import { CreatepdfService } from '@core/services/createPdf/createpdf.service';
+import { DayoffDoc } from '../models/dayoffdoc.model';
+import { StaffInfoService } from '@core/services/staff/staff-info.service';
 
 @Component({
   selector: 'app-day-off',

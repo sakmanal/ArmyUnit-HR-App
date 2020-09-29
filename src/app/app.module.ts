@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthModule } from './auth/auth.module';
-import { CoreModule } from './core/core.module';
+import { AuthModule } from '@auth/auth.module';
+import { CoreModule } from '@core/core.module';
 import { MaterialModule } from './material.module';
 
 @NgModule({

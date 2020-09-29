@@ -1,5 +1,5 @@
 import { staff } from './staff';
-import { Staff } from '../core/models/staff.model';
+import { Staff } from '@core/models/staff.model';
 import { Personal_info } from '../memberfile/models/personal_info.model';
 import { Shots } from '../memberfile/models/shots.model';
 import { Training } from '../memberfile/models/training.model';

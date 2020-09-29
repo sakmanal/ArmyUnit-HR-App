@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
-import { MemberDailyState, DailyRoster } from '../../../roster/models/dailyRoster.model';
+import { MemberDailyState, DailyRoster } from '@app/roster/models/dailyRoster.model';
 import { Staffbasic } from '../../models/staff.model';
 import { combineLatest, Observable, of, throwError } from 'rxjs';
 import { map, tap } from 'rxjs/operators';

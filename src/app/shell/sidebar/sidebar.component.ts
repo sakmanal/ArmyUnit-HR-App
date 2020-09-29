@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../../auth/services/authentication.service';
+import { AuthenticationService } from '@auth/services/authentication.service';
 import { Router } from '@angular/router';
-import { UserInfoService } from '../../core/services/user/user-info.service';
+import { UserInfoService } from '@auth/services/user-info.service';
 import { SidenavControlService } from '../services/sidenav-control.service';
 
 @Component({

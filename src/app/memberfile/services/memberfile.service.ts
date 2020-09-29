@@ -3,7 +3,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { MemberFile } from '../models/memberFile.model';
 import { environment } from '@environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { createMemberfile } from '../../mock-data/memberfile'
+import { createMemberfile } from '@mock/memberfile'
 import { delay } from 'rxjs/operators';
 
 @Injectable({

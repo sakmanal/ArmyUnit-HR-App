@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { DailyRosterService } from '../../core/services/roster/daily-roster.service';
+import { DailyRosterService } from '@core/services/roster/daily-roster.service';
 import { FormControl } from '@angular/forms';
-import { NotificationService } from '../../core/services/notification/notification.service';
+import { NotificationService } from '@core/services/notification/notification.service';
 import { DailyRoster, MemberDailyState, DailyRosterReport } from '../models/dailyRoster.model';
 import { DailyRosterDoc } from '../models/dailyRosterDoc.model';
-import { CreatepdfService } from '../../core/services/createPdf/createpdf.service';
+import { CreatepdfService } from '@core/services/createPdf/createpdf.service';
 
 @Component({
   selector: 'app-daily-roster',

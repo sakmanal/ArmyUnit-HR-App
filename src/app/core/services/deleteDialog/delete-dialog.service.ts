@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DeleteDialogComponent } from '../../../shared/components/delete-dialog/delete-dialog.component';
+import { DeleteDialogComponent } from '@shared/components/delete-dialog/delete-dialog.component';
 import { StaffInfoService } from '../staff/staff-info.service';
 import { Staff } from '../../models/staff.model';
 import { switchMap, filter } from 'rxjs/operators';

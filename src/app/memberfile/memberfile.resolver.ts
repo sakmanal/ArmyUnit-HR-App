@@ -3,7 +3,7 @@ import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { MemberFile } from './models/memberFile.model';
 import { Observable, of } from 'rxjs';
 import { MemberfileService } from './services/memberfile.service';
-import { NotificationService } from '../core/services/notification/notification.service'
+import { NotificationService } from '@core/services/notification/notification.service'
 import { map, catchError} from 'rxjs/operators';
 
 @Injectable({

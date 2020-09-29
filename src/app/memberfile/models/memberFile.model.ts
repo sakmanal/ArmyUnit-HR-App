@@ -1,4 +1,4 @@
-import { Staff } from '../../core/models/staff.model';
+import { Staff } from '@core/models/staff.model';
 import { Personal_info } from './personal_info.model';
 import { Shots } from './shots.model';
 import { Training } from './training.model';

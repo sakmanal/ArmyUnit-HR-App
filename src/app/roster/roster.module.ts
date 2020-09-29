@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RosterTableComponent } from './roster-table/roster-table.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { RosterReportComponent } from './roster-report/roster-report.component';
 
 const rosterRoutes: Routes = [

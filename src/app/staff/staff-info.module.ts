@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StaffInfoComponent } from './staff-info/staff-info.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '../material.module';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { FormsModule } from '@angular/forms';
 

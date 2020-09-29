@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { Day_off } from '../core/models/day_off.model'
+import { Day_off } from '@core/models/day_off.model'
 
 export const daysOff: Day_off[] = [
   {

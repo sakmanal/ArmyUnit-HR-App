@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { StaffInfoService } from '../../core/services/staff/staff-info.service';
-import { DeleteDialogService } from '../../core/services/deleteDialog/delete-dialog.service';
+import { StaffInfoService } from '@core/services/staff/staff-info.service';
+import { DeleteDialogService } from '@core/services/deleteDialog/delete-dialog.service';
 // import { tableData } from '../models/tableData.model';
-import { Staff } from '../../core/models/staff.model';
+import { Staff } from '@core/models/staff.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { NotificationService } from '../../core/services/notification/notification.service';
-import { DeleteDialogComponent } from '../../shared/components/delete-dialog/delete-dialog.component';
+import { NotificationService } from '@core/services/notification/notification.service';
+import { DeleteDialogComponent } from '@shared/components/delete-dialog/delete-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { switchMap, filter, map } from 'rxjs/operators';

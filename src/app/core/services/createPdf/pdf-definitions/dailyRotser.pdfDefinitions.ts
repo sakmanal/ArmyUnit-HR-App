@@ -1,8 +1,8 @@
-import { logo } from '../../../../../assets/images/logo.dataurl';
-import { DailyRosterDoc } from '../../../../roster/models/dailyRosterDoc.model';
-import { MemberDailyState } from '../../../../roster/models/dailyRoster.model';
-import { signaturedataURL } from '../../../../../assets/images/signature.dataurl';
-import { stamp } from '../../../../../assets/images/stamp.dataurl';
+import { logo } from '@assets/images/logo.dataurl';
+import { DailyRosterDoc } from '@app/roster/models/dailyRosterDoc.model';
+import { MemberDailyState } from '@app/roster/models/dailyRoster.model';
+import { signaturedataURL } from '@assets/images/signature.dataurl';
+import { stamp } from '@assets/images/stamp.dataurl';
 import * as moment from 'moment';
 
 function buildTableBody(data: MemberDailyState[], columns: string[]) {

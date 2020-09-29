@@ -1,14 +1,22 @@
-<app-search (searchValue)="getfilter($event)"></app-search>
+<div class="header">
+  <button mat-stroked-button color="primary" class="new-btn">
+    <mat-icon>add</mat-icon>
+    <span class="new">New staff member</span>
+  </button>
+  <mat-form-field *ngIf="filteredStaffnames" class="order">
+    <mat-label>order by</mat-label>
+    <mat-select [(ngModel)]="orderBy" name="orderBy" (selectionChange)="onOrderByChange($event)">
+      <mat-option *ngFor="let order of order_options" [value]="order">
+        {{order}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <app-search *ngIf="filteredStaffnames" (searchValue)="getfilter($event)" class="search"></app-search>
+</div>
+
 <mat-progress-bar *ngIf="loading" mode="indeterminate" color="warn"></mat-progress-bar>
 
-<mat-form-field *ngIf="filteredStaffnames">
-  <mat-label>order by</mat-label>
-  <mat-select [(ngModel)]="orderBy" name="orderBy" (selectionChange)="onOrderByChange($event)">
-    <mat-option *ngFor="let order of order_options" [value]="order">
-      {{order}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+
 
 <div *ngFor="let staffname of filteredStaffnames; let i = index">
    <mat-card class="file">
@@ -20,11 +28,11 @@
         </div>
     </div>
     <div>
-      <button mat-raised-button color="primary" [routerLink]="['/membeFile', staffname.id]">
+      <button mat-raised-button color="primary" class="btns" [routerLink]="['/membeFile', staffname.id]">
         <i class="fas fa-folder-open"></i>
          Open file
       </button>
-      <button mat-raised-button color="primary" [routerLink]="['/membeFile', staffname.id, 'edit']">
+      <button mat-raised-button color="primary" class="btns" [routerLink]="['/membeFile', staffname.id, 'edit']">
         <i class="fas fa-user-edit"></i>
         Edit
       </button>
