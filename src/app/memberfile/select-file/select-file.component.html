@@ -28,11 +28,11 @@
         </div>
     </div>
     <div>
-      <button mat-raised-button color="primary" class="btns" [routerLink]="['/membeFile', staffname.id]">
+      <button mat-raised-button color="primary" class="btns" [routerLink]="['/memberFile', staffname.id, { backurl: 'memberFile' }]">
         <i class="fas fa-folder-open"></i>
          Open file
       </button>
-      <button mat-raised-button color="primary" class="btns" [routerLink]="['/membeFile', staffname.id, 'edit']">
+      <button mat-raised-button color="primary" class="btns" [routerLink]="['/memberFile', staffname.id, 'edit']">
         <i class="fas fa-user-edit"></i>
         Edit
       </button>

@@ -14,3 +14,8 @@ export interface MemberFile extends Staff{
    penalties: Penalties[];
    medical_info: Medical_info;
 }
+
+export interface ResolvedMemberFile{
+  memeberfile: MemberFile;
+  backUrl: string;
+}

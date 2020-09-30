@@ -59,7 +59,11 @@
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element">
         <span class="row">
-          <button mat-icon-button matTooltip="Open member's file" matTooltipPosition="left" color="primary">
+          <button mat-icon-button
+                  matTooltip="Open member's file"
+                  matTooltipPosition="left"
+                  [routerLink]="['/memberFile', element.id, { backurl: 'staff' }]"
+                  color="primary">
             <mat-icon>open_in_new</mat-icon>
           </button>
           <button mat-icon-button
