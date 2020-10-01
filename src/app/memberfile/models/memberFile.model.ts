@@ -15,7 +15,3 @@ export interface MemberFile extends Staff{
    medical_info: Medical_info;
 }
 
-export interface ResolvedMemberFile{
-  memeberfile: MemberFile;
-  backUrl: string;
-}

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Router, Event, NavigationStart, NavigationEnd, NavigationError, NavigationCancel } from '@angular/router';
+import { Router, Event, NavigationStart, NavigationEnd, NavigationError, NavigationCancel, RoutesRecognized } from '@angular/router';
+import { filter, pairwise, tap } from 'rxjs/operators';
+import { PreviousCurrentUrlService } from '@core/services/routes-url/previousCurrentUrl.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +11,18 @@ import { Router, Event, NavigationStart, NavigationEnd, NavigationError, Navigat
 export class AppComponent {
   loading:boolean = true;
 
-  constructor(private router: Router) {
-    router.events.subscribe((routerEvent: Event) => {
-      this.checkRouterEvent(routerEvent);
-    });
+  constructor(private router: Router, private previousCurrentUrlService: PreviousCurrentUrlService) {
+    router.events.pipe(
+        tap((routerEvent: Event) => {
+          this.checkRouterEvent(routerEvent);
+        }),
+        filter((evt: any) => evt instanceof RoutesRecognized),
+        pairwise()
+      )
+      .subscribe((events: RoutesRecognized[]) => {
+        this.previousCurrentUrlService.previousUrl = events[0].urlAfterRedirects;
+        this.previousCurrentUrlService.currentUrl = events[1].urlAfterRedirects;
+      });
   }
 
   checkRouterEvent(routerEvent: Event): void {
