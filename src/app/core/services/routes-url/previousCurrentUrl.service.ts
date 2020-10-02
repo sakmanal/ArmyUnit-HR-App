@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class PreviousCurrentUrlService {
 
   public currentUrl: string;
-  public previousUrl: string;
+  public previousUrl: string = 'memberFile';
   constructor() { }
 
 }

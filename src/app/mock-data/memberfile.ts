@@ -101,15 +101,14 @@ export function createMemberfile(id: string): MemberFile {
 
   const personal_info: Personal_info = {
     fatherName: `${member.lastName} Wesley`,
-    motherName: 'Alexandra Telford',
-    ID_number: 'AE 46873',
+    motherName: 'Telford Alexandra',
+    ID_number: isSoldier(member.rank) ? 'AE 46873': '-',
     place_of_origin: 'Thessaloniki',
     place_of_residence: 'Athens',
-    education: isSoldier(member.rank) ? 'Bachelor degree' : null,
-    profession: isSoldier(member.rank) ? 'Civil Engineer' : null,
+    education: isSoldier(member.rank) ? 'Bachelor degree' : 'military school',
+    profession: isSoldier(member.rank) ? 'Civil Engineer' : 'military officer',
     home_telephone: '+30-25357-05278',
     personal_telephone: '+30-698-421-3281',
-    register_male: 'Arkadia',
     permanent_address: { address: 'Rebelion St.', number: 26, zip_code: 66100 },
     date_of_birth: isSoldier(member.rank) ? moment().subtract(20, 'years').subtract(5, 'days').toDate() :
                                             moment().subtract(40, 'years').subtract(5, 'days').toDate(),
@@ -120,7 +119,7 @@ export function createMemberfile(id: string): MemberFile {
   const classInfo: ClassInfo  = {
     training_series: `A' series ${moment().year()}`,
     start_date: moment().subtract(7, 'months').add(5, 'days').toDate(),
-    dismissal_date : moment().add(5, 'months').toDate(),
+    dismissal_date : moment().add(5, 'months').add(5, 'days').toDate(),
     months_of_service: 12
   }
 

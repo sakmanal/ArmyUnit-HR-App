@@ -8,7 +8,6 @@ export interface Personal_info{
     profession?: string;
     home_telephone?: string;
     personal_telephone: string;
-    register_male: string;
     permanent_address: { address: string, number: number, zip_code: number}
     date_of_birth: Date;
     age: number;

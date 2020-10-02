@@ -1,0 +1,51 @@
+mat-card-header{
+  color: gray;
+}
+
+mat-card{
+  max-width: fit-content;
+  margin: 20px;
+}
+
+@media only screen and (max-width: 500px) {
+  mat-card {
+      max-width: 100%;
+      margin: 20px 0px 0px;
+  }
+}
+
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start
+}
+
+.foto{
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.title, .title2, .title3 {
+  width: 100px;
+  color: gray;
+}
+
+.title2 {
+  width: 150px;
+}
+
+.title2 {
+  width: 150px;
+}
+
+.title3{
+  width: 180px;
+}
+
+.val{
+  font-size: medium;
+  font-weight: 500;
+}

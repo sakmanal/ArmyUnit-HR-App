@@ -1,0 +1,167 @@
+<div *ngIf="memberFile" class="flex">
+  <mat-card>
+    <mat-card-header>
+      <h2><i class="fas fa-info-circle"></i> Basic Info</h2>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="flex">
+          <img [src]="memberFile.foto" class="foto">
+          <div>
+            <div class="flex">
+              <div class="title">First Name:</div>
+              <span class="val">{{memberFile.firstName}}</span>
+            </div>
+            <hr>
+            <div class="flex">
+              <div class="title">Last Name:</div>
+              <span class="val">{{memberFile.lastName}}</span>
+            </div><hr>
+            <div class="flex">
+              <div class="title">Rank:</div>
+              <span class="val">{{memberFile.rank}}</span></div>
+              <hr>
+            <div class="flex">
+              <div class="title">Military ID:</div>
+              <span class="val">{{memberFile.MilitaryRegisterNumber}}</span>
+            </div>
+            <hr>
+            <div class="flex">
+              <div class="title">Platoon:</div>
+              <span class="val">{{memberFile.platoon}}</span>
+            </div>
+            <hr>
+            <div class="flex">
+              <div class="title">Specialty:</div>
+              <span class="val">
+                <mat-chip-list>
+                  <mat-chip *ngFor="let specialty of memberFile.specialty">{{specialty}}</mat-chip>
+                </mat-chip-list>
+              </span>
+            </div>
+            <hr>
+            <div class="flex">
+              <div class="title">Armed:</div>
+              <span class="val">{{memberFile.armed}}</span>
+            </div>
+          </div>
+        </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card *ngIf="memberFile.class_info">
+    <mat-card-header>
+      <h2><i class="fas fa-calendar-minus"></i> Class Info</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="flex">
+        <div class="title2">Training series:</div>
+        <span class="val">{{memberFile.class_info.training_series}}</span>
+      </div>
+      <hr>
+      <div class="flex">
+        <div class="title2">Start date:</div>
+        <span class="val">{{memberFile.class_info.start_date | date}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title2">Dismissal date:</div>
+        <span class="val">{{memberFile.class_info.dismissal_date | date}}</span></div>
+        <hr>
+      <div class="flex">
+        <div class="title2">Months of service:</div>
+        <span class="val">{{memberFile.class_info.months_of_service}}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <h2><i class="fas fa-user"></i> Personal Info</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="flex">
+        <div class="title2">Father Name:</div>
+        <span class="val">{{memberFile.personal_info.fatherName}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title2">Mother Name:</div>
+        <span class="val">{{memberFile.personal_info.motherName}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title2">Civilian ID Number:</div>
+        <span class="val">{{memberFile.personal_info.ID_number}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title2">Place of origin:</div>
+        <span class="val">{{memberFile.personal_info.place_of_origin}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title2">Place of residence:</div>
+        <span class="val">{{memberFile.personal_info.place_of_residence}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title2">Education:</div>
+        <span class="val">{{memberFile.personal_info.education}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title2">Profession:</div>
+        <span class="val">{{memberFile.personal_info.profession}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title2">Home Tel:</div>
+        <span class="val">{{memberFile.personal_info.home_telephone}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title2">Personal Tel:</div>
+        <span class="val">{{memberFile.personal_info.personal_telephone}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title2">Permanent Address:</div>
+        <span class="val">
+          {{memberFile.personal_info.permanent_address.address}}
+          {{memberFile.personal_info.permanent_address.number}}
+        </span>
+      </div><hr>
+      <div class="flex">
+        <div class="title2">Zip code:</div>
+        <span class="val">{{memberFile.personal_info.permanent_address.zip_code}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title2">Birth:</div>
+        <span class="val">{{memberFile.personal_info.date_of_birth | date}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title2">Age:</div>
+        <span class="val">{{memberFile.personal_info.age}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title2">Brothers Number:</div>
+        <span class="val">{{memberFile.personal_info.brothers_count}}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <h2><i class="fas fa-file-medical"></i> Medical Info</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="flex">
+        <div class="title3">Physical Fitness class:</div>
+        <span class="val">{{memberFile.class_I}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title3">Blood Type:</div>
+        <span class="val">{{memberFile.medical_info.bloodType}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title3">Height:</div>
+        <span class="val">{{memberFile.medical_info.height}} m</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title3">Weight:</div>
+        <span class="val">{{memberFile.medical_info.kilos}} kg</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
