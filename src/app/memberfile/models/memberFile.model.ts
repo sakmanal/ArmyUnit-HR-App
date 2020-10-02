@@ -5,8 +5,10 @@ import { Training } from './training.model';
 import { Penalties } from './penalties.model';
 import { Medical_info } from './medical_info.model';
 import { ClassInfo } from './classInfo.model';
+import { _DayOff } from '@core/models/day_off.model';
 
 export interface MemberFile extends Staff{
+   days_off: _DayOff[];
    class_info?: ClassInfo;
    personal_info: Personal_info;
    shots: Shots[];

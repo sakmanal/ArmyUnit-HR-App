@@ -17,7 +17,7 @@ mat-card{
 .flex{
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start
+  align-items: flex-start;
 }
 
 .foto{
@@ -49,3 +49,5 @@ mat-card{
   font-size: medium;
   font-weight: 500;
 }
+
+

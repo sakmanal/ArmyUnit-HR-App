@@ -75,6 +75,30 @@
 
   <mat-card>
     <mat-card-header>
+      <h2><i class="fas fa-file-medical"></i> Medical Info</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="flex">
+        <div class="title3">Physical Fitness class:</div>
+        <span class="val">{{memberFile.class_I}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title3">Blood Type:</div>
+        <span class="val">{{memberFile.medical_info.bloodType}}</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title3">Height:</div>
+        <span class="val">{{memberFile.medical_info.height}} m</span>
+      </div><hr>
+      <div class="flex">
+        <div class="title3">Weight:</div>
+        <span class="val">{{memberFile.medical_info.kilos}} kg</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
       <h2><i class="fas fa-user"></i> Personal Info</h2>
     </mat-card-header>
     <mat-card-content>
@@ -140,28 +164,5 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card>
-    <mat-card-header>
-      <h2><i class="fas fa-file-medical"></i> Medical Info</h2>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="flex">
-        <div class="title3">Physical Fitness class:</div>
-        <span class="val">{{memberFile.class_I}}</span>
-      </div><hr>
-      <div class="flex">
-        <div class="title3">Blood Type:</div>
-        <span class="val">{{memberFile.medical_info.bloodType}}</span>
-      </div><hr>
-      <div class="flex">
-        <div class="title3">Height:</div>
-        <span class="val">{{memberFile.medical_info.height}} m</span>
-      </div><hr>
-      <div class="flex">
-        <div class="title3">Weight:</div>
-        <span class="val">{{memberFile.medical_info.kilos}} kg</span>
-      </div>
-    </mat-card-content>
-  </mat-card>
 </div>
 

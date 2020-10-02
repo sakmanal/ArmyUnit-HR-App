@@ -11,7 +11,7 @@ import { PreviousCurrentUrlService } from '@core/services/routes-url/previousCur
 })
 export class DisplayFileComponent implements OnInit {
 
-  memberfile: MemberFile;
+  fullnameTitle: string;
   pageTitle: string = 'File';
   backUrl: string;
 
@@ -27,7 +27,7 @@ export class DisplayFileComponent implements OnInit {
 
   private onFileRetrieved(file: MemberFile): void {
       if (file) {
-        this.memberfile = file;
+        this.fullnameTitle = `${file.rank} ${file.lastName} ${file.firstName}`;
         this.backUrl = this.previousCurrentUrlService.previousUrl;
         this.pageTitle = 'Staff member file of: ';
       } else {

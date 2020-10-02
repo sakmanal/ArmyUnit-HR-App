@@ -14,7 +14,9 @@
       <mat-icon class="tab-icon">card_travel</mat-icon>
       Days off
     </ng-template>
-    Content 2
+    <div class="content">
+      <app-display-daysoffs></app-display-daysoffs>
+    </div>
   </mat-tab>
 
   <mat-tab>
@@ -22,7 +24,9 @@
       <mat-icon class="tab-icon">report</mat-icon>
       Penalties
     </ng-template>
-    Content 3
+    <div class="content">
+      <app-display-penalties></app-display-penalties>
+    </div>
   </mat-tab>
 
   <mat-tab>
@@ -30,6 +34,11 @@
       <mat-icon class="tab-icon">directions_walk</mat-icon>
       Training
     </ng-template>
-    Content 4
+    <div class="content">
+      <app-display-training></app-display-training>
+      <div class="shotsTable">
+        <app-display-shots></app-display-shots>
+      </div>
+    </div>
   </mat-tab>
 </mat-tab-group>

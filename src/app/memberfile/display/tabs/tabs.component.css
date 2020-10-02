@@ -8,6 +8,10 @@
 
 @media only screen and (max-width: 500px) {
   .content {
-      padding: 0;
+      padding: 15px 0;
   }
+}
+
+.shotsTable{
+  margin-top: 30px;
 }

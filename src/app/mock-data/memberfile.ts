@@ -55,6 +55,9 @@ export function createMemberfile(id: string): MemberFile {
       success_rate: 0.8
     }
   ];
+  if (member.class_I == 'I3' || member.class_I == 'I4'){
+    shots.length = 0 ;
+  }
 
   const penalties: Penalties[] = [
     {
@@ -82,7 +85,7 @@ export function createMemberfile(id: string): MemberFile {
       start_date: moment().subtract(4, 'months').subtract(1, 'days').toDate(),
       complete_date:  moment().subtract(4, 'months').subtract(25, 'days').toDate(),
       training_unit: '23th Engineer Division',
-      result: 'pass'
+      result: (member.class_I == 'I3' || member.class_I == 'I4') ? 'fail' : 'pass'
     },
     {
       type: 'specialty training',
@@ -130,6 +133,7 @@ export function createMemberfile(id: string): MemberFile {
    training,
    penalties,
    shots,
-   class_info: isSoldier(member.rank) ? classInfo : null
+   class_info: isSoldier(member.rank) ? classInfo : null,
+   days_off: null
  }
 }

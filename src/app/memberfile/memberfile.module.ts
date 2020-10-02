@@ -9,6 +9,10 @@ import { DisplayFileComponent } from './display/display-file-container/display-f
 import { MemberFileResolver } from './memberfile.resolver';
 import { TabsComponent } from './display/tabs/tabs.component';
 import { DisplayInfoComponent } from './display/display-info/display-info.component';
+import { DisplayPenaltiesComponent } from './display/display-penalties/display-penalties.component';
+import { DisplayTrainingComponent } from './display/display-training/display-training.component';
+import { DisplayShotsComponent } from './display/display-shots/display-shots.component';
+import { DisplayDaysoffsComponent } from './display/display-daysoffs/display-daysoffs.component';
 
 const memberfileRoutes: Routes = [
   { path: '', component: SelectFileComponent },
@@ -20,7 +24,7 @@ const memberfileRoutes: Routes = [
 ]
 
 @NgModule({
-  declarations: [SelectFileComponent, DisplayFileComponent, TabsComponent, DisplayInfoComponent],
+  declarations: [SelectFileComponent, DisplayFileComponent, TabsComponent, DisplayInfoComponent, DisplayPenaltiesComponent, DisplayTrainingComponent, DisplayShotsComponent, DisplayDaysoffsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(memberfileRoutes),
