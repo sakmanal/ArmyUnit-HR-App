@@ -12,12 +12,12 @@
 
   <ng-container matColumnDef="start_date">
     <th mat-header-cell *matHeaderCellDef> Start Date </th>
-    <td mat-cell *matCellDef="let element"> {{element.start_date | date}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.dates.start_date | date}} </td>
   </ng-container>
 
   <ng-container matColumnDef="complete_date">
     <th mat-header-cell *matHeaderCellDef> Complete Date </th>
-    <td mat-cell *matCellDef="let element"> {{element.complete_date | date}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.dates.complete_date | date}} </td>
   </ng-container>
 
   <ng-container matColumnDef="training_unit">

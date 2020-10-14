@@ -1,0 +1,40 @@
+.header{
+  display: flex;
+  align-items: baseline;
+}
+
+.name{
+  margin-right: 10px;
+  color: #3F51B5;
+}
+
+.back{
+  margin-right: 20px;
+  height: 40px;
+  min-width: 100px;
+}
+
+.tab-icon {
+  margin-right: 8px;
+}
+
+.content{
+  padding: 15px;
+}
+
+@media only screen and (max-width: 500px) {
+  .content {
+      padding: 15px 0;
+  }
+}
+
+.shotsTable{
+  margin-top: 30px;
+}
+
+.save-btn{
+  width: 100%;
+  max-width: 400px;
+  height: 50px;
+}
+

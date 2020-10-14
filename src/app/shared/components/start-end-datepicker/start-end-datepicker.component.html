@@ -1,0 +1,23 @@
+<div [formGroup]="form">
+  <mat-form-field [appearance]="appearance">
+    <mat-label>{{label}}</mat-label>
+    <mat-date-range-input [min]="minDate" [max]="maxDate" [rangePicker]="picker">
+      <input matStartDate formControlName="start_date" placeholder="Start date">
+      <input matEndDate formControlName="end_date" placeholder="End date">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+    <mat-error *ngIf="dateform.start_date.hasError('required') && dateform.start_date.touched">
+        Start date is <strong>required.</strong>
+    </mat-error>
+    <mat-error *ngIf="dateform.end_date.hasError('required') && dateform.end_date.touched">
+      End date is <strong>required.</strong>
+    </mat-error>
+    <mat-error *ngIf="dateform.start_date.hasError('matDatepickerMin')">
+      Invalid start date.
+    </mat-error>
+    <mat-error *ngIf="dateform.end_date.hasError('matDatepickerMax')">
+      Invalid end date.
+    </mat-error>
+  </mat-form-field>
+</div>

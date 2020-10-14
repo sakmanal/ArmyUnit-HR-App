@@ -19,9 +19,16 @@ export class MemberfileService {
     // return this.http.get<MemberFile>(`${environment.apiUrl}/memberfile/${id}`)
     // return throwError("server error");
 
+    if (id === '0'){
+
+    }
+
     return this.dayoffService.getDaysOff().pipe(
       map( (days_off: Day_off[]) => {
          const file = createMemberfile(id);
+         if (!file){
+           return null
+         }
          const daysOff: Day_off[] = days_off.filter( member => member.staffmember.staff_id == id);
          const _daysOff: _DayOff[]  = daysOff.map(d => {
            return {

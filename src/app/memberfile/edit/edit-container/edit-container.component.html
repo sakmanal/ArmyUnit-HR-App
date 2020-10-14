@@ -1,0 +1,60 @@
+<div class="header">
+  <button mat-raised-button
+          color="primary"
+          [routerLink]="['/memberFile']"
+          class="back">
+    <mat-icon>cancel</mat-icon>
+    Cancel
+  </button>
+  <h2>
+    <i class="fas fa-folder-open" style="color: peru;"></i>
+    {{pageTitle}}
+    <span class="name" *ngIf="fullnameTitle">{{fullnameTitle}}</span>
+  </h2>
+</div>
+<mat-divider></mat-divider>
+
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">account_circle</mat-icon>
+          General Info
+        </ng-template>
+        <div class="content">
+
+          </div>
+
+
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">report</mat-icon>
+          Penalties
+        </ng-template>
+        <div class="content">
+          <app-edit-penalties-form formControlName="penalties"></app-edit-penalties-form>
+        </div>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">directions_walk</mat-icon>
+          Training
+        </ng-template>
+        <div class="content">
+          <app-edit-training-form [editForm]="editForm" [trainingData]="file.training"></app-edit-training-form>
+        </div>
+      </mat-tab>
+
+  </mat-tab-group>
+
+  <button mat-raised-button
+            color="primary"
+            class="save-btn"
+            type="submit">
+      <mat-icon>save</mat-icon>
+      Save member File
+  </button>
+</form>

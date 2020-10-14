@@ -75,22 +75,28 @@ export function createMemberfile(id: string): MemberFile {
   const training: Training[] = [
     {
       type: isSoldier(member.rank) ? 'basic training': 'officer training',
-      start_date: moment().subtract(5, 'months').subtract(1, 'days').toDate(),
-      complete_date:  moment().subtract(5, 'months').subtract(20, 'days').toDate(),
+      dates: {
+        start_date: moment().subtract(5, 'months').subtract(1, 'days').toDate(),
+        complete_date:  moment().subtract(5, 'months').subtract(20, 'days').toDate()
+      },
       training_unit: '5th Infantry Division',
       result: 'pass'
     },
     {
       type: 'advance engineer training',
-      start_date: moment().subtract(4, 'months').subtract(1, 'days').toDate(),
-      complete_date:  moment().subtract(4, 'months').subtract(25, 'days').toDate(),
+      dates: {
+        start_date: moment().subtract(4, 'months').subtract(1, 'days').toDate(),
+        complete_date:  moment().subtract(4, 'months').subtract(25, 'days').toDate()
+      },
       training_unit: '23th Engineer Division',
       result: (member.class_I == 'I3' || member.class_I == 'I4') ? 'fail' : 'pass'
     },
     {
       type: 'specialty training',
-      start_date: moment().subtract(3, 'months').subtract(1, 'days').toDate(),
-      complete_date:  moment().subtract(3, 'months').subtract(6, 'days').toDate(),
+      dates: {
+        start_date: moment().subtract(3, 'months').subtract(1, 'days').toDate(),
+        complete_date:  moment().subtract(3, 'months').subtract(6, 'days').toDate()
+      },
       training_unit: '25th Cavalay Division',
       result: 'pass'
     }

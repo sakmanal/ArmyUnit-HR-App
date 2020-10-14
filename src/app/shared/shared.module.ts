@@ -8,6 +8,7 @@ import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.
 import { OptionsInputComponent } from './components/options-input/options-input.component';
 import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chips-autocomplete.component';
 import { FloatingSearchComponent } from './components/floating-search/floating-search.component';
+import { StartEndDatepickerComponent } from './components/start-end-datepicker/start-end-datepicker.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FloatingSearchComponent } from './components/floating-search/floating-s
     DeleteDialogComponent,
     OptionsInputComponent,
     ChipsAutocompleteComponent,
-    FloatingSearchComponent
+    FloatingSearchComponent,
+    StartEndDatepickerComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { FloatingSearchComponent } from './components/floating-search/floating-s
     DeleteDialogComponent,
     OptionsInputComponent,
     ChipsAutocompleteComponent,
-    FloatingSearchComponent
+    FloatingSearchComponent,
+    StartEndDatepickerComponent
   ],
   entryComponents: [
     DeleteDialogComponent

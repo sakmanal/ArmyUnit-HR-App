@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
-import { MemberFile } from './models/memberFile.model';
+import { MemberFile } from '../models/memberFile.model';
 import { Observable, of } from 'rxjs';
-import { MemberfileService } from './services/memberfile.service';
+import { MemberfileService } from './memberfile.service';
 import { NotificationService } from '@core/services/notification/notification.service'
 import { map, catchError} from 'rxjs/operators';
 
@@ -22,6 +22,7 @@ export class MemberFileResolver implements Resolve<MemberFile> {
       this.router.navigate(['/memberFile']);
       return of(null);
     }
+
     return this.memberfileService.getMemmberFile(id).pipe(
       map((file: MemberFile) => {
         if (file) {

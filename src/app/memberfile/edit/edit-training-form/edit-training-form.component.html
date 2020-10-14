@@ -1,0 +1,64 @@
+<div [formGroup]="editForm">
+  <div formArrayName="training">
+    <div *ngFor="let training of trainings.controls; let i = index">
+      <mat-card>
+        <div [formGroupName]="i">
+
+            <mat-form-field>
+              <mat-label class="label">Type</mat-label>
+              <input type="text"
+                      matInput
+                      placeholder="e.g Basic Combat Training"
+                      formControlName="type" />
+                      <mat-error *ngIf="trainingFormControls.type.invalid">
+                        Training Type is <strong>required.</strong>
+                      </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label class="label">Training Unit</mat-label>
+              <input type="text"
+                      matInput
+                      placeholder="e.g 25th Infantry Division"
+                      formControlName="training_unit" />
+                      <mat-error *ngIf="trainingFormControls.type.invalid">
+                        Training Unit is <strong>required.</strong>
+                      </mat-error>
+            </mat-form-field>
+
+            <app-start-end-datepicker formControlName="dates"
+                                      label="Select Training start & end Date">
+            </app-start-end-datepicker>
+
+            <div class="radioBtns">
+              <h3>Training result:</h3>
+              <mat-radio-group aria-label="Select result" formControlName="result" color="primary">
+                <mat-radio-button value="pass">Pass</mat-radio-button>
+                <mat-radio-button value="fail">Fail</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+            <button type="button"
+                    mat-stroked-button
+                    color="warn"
+                    (click)="removeTraining(i)">
+              <mat-icon>delete</mat-icon>
+              Remove Training
+            </button>
+
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+<button type="button"
+        mat-stroked-button
+        color="primary"
+        class="add-btn"
+        (click)="addTraining()">
+  <mat-icon>add</mat-icon>
+  Add Training
+</button>
+

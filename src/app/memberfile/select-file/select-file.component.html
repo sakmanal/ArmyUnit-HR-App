@@ -1,5 +1,8 @@
 <div class="header">
-  <button mat-stroked-button color="primary" class="new-btn">
+  <button mat-stroked-button
+          color="primary"
+          [routerLink]="['/memberFile', 0, 'edit']"
+          class="new-btn">
     <mat-icon>add</mat-icon>
     <span class="new">New staff member</span>
   </button>
