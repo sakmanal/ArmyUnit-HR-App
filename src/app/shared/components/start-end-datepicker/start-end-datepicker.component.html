@@ -1,7 +1,7 @@
-<div [formGroup]="form">
+<div novalidate [formGroup]="form">
   <mat-form-field [appearance]="appearance">
     <mat-label>{{label}}</mat-label>
-    <mat-date-range-input [min]="minDate" [max]="maxDate" [rangePicker]="picker">
+    <mat-date-range-input [min]="minDate" [max]="maxDate" [rangePicker]="picker" [required]="required">
       <input matStartDate formControlName="start_date" placeholder="Start date">
       <input matEndDate formControlName="end_date" placeholder="End date">
     </mat-date-range-input>
@@ -13,10 +13,10 @@
     <mat-error *ngIf="dateform.end_date.hasError('required') && dateform.end_date.touched">
       End date is <strong>required.</strong>
     </mat-error>
-    <mat-error *ngIf="dateform.start_date.hasError('matDatepickerMin')">
+    <mat-error *ngIf="dateform.start_date.hasError('matDatepickerMin') && dateform.end_date.touched">
       Invalid start date.
     </mat-error>
-    <mat-error *ngIf="dateform.end_date.hasError('matDatepickerMax')">
+    <mat-error *ngIf="dateform.end_date.hasError('matDatepickerMax') && dateform.end_date.touched">
       Invalid end date.
     </mat-error>
   </mat-form-field>

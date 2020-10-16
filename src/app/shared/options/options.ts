@@ -60,4 +60,18 @@ export const dayoffTypes: string[] = [
       "oath taking leave"
 ]
 
+export const gun_types: string[]= [
+  "G3A3" ,
+  "G3A4" ,
+  "pistol 0,45" ,
+  "HK11" ,
+  "MG3" ,
+  "M79"
+]
+
+export const penalty_types: string[] = [
+  "pay cut",
+  "prison",
+  "on hold"
+]
 

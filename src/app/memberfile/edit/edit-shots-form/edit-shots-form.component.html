@@ -1,0 +1,102 @@
+<div novalidate [formGroup]="editForm">
+  <div formArrayName="shots">
+    <div *ngFor="let shot of shots.controls; let i = index">
+      <mat-card>
+        <div [formGroupName]="i">
+          <div class="forms">
+            <mat-form-field appearance="fill">
+              <mat-label class="label">Place</mat-label>
+              <input type="text"
+                      matInput
+                      placeholder="e.g 4th ArmyCamp shooting range"
+                      formControlName="place" />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Date</mat-label>
+              <input matInput [matDatepicker]="dp" formControlName="date" required>
+              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+              <mat-datepicker #dp></mat-datepicker>
+              <mat-error *ngIf="shotFormControls(i).date.invalid">
+                Date is <strong>required.</strong>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Gun Type</mat-label>
+              <mat-select name="gun_type" formControlName="gun_type" required>
+                <mat-option *ngFor="let type of gun_types" [value]="type">
+                  {{type}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="shotFormControls(i).gun_type.invalid">
+                Gun Type <strong>required</strong>.
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label class="label">Distance (metres)</mat-label>
+              <input type="number"
+                      matInput
+                      step="50"
+                      min="50"
+                      required
+                      placeholder="e.g 100 (metres)"
+                      formControlName="distance" />
+                      <mat-error *ngIf="shotFormControls(i).distance.hasError('required')">
+                        Distance is <strong>required.</strong>
+                      </mat-error>
+                      <mat-error *ngIf="shotFormControls(i).distance.hasError('min')">
+                        Distance can't be less than <strong>50 metres.</strong>
+                      </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label class="label">Shots fired</mat-label>
+              <input type="number"
+                      matInput
+                      min="1"
+                      placeholder="e.g 10"
+                      formControlName="total_shots" />
+                      <mat-error *ngIf="shotFormControls(i).total_shots.hasError('min')">
+                        <strong>Invalid number.</strong>
+                      </mat-error>
+            </mat-form-field>
+          </div>
+            <div>
+              <h4>Success Rate: </h4>
+              <mat-slider
+              thumbLabel
+              color="primary"
+              max="1"
+              min="0"
+              step="0.1"
+              formControlName="success_rate"
+              >
+              </mat-slider> {{shotFormControls(i).success_rate.value | percent}}
+            </div>
+
+
+            <button type="button"
+                    mat-stroked-button
+                    color="warn"
+                    (click)="removeShot(i)">
+              <mat-icon>delete</mat-icon>
+              Remove Shot
+            </button>
+
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+<button type="button"
+        mat-stroked-button
+        color="primary"
+        (click)="addShot()">
+  <mat-icon>add</mat-icon>
+  Add Shot
+</button>
+

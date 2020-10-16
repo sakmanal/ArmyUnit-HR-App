@@ -36,9 +36,16 @@
     </ng-template>
     <div class="content">
       <app-display-training></app-display-training>
-      <div class="shotsTable">
-        <app-display-shots></app-display-shots>
-      </div>
+    </div>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="tab-icon">border_outer</mat-icon>
+      Shots Fired
+    </ng-template>
+    <div class="content">
+      <app-display-shots></app-display-shots>
     </div>
   </mat-tab>
 </mat-tab-group>

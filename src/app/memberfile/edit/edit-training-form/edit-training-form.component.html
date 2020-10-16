@@ -1,13 +1,14 @@
-<div [formGroup]="editForm">
+<div novalidate [formGroup]="editForm">
   <div formArrayName="training">
     <div *ngFor="let training of trainings.controls; let i = index">
       <mat-card>
         <div [formGroupName]="i">
-
-            <mat-form-field>
+          <div class="forms">
+            <mat-form-field appearance="fill">
               <mat-label class="label">Type</mat-label>
               <input type="text"
                       matInput
+                      required
                       placeholder="e.g Basic Combat Training"
                       formControlName="type" />
                       <mat-error *ngIf="trainingFormControls.type.invalid">
@@ -15,10 +16,11 @@
                       </mat-error>
             </mat-form-field>
 
-            <mat-form-field>
+            <mat-form-field appearance="fill">
               <mat-label class="label">Training Unit</mat-label>
               <input type="text"
                       matInput
+                      required
                       placeholder="e.g 25th Infantry Division"
                       formControlName="training_unit" />
                       <mat-error *ngIf="trainingFormControls.type.invalid">
@@ -27,9 +29,11 @@
             </mat-form-field>
 
             <app-start-end-datepicker formControlName="dates"
+                                      appearance="fill"
+                                      _required="yes"
                                       label="Select Training start & end Date">
             </app-start-end-datepicker>
-
+          </div>
             <div class="radioBtns">
               <h3>Training result:</h3>
               <mat-radio-group aria-label="Select result" formControlName="result" color="primary">
@@ -56,7 +60,6 @@
 <button type="button"
         mat-stroked-button
         color="primary"
-        class="add-btn"
         (click)="addTraining()">
   <mat-icon>add</mat-icon>
   Add Training

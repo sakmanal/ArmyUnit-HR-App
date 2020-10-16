@@ -1,4 +1,4 @@
-import { Component, forwardRef, OnDestroy, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, forwardRef, OnDestroy, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormBuilder, FormGroup, Validators, FormControl, NG_VALIDATORS } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -24,7 +24,7 @@ interface StartEndDates {
     }
   ]
 })
-export class StartEndDatepickerComponent implements ControlValueAccessor, OnDestroy  {
+export class StartEndDatepickerComponent implements ControlValueAccessor, OnInit, OnDestroy  {
 
   form: FormGroup;
   subscriptions: Subscription[] = [];
@@ -32,6 +32,11 @@ export class StartEndDatepickerComponent implements ControlValueAccessor, OnDest
   @Input() minDate: Date = new Date(1980, 1, 1);
   @Input() label: string = 'Select Dates';
   @Input() appearance: 'outline' | 'standard' | 'fill' = 'standard';
+  @Input() _required: 'yes' | 'no' = 'yes';
+
+  get required(): boolean {
+    return (this._required === 'yes')
+  }
 
   get value(): StartEndDates {
     return this.form.value;
@@ -47,11 +52,14 @@ export class StartEndDatepickerComponent implements ControlValueAccessor, OnDest
     return this.form.controls.email;
   }
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit(){
     this.form = this.formBuilder.group({
-      start_date: ['', Validators.required],
-      end_date: ['', Validators.required]
+      start_date: [''],
+      end_date: ['']
     });
+    this.setValidators(this._required)
 
     this.subscriptions.push(
       this.form.valueChanges.subscribe(value => {
@@ -59,6 +67,13 @@ export class StartEndDatepickerComponent implements ControlValueAccessor, OnDest
         this.onTouched();
       })
     );
+  }
+
+  private setValidators(required: 'yes' | 'no'){
+    if (this._required === 'yes'){
+      this.dateform.end_date.setValidators([Validators.required])
+      this.dateform.start_date.setValidators([Validators.required])
+    }
   }
 
   get dateform() { return this.form.controls; }

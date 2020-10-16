@@ -19,12 +19,7 @@ export class EditTrainingFormComponent implements OnInit {
     this.trainingData.forEach( training => {
       this.addTraining();
     });
-    this.editForm.patchValue({
-      training: this.trainingData
-    });
-    this.trainings.controls[0].patchValue({dates: {start_date: this.trainingData[0].dates.start_date, end_date: this.trainingData[0].dates.complete_date}})
-    this.trainings.controls[1].patchValue({dates: {start_date: this.trainingData[1].dates.start_date, end_date: this.trainingData[1].dates.complete_date}})
-    this.trainings.controls[2].patchValue({dates: {start_date: this.trainingData[2].dates.start_date, end_date: this.trainingData[2].dates.complete_date}})
+    this.patchData();
   }
 
   get trainingForm(): FormGroup {
@@ -34,6 +29,21 @@ export class EditTrainingFormComponent implements OnInit {
       dates: [],
       result: ['pass', Validators.required]
     });
+  }
+
+  private patchData(){
+    this.editForm.patchValue({
+      training: this.trainingData
+    });
+
+    for(let i=0; i<this.trainings.length; i++){
+      this.trainings.controls[i].patchValue({
+        dates: {
+                start_date: this.trainingData[i].dates.start_date,
+                end_date: this.trainingData[i].dates.complete_date
+              }
+      })
+    }
   }
 
   public get trainingFormControls() { return this.trainingForm.controls; }

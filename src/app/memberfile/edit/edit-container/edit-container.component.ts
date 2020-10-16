@@ -22,7 +22,7 @@ export class EditContainerComponent implements OnInit {
 
   private createForm(): void {
     this.editForm = this.formBuilder.group({
-      penalties: []
+
     });
   }
 
@@ -40,16 +40,11 @@ export class EditContainerComponent implements OnInit {
     } else {
       this.pageTitle = 'New member file';
     }
-
-    this.editForm.patchValue({
-       penalties: file.penalties[0]
-    });
   }
 
   public onSubmit(): void {
+    console.log(this.editForm.valid)
     console.log(this.editForm.value);
   }
-
-
 
 }

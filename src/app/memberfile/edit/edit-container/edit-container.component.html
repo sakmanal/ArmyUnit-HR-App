@@ -34,7 +34,7 @@
           Penalties
         </ng-template>
         <div class="content">
-          <app-edit-penalties-form formControlName="penalties"></app-edit-penalties-form>
+          <app-edit-penalties-form [editForm]="editForm" [penaltiesData]="file.penalties"></app-edit-penalties-form>
         </div>
       </mat-tab>
 
@@ -45,6 +45,16 @@
         </ng-template>
         <div class="content">
           <app-edit-training-form [editForm]="editForm" [trainingData]="file.training"></app-edit-training-form>
+        </div>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="tab-icon">border_outer</mat-icon>
+          Shots Fired
+        </ng-template>
+        <div class="content">
+          <app-edit-shots-form [editForm]="editForm" [shotsData]="file.shots"></app-edit-shots-form>
         </div>
       </mat-tab>
 

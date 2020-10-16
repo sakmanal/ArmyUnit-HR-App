@@ -1,17 +1,88 @@
-<div [formGroup]="form" style="display: flex; flex-direction: column;">
-  <label for="first-name">type</label>
-  <input formControlName="type" id="type" />
+<div novalidate [formGroup]="editForm">
+  <div formArrayName="penalties">
+    <div *ngFor="let penalty of penalties.controls; let i = index">
+      <mat-card>
+        <div [formGroupName]="i">
+          <div class="forms">
+            <mat-form-field appearance="fill">
+              <mat-label>Penalty Type</mat-label>
+              <mat-select name="penalty type" formControlName="type" required>
+                <mat-option *ngFor="let type of penalty_types" [value]="type">
+                  {{type}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="penaltyFormControls(i).type.invalid">
+                Penalty Type <strong>required</strong>.
+              </mat-error>
+            </mat-form-field>
 
-  <label for="last-name">total_days</label>
-  <input formControlName="total_days" id="total_days" />
+            <mat-form-field appearance="fill">
+              <mat-label class="label">Total Days</mat-label>
+              <input  type="number"
+                      matInput
+                      min="1"
+                      placeholder="e.g 10"
+                      formControlName="total_days" />
+                      <mat-error *ngIf="penaltyFormControls(i).total_days.hasError('min')">
+                        <strong>Invalid number.</strong>
+                      </mat-error>
+            </mat-form-field>
 
-  <label for="email">imposition_date</label>
-  <input formControlName="imposition_date" id="imposition_date" />
+              <mat-form-field appearance="fill">
+                <mat-label>Imposition Date</mat-label>
+                <input matInput [matDatepicker]="dp" formControlName="imposition_date" required>
+                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp></mat-datepicker>
+                <mat-error *ngIf="penaltyFormControls(i).imposition_date.invalid">
+                  Imposition Date is <strong>required.</strong>
+                </mat-error>
+              </mat-form-field>
 
-  <label for="email">reason</label>
-  <input formControlName="reason" id="reason" />
+              <mat-form-field appearance="fill">
+                <mat-label class="label">Punishment Reason</mat-label>
+                <input  type="text"
+                        matInput
+                        required
+                        placeholder="e.g Orders disobey"
+                        formControlName="reason" />
+                        <mat-error *ngIf="penaltyFormControls(i).reason.invalid">
+                          Punishment Reason is <strong>required.</strong>
+                        </mat-error>
+              </mat-form-field>
 
-  <label for="email">imposition_officer</label>
-  <input formControlName="imposition_officer" id="imposition_officer" />
+              <mat-form-field appearance="fill">
+                <mat-label class="label">Imposition Officer</mat-label>
+                <input  type="text"
+                        matInput
+                        required
+                        placeholder="e.g Captain Pain"
+                        formControlName="imposition_officer" />
+                        <mat-error *ngIf="penaltyFormControls(i).imposition_officer.invalid">
+                          Imposition Officer is <strong>required.</strong>
+                        </mat-error>
+              </mat-form-field>
+            </div>
 
+            <button type="button"
+                    mat-stroked-button
+                    color="warn"
+                    (click)="removePenalty(i)">
+              <mat-icon>delete</mat-icon>
+              Remove Penalty
+            </button>
+
+        </div>
+      </mat-card>
+    </div>
+  </div>
 </div>
+
+
+<button type="button"
+        mat-stroked-button
+        color="primary"
+        (click)="addPenalty()">
+  <mat-icon>add</mat-icon>
+  Add Penalty
+</button>
+

@@ -1,13 +1,15 @@
 mat-form-field{
-  width: 100%;
+  margin: 10px;
 }
 
 mat-card{
   margin-bottom: 20px;
 }
 
-.add-btn{
-  margin-top: 20px;
+.forms{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .mat-radio-button ~ .mat-radio-button {
@@ -21,5 +23,5 @@ h3{
 
 .radioBtns{
   display: flex;
-  margin-top: 10px;
+  margin: 10px 10px;
 }
