@@ -14,6 +14,7 @@ export class DisplayFileComponent implements OnInit {
   fullnameTitle: string;
   pageTitle: string = 'File';
   backUrl: string;
+  memberId: string;
 
   constructor(private router: Router,
               // private location: Location,
@@ -28,6 +29,7 @@ export class DisplayFileComponent implements OnInit {
   private onFileRetrieved(file: MemberFile): void {
       if (file) {
         this.fullnameTitle = `${file.rank} ${file.lastName} ${file.firstName}`;
+        this.memberId = file.id;
         this.backUrl = this.previousCurrentUrlService.previousUrl;
         this.pageTitle = 'Staff member file of: ';
       } else {

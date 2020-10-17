@@ -11,14 +11,3 @@ mat-card{
   flex-wrap: wrap;
   align-items: center;
 }
-
-h4{
-  margin-left: 10px;
-}
-
-mat-slider{
-  width: 100%;
-  max-width: 200px;
-}
-
-

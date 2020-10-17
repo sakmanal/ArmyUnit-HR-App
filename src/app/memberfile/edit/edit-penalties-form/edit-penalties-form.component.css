@@ -12,23 +12,7 @@ mat-card{
   align-items: center;
 }
 
-.mat-radio-button ~ .mat-radio-button {
-  margin-left: 16px;
-}
 
-h3{
-  margin-right: 20px;
-  margin-top: -3px;
-}
 
-.radioBtns{
-  display: flex;
-  margin-top: 10px;
-}
-
-mat-slider{
-  width: 100%;
-  max-width: 200px;
-}
 
 

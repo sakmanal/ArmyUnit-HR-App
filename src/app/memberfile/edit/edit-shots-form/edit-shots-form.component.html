@@ -5,7 +5,7 @@
         <div [formGroupName]="i">
           <div class="forms">
             <mat-form-field appearance="fill">
-              <mat-label class="label">Place</mat-label>
+              <mat-label>Place</mat-label>
               <input type="text"
                       matInput
                       placeholder="e.g 4th ArmyCamp shooting range"
@@ -35,7 +35,7 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-              <mat-label class="label">Distance (metres)</mat-label>
+              <mat-label>Distance (metres)</mat-label>
               <input type="number"
                       matInput
                       step="50"
@@ -43,6 +43,7 @@
                       required
                       placeholder="e.g 100 (metres)"
                       formControlName="distance" />
+                      <span matSuffix>metres</span>
                       <mat-error *ngIf="shotFormControls(i).distance.hasError('required')">
                         Distance is <strong>required.</strong>
                       </mat-error>
@@ -52,7 +53,7 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-              <mat-label class="label">Shots fired</mat-label>
+              <mat-label>Shots fired</mat-label>
               <input type="number"
                       matInput
                       min="1"
@@ -63,7 +64,7 @@
                       </mat-error>
             </mat-form-field>
           </div>
-            <div>
+            <div class="forms">
               <h4>Success Rate: </h4>
               <mat-slider
               thumbLabel

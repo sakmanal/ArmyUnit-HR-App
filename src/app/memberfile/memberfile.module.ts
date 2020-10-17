@@ -19,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EditPenaltiesFormComponent } from './edit/edit-penalties-form/edit-penalties-form.component';
 import { EditShotsFormComponent } from './edit/edit-shots-form/edit-shots-form.component';
 import { EditTrainingFormComponent } from './edit/edit-training-form/edit-training-form.component';
+import { EditMedicalinfoFormComponent } from './edit/edit-medicalinfo-form/edit-medicalinfo-form.component';
+import { EditPersonalinfoFormComponent } from './edit/edit-personalinfo-form/edit-personalinfo-form.component';
 
 const memberfileRoutes: Routes = [
   { path: '', component: SelectFileComponent },
@@ -49,6 +51,8 @@ const memberfileRoutes: Routes = [
     EditPenaltiesFormComponent,
     EditShotsFormComponent,
     EditTrainingFormComponent,
+    EditMedicalinfoFormComponent,
+    EditPersonalinfoFormComponent,
   ],
   imports: [
     CommonModule,

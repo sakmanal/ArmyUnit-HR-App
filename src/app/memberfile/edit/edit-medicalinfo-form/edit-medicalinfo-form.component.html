@@ -1,0 +1,54 @@
+<mat-card>
+  <mat-card-header>
+    <h2><i class="fas fa-file-medical"></i> Medical Info</h2>
+  </mat-card-header>
+  <mat-card-content>
+    <div novalidate [formGroup]="editForm">
+      <div formGroupName="medical_info" class="forms">
+
+        <mat-form-field appearance="fill">
+          <mat-label>Blood Type</mat-label>
+          <mat-select name="bloodType" formControlName="bloodType" required>
+            <mat-option *ngFor="let type of bloodTypes" [value]="type">
+              {{type}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="medicalFormControls.bloodType.invalid">
+            Blood Type is <strong>required</strong>.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Height (metres)</mat-label>
+          <input  type="number"
+                  matInput
+                  min="1"
+                  max="3"
+                  step="0.10"
+                  placeholder="e.g 1.75"
+                  formControlName="height" />
+                  <span matSuffix>metres</span>
+                  <mat-error *ngIf="medicalFormControls.height.invalid">
+                    <strong>Invalid number.</strong>
+                  </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Weight (Kg)</mat-label>
+          <input  type="number"
+                  matInput
+                  min="40"
+                  max="250"
+                  step="5"
+                  placeholder="e.g 85"
+                  formControlName="kilos" />
+                  <span matSuffix>kg</span>
+                  <mat-error *ngIf="medicalFormControls.kilos.invalid">
+                    <strong>Invalid number.</strong>
+                  </mat-error>
+        </mat-form-field>
+
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

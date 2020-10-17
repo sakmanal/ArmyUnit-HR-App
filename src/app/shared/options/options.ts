@@ -75,3 +75,7 @@ export const penalty_types: string[] = [
   "on hold"
 ]
 
+export const bloodTypes: string[] = [
+  "0+" , "0-" , "A+" , "A-" , "B+" , "B-" , "AB+" , "AB-"
+]
+

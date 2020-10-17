@@ -5,7 +5,7 @@
         <div [formGroupName]="i">
           <div class="forms">
             <mat-form-field appearance="fill">
-              <mat-label class="label">Type</mat-label>
+              <mat-label>Type</mat-label>
               <input type="text"
                       matInput
                       required
@@ -17,7 +17,7 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-              <mat-label class="label">Training Unit</mat-label>
+              <mat-label>Training Unit</mat-label>
               <input type="text"
                       matInput
                       required
@@ -33,7 +33,9 @@
                                       _required="yes"
                                       label="Select Training start & end Date">
             </app-start-end-datepicker>
+
           </div>
+
             <div class="radioBtns">
               <h3>Training result:</h3>
               <mat-radio-group aria-label="Select result" formControlName="result" color="primary">

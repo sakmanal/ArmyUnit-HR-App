@@ -47,4 +47,8 @@ export class EditContainerComponent implements OnInit {
     console.log(this.editForm.value);
   }
 
+  public getInValid(formCtrl: string){
+    return this.editForm.get(formCtrl).invalid
+  }
+
 }

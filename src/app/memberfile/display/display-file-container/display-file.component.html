@@ -1,19 +1,31 @@
 <div class="header">
-  <button mat-raised-button
-          *ngIf="backUrl"
-          (click)="onBack()"
-          color="primary"
-          class="back">
-    <mat-icon>arrow_back</mat-icon>
-    back
-  </button>
+  <div>
+    <button
+      mat-raised-button
+      *ngIf="backUrl"
+      (click)="onBack()"
+      color="primary"
+      class="back"
+    >
+      <mat-icon>arrow_back</mat-icon>
+      back
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      class="back"
+      [routerLink]="['/memberFile', memberId, 'edit']"
+    >
+      <mat-icon>edit</mat-icon>
+      Edit
+    </button>
+  </div>
   <h2>
-    <i class="fas fa-folder-open" style="color: peru;"></i>
-    {{pageTitle}}
-    <span class="name" *ngIf="fullnameTitle">{{fullnameTitle}}</span>
+    <i class="fas fa-folder-open" style="color: peru"></i>
+    {{ pageTitle }}
+    <span class="name" *ngIf="fullnameTitle">{{ fullnameTitle }}</span>
   </h2>
 </div>
 <mat-divider></mat-divider>
 
 <app-tabs></app-tabs>
-

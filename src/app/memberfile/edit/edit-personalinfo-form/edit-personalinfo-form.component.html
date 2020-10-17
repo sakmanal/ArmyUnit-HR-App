@@ -1,0 +1,190 @@
+<mat-card>
+  <mat-card-header>
+    <h2><i class="fas fa-user"></i> Personal Info</h2>
+  </mat-card-header>
+  <mat-card-content>
+    <div novalidate [formGroup]="editForm">
+      <div formGroupName="personal_info" class="forms">
+
+        <mat-form-field appearance="fill">
+          <mat-label class="label">Father Name</mat-label>
+          <input  type="text"
+                  matInput
+                  required
+                  placeholder="e.g John Smith"
+                  formControlName="fatherName" />
+                  <mat-icon matSuffix>person</mat-icon>
+                  <mat-error *ngIf="personalFormControls.fatherName.invalid">
+                    Father Name is <strong>required.</strong>
+                  </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label class="label">Mother Name</mat-label>
+          <input  type="text"
+                  matInput
+                  required
+                  placeholder="e.g Jane Smith"
+                  formControlName="motherName" />
+                  <mat-icon matSuffix>person</mat-icon>
+                  <mat-error *ngIf="personalFormControls.motherName.invalid">
+                    Mother Name is <strong>required.</strong>
+                  </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label class="label">Civilian ID Number</mat-label>
+          <input  type="text"
+                  matInput
+                  placeholder="e.g AE 46873"
+                  formControlName="ID_number" />
+                  <mat-icon matSuffix>vpn_key</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label class="label">Place of origin</mat-label>
+          <input  type="text"
+                  matInput
+                  required
+                  placeholder="e.g Thessaloniki"
+                  formControlName="place_of_origin" />
+                  <mat-icon matSuffix>place</mat-icon>
+                  <mat-error *ngIf="personalFormControls.place_of_origin.invalid">
+                    Place of origin is <strong>required.</strong>
+                  </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label class="label">Place of residence</mat-label>
+          <input  type="text"
+                  matInput
+                  required
+                  placeholder="e.g Athens"
+                  formControlName="place_of_residence" />
+                  <mat-icon matSuffix>place</mat-icon>
+                  <mat-error *ngIf="personalFormControls.place_of_residence.invalid">
+                    Place of residence is <strong>required.</strong>
+                  </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label class="label">Education</mat-label>
+          <input  type="text"
+                  matInput
+                  placeholder="e.g Bachelor degree"
+                  formControlName="education" />
+                  <mat-icon matSuffix>school</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label class="label">Profession</mat-label>
+          <input  type="text"
+                  matInput
+                  placeholder="e.g Civil Engineer"
+                  formControlName="profession" />
+                  <mat-icon matSuffix>business_center</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label class="label">Home telephone</mat-label>
+          <input  type="text"
+                  matInput
+                  placeholder="e.g 30-25357-05278"
+                  formControlName="home_telephone" />
+                  <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label class="label">Personal telephone</mat-label>
+          <input  type="text"
+                  matInput
+                  required
+                  placeholder="e.g Athens"
+                  formControlName="personal_telephone" />
+                  <mat-icon matSuffix>phone</mat-icon>
+                  <mat-error *ngIf="personalFormControls.personal_telephone.invalid">
+                    Personal telephone is <strong>required.</strong>
+                  </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label class="label">Age</mat-label>
+          <input  type="number"
+                  matInput
+                  required
+                  placeholder="e.g 18"
+                  formControlName="age" />
+                  <mat-icon matSuffix>hourglass_full</mat-icon>
+                  <mat-error *ngIf="personalFormControls.age.invalid">
+                    Age is <strong>required.</strong>
+                  </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label class="label">How many Brothers?</mat-label>
+          <input  type="number"
+                  matInput
+                  required
+                  placeholder="e.g 2"
+                  formControlName="brothers_count" />
+                  <mat-icon matSuffix>group_add</mat-icon>
+                  <mat-error *ngIf="personalFormControls.brothers_count.invalid">
+                    Brothers Number is <strong>required.</strong>
+                  </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Date of birth</mat-label>
+          <input matInput [matDatepicker]="dp" formControlName="date_of_birth" required>
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp></mat-datepicker>
+          <mat-error *ngIf="personalFormControls.date_of_birth.invalid">
+            Date of birth is <strong>required.</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <div formGroupName="permanent_address" class="forms">
+          <mat-form-field appearance="fill">
+            <mat-label class="label">Address</mat-label>
+            <input  type="text"
+                    matInput
+                    required
+                    placeholder="e.g President street"
+                    formControlName="address" />
+                    <mat-icon matSuffix>pin_drop</mat-icon>
+                    <mat-error *ngIf="personalFormControls.permanent_address.invalid">
+                      Address is <strong>required.</strong>
+                    </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label class="label">Address No.</mat-label>
+            <input  type="number"
+                    matInput
+                    required
+                    placeholder="e.g 34"
+                    formControlName="number" />
+                    <mat-icon matSuffix>plus_one</mat-icon>
+                    <mat-error *ngIf="personalFormControls.permanent_address.invalid">
+                      Address No. is <strong>required.</strong>
+                    </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label class="label">Zip Code</mat-label>
+            <input  type="number"
+                    matInput
+                    required
+                    placeholder="e.g 66100"
+                    formControlName="zip_code" />
+                    <mat-icon matSuffix>layers</mat-icon>
+                    <mat-error *ngIf="personalFormControls.permanent_address.invalid">
+                      Zip Code is <strong>required.</strong>
+                    </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+

@@ -19,19 +19,20 @@
       <mat-tab>
         <ng-template mat-tab-label>
           <mat-icon class="tab-icon">account_circle</mat-icon>
-          General Info
+          <span [class.formError]="getInValid('medical_info') || getInValid('personal_info')">General Info</span>
+          <mat-icon *ngIf="getInValid('medical_info') || getInValid('personal_info')" class="formError">error</mat-icon>
         </ng-template>
         <div class="content">
-
-          </div>
-
-
+          <app-edit-medicalinfo-form [editForm]="editForm" [medicalData]="file.medical_info"></app-edit-medicalinfo-form>
+          <app-edit-personalinfo-form [editForm]="editForm" [personalData]="file.personal_info"></app-edit-personalinfo-form>
+        </div>
       </mat-tab>
 
       <mat-tab>
         <ng-template mat-tab-label>
-          <mat-icon class="tab-icon">report</mat-icon>
-          Penalties
+          <mat-icon class="tab-icon">lock</mat-icon>
+          <span [class.formError]="getInValid('penalties')">Penalties</span>
+          <mat-icon *ngIf="getInValid('penalties')" class="formError">error</mat-icon>
         </ng-template>
         <div class="content">
           <app-edit-penalties-form [editForm]="editForm" [penaltiesData]="file.penalties"></app-edit-penalties-form>
@@ -41,7 +42,8 @@
       <mat-tab>
         <ng-template mat-tab-label>
           <mat-icon class="tab-icon">directions_walk</mat-icon>
-          Training
+          <span [class.formError]="getInValid('training')">Training</span>
+          <mat-icon *ngIf="getInValid('training')" class="formError">error</mat-icon>
         </ng-template>
         <div class="content">
           <app-edit-training-form [editForm]="editForm" [trainingData]="file.training"></app-edit-training-form>
@@ -51,7 +53,8 @@
       <mat-tab>
         <ng-template mat-tab-label>
           <mat-icon class="tab-icon">border_outer</mat-icon>
-          Shots Fired
+          <span [class.formError]="getInValid('shots')">Shots Fired</span>
+          <mat-icon *ngIf="getInValid('shots')" class="formError">error</mat-icon>
         </ng-template>
         <div class="content">
           <app-edit-shots-form [editForm]="editForm" [shotsData]="file.shots"></app-edit-shots-form>

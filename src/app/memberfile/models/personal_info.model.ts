@@ -1,7 +1,7 @@
 export interface Personal_info{
     fatherName: string;
     motherName: string;
-    ID_number: string;
+    ID_number?: string;
     place_of_origin: string;
     place_of_residence:string;
     education?: string;
