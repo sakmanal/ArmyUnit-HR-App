@@ -1,0 +1,22 @@
+mat-form-field{
+  margin: 10px;
+}
+
+mat-card{
+  margin-bottom: 20px;
+}
+
+.forms{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.radioBtns{
+  display: flex;
+  margin: 10px 10px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}

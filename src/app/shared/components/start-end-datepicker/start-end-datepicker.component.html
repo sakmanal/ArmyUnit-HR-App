@@ -1,7 +1,7 @@
 <div novalidate [formGroup]="form">
   <mat-form-field [appearance]="appearance">
     <mat-label>{{label}}</mat-label>
-    <mat-date-range-input [min]="minDate" [max]="maxDate" [rangePicker]="picker" [required]="required">
+    <mat-date-range-input [min]="minDate" [max]="maxDate" [rangePicker]="picker" [required]="_required">
       <input matStartDate formControlName="start_date" placeholder="Start date">
       <input matEndDate formControlName="end_date" placeholder="End date">
     </mat-date-range-input>

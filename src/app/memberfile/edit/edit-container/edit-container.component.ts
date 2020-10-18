@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MemberFile } from '../../models/memberFile.model';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-container',
@@ -35,7 +35,7 @@ export class EditContainerComponent implements OnInit {
     if (file) {
       console.log(file);
       this.file = file;
-      this.fullnameTitle = `${file.rank} ${file.lastName} ${file.firstName}`;
+      this.fullnameTitle = `${file.member.rank} ${file.member.lastName} ${file.member.firstName}`;
       this.pageTitle = 'Edit member file of: ';
     } else {
       this.pageTitle = 'New member file';
@@ -48,7 +48,11 @@ export class EditContainerComponent implements OnInit {
   }
 
   public getInValid(formCtrl: string){
-    return this.editForm.get(formCtrl).invalid
+      try {
+        return this.editForm.get(formCtrl).invalid;
+      } catch (error) {
+        console.error(`NO formControl with name ${formCtrl}`)
+      }
   }
 
 }

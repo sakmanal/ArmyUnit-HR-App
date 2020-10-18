@@ -9,7 +9,7 @@ import { NotificationService } from '@core/services/notification/notification.se
 import { DeleteDialogComponent } from '@shared/components/delete-dialog/delete-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
-import { switchMap, filter, map } from 'rxjs/operators';
+import { switchMap, filter, map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-staff-info',
@@ -179,7 +179,7 @@ export class StaffInfoComponent implements OnInit {
     //   }
 
     dialogRef.afterClosed().pipe(
-      filter( (data: {event: string, member: Staff} ) => data.event == 'Confirm' ),
+      filter( (data: {event: string, member: Staff} ) => data && data.event == 'Confirm' ),
       map( data => { return data.member }),
       switchMap((member: Staff) => {
           this.load = true;

@@ -28,8 +28,8 @@ export class DisplayFileComponent implements OnInit {
 
   private onFileRetrieved(file: MemberFile): void {
       if (file) {
-        this.fullnameTitle = `${file.rank} ${file.lastName} ${file.firstName}`;
-        this.memberId = file.id;
+        this.fullnameTitle = `${file.member.rank} ${file.member.lastName} ${file.member.firstName}`;
+        this.memberId = file.member.id;
         this.backUrl = this.previousCurrentUrlService.previousUrl;
         this.pageTitle = 'Staff member file of: ';
       } else {

@@ -13,8 +13,9 @@ import {map, startWith} from 'rxjs/operators';
 })
 export class ChipsAutocompleteComponent {
 
-  @Input() selectable = true;
-  @Input() removable = true;
+  @Input() selectable:boolean = true;
+  @Input() removable:boolean = true;
+  @Input() appearance: 'outline' | 'standard' | 'fill' = 'standard'
   separatorKeysCodes: number[] = [ENTER, COMMA];
   myControl = new FormControl();
   filteredOptions: Observable<string[]>;
@@ -41,7 +42,7 @@ export class ChipsAutocompleteComponent {
     const input = event.input;
     const value = event.value;
 
-    // Add our fruit
+    // Add our selection
     if ((value || '').trim()) {
       this.opts.push(value.trim());
       this.optionsChange.emit(this.opts);
@@ -74,7 +75,7 @@ export class ChipsAutocompleteComponent {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.alloptions.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
+    return this.alloptions.filter(opt => opt.toLowerCase().indexOf(filterValue) === 0);
   }
 
 }

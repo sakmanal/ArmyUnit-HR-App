@@ -5,43 +5,43 @@
     </mat-card-header>
     <mat-card-content>
         <div class="flex">
-          <img [src]="memberFile.foto" class="foto">
+          <img [src]="memberFile.member.foto" class="foto">
           <div>
             <div class="flex">
               <div class="title">First Name:</div>
-              <span class="val">{{memberFile.firstName}}</span>
+              <span class="val">{{memberFile.member.firstName}}</span>
             </div>
             <hr>
             <div class="flex">
               <div class="title">Last Name:</div>
-              <span class="val">{{memberFile.lastName}}</span>
+              <span class="val">{{memberFile.member.lastName}}</span>
             </div><hr>
             <div class="flex">
               <div class="title">Rank:</div>
-              <span class="val">{{memberFile.rank}}</span></div>
+              <span class="val">{{memberFile.member.rank}}</span></div>
               <hr>
             <div class="flex">
               <div class="title">Military ID:</div>
-              <span class="val">{{memberFile.MilitaryRegisterNumber}}</span>
+              <span class="val">{{memberFile.member.MilitaryRegisterNumber}}</span>
             </div>
             <hr>
             <div class="flex">
               <div class="title">Platoon:</div>
-              <span class="val">{{memberFile.platoon}}</span>
+              <span class="val">{{memberFile.member.platoon}}</span>
             </div>
             <hr>
             <div class="flex">
               <div class="title">Specialty:</div>
               <span class="val">
                 <mat-chip-list>
-                  <mat-chip *ngFor="let specialty of memberFile.specialty">{{specialty}}</mat-chip>
+                  <mat-chip *ngFor="let specialty of memberFile.member.specialty">{{specialty}}</mat-chip>
                 </mat-chip-list>
               </span>
             </div>
             <hr>
             <div class="flex">
               <div class="title">Armed:</div>
-              <span class="val">{{memberFile.armed}}</span>
+              <span class="val">{{memberFile.member.armed}}</span>
             </div>
           </div>
         </div>
@@ -80,7 +80,7 @@
     <mat-card-content>
       <div class="flex">
         <div class="title3">Physical Fitness class:</div>
-        <span class="val">{{memberFile.class_I}}</span>
+        <span class="val">{{memberFile.member.class_I}}</span>
       </div><hr>
       <div class="flex">
         <div class="title3">Blood Type:</div>

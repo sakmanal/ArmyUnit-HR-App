@@ -1,73 +1,126 @@
 <div class="header">
-  <button mat-raised-button
-          color="primary"
-          [routerLink]="['/memberFile']"
-          class="back">
-    <mat-icon>cancel</mat-icon>
-    Cancel
-  </button>
+  <div>
+    <button
+      mat-raised-button
+      color="primary"
+      [routerLink]="['/memberFile']"
+      class="back"
+    >
+      <mat-icon>cancel</mat-icon>
+      Cancel
+    </button>
+    <button
+      mat-raised-button
+      color="warn"
+      class="back"
+    >
+      <mat-icon>delete</mat-icon>
+      Delete
+    </button>
+  </div>
   <h2>
-    <i class="fas fa-folder-open" style="color: peru;"></i>
-    {{pageTitle}}
-    <span class="name" *ngIf="fullnameTitle">{{fullnameTitle}}</span>
+    <i class="fas fa-folder-open" style="color: peru"></i>
+    {{ pageTitle }}
+    <span class="name" *ngIf="fullnameTitle">{{ fullnameTitle }}</span>
   </h2>
 </div>
 <mat-divider></mat-divider>
 
 <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
   <mat-tab-group>
-      <mat-tab>
-        <ng-template mat-tab-label>
-          <mat-icon class="tab-icon">account_circle</mat-icon>
-          <span [class.formError]="getInValid('medical_info') || getInValid('personal_info')">General Info</span>
-          <mat-icon *ngIf="getInValid('medical_info') || getInValid('personal_info')" class="formError">error</mat-icon>
-        </ng-template>
-        <div class="content">
-          <app-edit-medicalinfo-form [editForm]="editForm" [medicalData]="file.medical_info"></app-edit-medicalinfo-form>
-          <app-edit-personalinfo-form [editForm]="editForm" [personalData]="file.personal_info"></app-edit-personalinfo-form>
-        </div>
-      </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">info</mat-icon>
+        <span [class.formError]="getInValid('member')">Basic Info</span>
+        <mat-icon *ngIf="getInValid('member')" class="formError"
+          >error</mat-icon
+        >
+      </ng-template>
+      <div class="content">
+        <app-edit-basicinfo-form
+          [editForm]="editForm"
+          [memberData]="file.member"
+        ></app-edit-basicinfo-form>
+      </div>
+    </mat-tab>
 
-      <mat-tab>
-        <ng-template mat-tab-label>
-          <mat-icon class="tab-icon">lock</mat-icon>
-          <span [class.formError]="getInValid('penalties')">Penalties</span>
-          <mat-icon *ngIf="getInValid('penalties')" class="formError">error</mat-icon>
-        </ng-template>
-        <div class="content">
-          <app-edit-penalties-form [editForm]="editForm" [penaltiesData]="file.penalties"></app-edit-penalties-form>
-        </div>
-      </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">account_circle</mat-icon>
+        <span
+          [class.formError]="
+            getInValid('medical_info') || getInValid('personal_info')
+          "
+          >General Info</span
+        >
+        <mat-icon
+          *ngIf="getInValid('medical_info') || getInValid('personal_info')"
+          class="formError"
+          >error</mat-icon
+        >
+      </ng-template>
+      <div class="content">
+        <app-edit-medicalinfo-form
+          [editForm]="editForm"
+          [medicalData]="file.medical_info"
+        ></app-edit-medicalinfo-form>
+        <app-edit-personalinfo-form
+          [editForm]="editForm"
+          [personalData]="file.personal_info"
+        >
+        </app-edit-personalinfo-form>
+      </div>
+    </mat-tab>
 
-      <mat-tab>
-        <ng-template mat-tab-label>
-          <mat-icon class="tab-icon">directions_walk</mat-icon>
-          <span [class.formError]="getInValid('training')">Training</span>
-          <mat-icon *ngIf="getInValid('training')" class="formError">error</mat-icon>
-        </ng-template>
-        <div class="content">
-          <app-edit-training-form [editForm]="editForm" [trainingData]="file.training"></app-edit-training-form>
-        </div>
-      </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">lock</mat-icon>
+        <span [class.formError]="getInValid('penalties')">Penalties</span>
+        <mat-icon *ngIf="getInValid('penalties')" class="formError"
+          >error</mat-icon
+        >
+      </ng-template>
+      <div class="content">
+        <app-edit-penalties-form
+          [editForm]="editForm"
+          [penaltiesData]="file.penalties"
+        ></app-edit-penalties-form>
+      </div>
+    </mat-tab>
 
-      <mat-tab>
-        <ng-template mat-tab-label>
-          <mat-icon class="tab-icon">border_outer</mat-icon>
-          <span [class.formError]="getInValid('shots')">Shots Fired</span>
-          <mat-icon *ngIf="getInValid('shots')" class="formError">error</mat-icon>
-        </ng-template>
-        <div class="content">
-          <app-edit-shots-form [editForm]="editForm" [shotsData]="file.shots"></app-edit-shots-form>
-        </div>
-      </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">directions_walk</mat-icon>
+        <span [class.formError]="getInValid('training')">Training</span>
+        <mat-icon *ngIf="getInValid('training')" class="formError"
+          >error</mat-icon
+        >
+      </ng-template>
+      <div class="content">
+        <app-edit-training-form
+          [editForm]="editForm"
+          [trainingData]="file.training"
+        ></app-edit-training-form>
+      </div>
+    </mat-tab>
 
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">border_outer</mat-icon>
+        <span [class.formError]="getInValid('shots')">Shots Fired</span>
+        <mat-icon *ngIf="getInValid('shots')" class="formError">error</mat-icon>
+      </ng-template>
+      <div class="content">
+        <app-edit-shots-form
+          [editForm]="editForm"
+          [shotsData]="file.shots"
+        ></app-edit-shots-form>
+      </div>
+    </mat-tab>
   </mat-tab-group>
 
-  <button mat-raised-button
-            color="primary"
-            class="save-btn"
-            type="submit">
-      <mat-icon>save</mat-icon>
-      Save member File
+  <button mat-raised-button color="primary" class="save-btn" type="submit">
+    <mat-icon>save</mat-icon>
+    Save member File
   </button>
 </form>

@@ -1,0 +1,115 @@
+<mat-card>
+  <mat-card-header>
+    <h2><i class="fas fa-info-circle"></i> Basic Info</h2>
+  </mat-card-header>
+  <mat-card-content>
+    <div novalidate [formGroup]="editForm">
+      <div formGroupName="member">
+        <div class="forms">
+
+          <mat-form-field appearance="fill">
+            <mat-label>FirstName</mat-label>
+            <input  type="text"
+                    matInput
+                    maxlength="20"
+                    required
+                    placeholder="e.g James"
+                    formControlName="firstName" />
+                    <mat-error *ngIf="memberFormControls.firstName.hasError('required')">
+                      Firstname is <strong>required</strong>.
+                    </mat-error>
+                    <mat-error *ngIf="memberFormControls.firstName.hasError('minlength')">
+                      Firstname must be at least 3 characters.
+                    </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>LastName</mat-label>
+            <input  type="text"
+                    matInput
+                    maxlength="20"
+                    required
+                    placeholder="e.g Brown"
+                    formControlName="lastName" />
+                    <mat-error *ngIf="memberFormControls.lastName.hasError('required')">
+                      LastName is <strong>required</strong>.
+                    </mat-error>
+                    <mat-error *ngIf="memberFormControls.lastName.hasError('minlength')">
+                      LastName must be at least 3 characters.
+                    </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Rank</mat-label>
+            <mat-select name="platoon" formControlName="rank" required>
+              <mat-option *ngFor="let type of rank_types" [value]="type">
+                {{type}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="memberFormControls.rank.invalid">
+              Rank is <strong>required</strong>.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Military ID</mat-label>
+            <input  type="text"
+                    numbersOnly
+                    matInput
+                    maxlength="12"
+                    required
+                    placeholder="e.g 1350000714"
+                    formControlName="MilitaryRegisterNumber" />
+                    <mat-error *ngIf="memberFormControls.MilitaryRegisterNumber.hasError('required')">
+                      Military ID is <strong>required</strong>.
+                    </mat-error>
+                    <mat-error *ngIf="memberFormControls.MilitaryRegisterNumber.hasError('minlength')">
+                      Military ID must be at least 5 digits.
+                    </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Platoon</mat-label>
+            <mat-select name="platoon" formControlName="platoon" required>
+              <mat-option *ngFor="let type of platoon_types" [value]="type">
+                {{type}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="memberFormControls.platoon.invalid">
+              Platoon is <strong>required</strong>.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Physical fitness class</mat-label>
+            <mat-select name="class_I" formControlName="class_I" required>
+              <mat-option *ngFor="let type of classI_types" [value]="type">
+                {{type}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="memberFormControls.class_I.invalid">
+              Physical fitness class <strong>required</strong>.
+            </mat-error>
+          </mat-form-field>
+
+          <div class="radioBtns">
+            <mat-radio-group aria-label="Select armed" formControlName="armed" color="primary">
+              <mat-radio-button [value]="true">Armed</mat-radio-button>
+              <mat-radio-button [value]="false">Unarmed</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+        </div>
+
+        <app-chips-autocomplete [alloptions]="specialty_types"
+            placeholder="New Specialty..."
+            appearance="fill"
+            [options]="memberFormControls.specialty.value"
+            (optionsChange)="setSpecialty($event)">
+        </app-chips-autocomplete>
+
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+

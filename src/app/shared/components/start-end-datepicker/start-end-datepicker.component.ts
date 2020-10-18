@@ -32,11 +32,7 @@ export class StartEndDatepickerComponent implements ControlValueAccessor, OnInit
   @Input() minDate: Date = new Date(1980, 1, 1);
   @Input() label: string = 'Select Dates';
   @Input() appearance: 'outline' | 'standard' | 'fill' = 'standard';
-  @Input() _required: 'yes' | 'no' = 'yes';
-
-  get required(): boolean {
-    return (this._required === 'yes')
-  }
+  @Input() _required: boolean = true;
 
   get value(): StartEndDates {
     return this.form.value;
@@ -59,7 +55,7 @@ export class StartEndDatepickerComponent implements ControlValueAccessor, OnInit
       start_date: [''],
       end_date: ['']
     });
-    this.setValidators(this._required)
+    this.setValidators();
 
     this.subscriptions.push(
       this.form.valueChanges.subscribe(value => {
@@ -69,8 +65,8 @@ export class StartEndDatepickerComponent implements ControlValueAccessor, OnInit
     );
   }
 
-  private setValidators(required: 'yes' | 'no'){
-    if (this._required === 'yes'){
+  private setValidators(){
+    if (this._required){
       this.dateform.end_date.setValidators([Validators.required])
       this.dateform.start_date.setValidators([Validators.required])
     }

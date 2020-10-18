@@ -7,7 +7,8 @@ import { Medical_info } from './medical_info.model';
 import { ClassInfo } from './classInfo.model';
 import { _DayOff } from '@core/models/day_off.model';
 
-export interface MemberFile extends Staff{
+export interface MemberFile {
+   member: Staff;
    days_off: _DayOff[];
    class_info?: ClassInfo;
    personal_info: Personal_info;

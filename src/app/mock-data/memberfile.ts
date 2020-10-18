@@ -133,7 +133,7 @@ export function createMemberfile(id: string): MemberFile {
   }
 
  return {
-   ...member,
+   member,
    personal_info,
    medical_info,
    training,

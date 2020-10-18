@@ -13,111 +13,112 @@
   <img class="foto" [src]='avatar' alt="member Image">
 
   <form novalidate #staffForm="ngForm" autocomplete="off">
-  <div  class="form_container">
+    <div  class="form_container">
 
-        <mat-form-field appearance="outline">
-          <mat-label>Member Lastname</mat-label>
-          <input matInput
-                 id="inputLastName"
-                 type="text"
-                 placeholder="Lastname"
-                 required
-                 minlength="3"
-                 maxlength="20"
-                 [(ngModel)]="member.lastName"
-                 name="Lastname"
-                 #lastNameVar="ngModel">
-          <mat-error *ngIf="lastNameVar.errors?.required">
-            Lastname is <strong>required</strong>.
-          </mat-error>
-          <mat-error *ngIf="lastNameVar.errors?.minlength">
-            Lastname must be at least 3 characters.
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Member Lastname</mat-label>
+            <input matInput
+                  id="inputLastName"
+                  type="text"
+                  placeholder="Lastname"
+                  required
+                  minlength="3"
+                  maxlength="20"
+                  [(ngModel)]="member.lastName"
+                  name="Lastname"
+                  #lastNameVar="ngModel">
+            <mat-error *ngIf="lastNameVar.errors?.required">
+              Lastname is <strong>required</strong>.
+            </mat-error>
+            <mat-error *ngIf="lastNameVar.errors?.minlength">
+              Lastname must be at least 3 characters.
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Member Firstname</mat-label>
-          <input matInput
-                 id="inputFirstname"
-                 type="text"
-                 placeholder="Firstname"
-                 required
-                 minlength="3"
-                 maxlength="20"
-                 [(ngModel)]="member.firstName"
-                 name="Firstname"
-                 #firstNameVar="ngModel">
-          <mat-error *ngIf="firstNameVar.errors?.required">
-            Firstname is <strong>required</strong>.
-          </mat-error>
-          <mat-error *ngIf="firstNameVar.errors?.minlength">
-            Firstname must be at least 3 characters.
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Member Firstname</mat-label>
+            <input matInput
+                  id="inputFirstname"
+                  type="text"
+                  placeholder="Firstname"
+                  required
+                  minlength="3"
+                  maxlength="20"
+                  [(ngModel)]="member.firstName"
+                  name="Firstname"
+                  #firstNameVar="ngModel">
+            <mat-error *ngIf="firstNameVar.errors?.required">
+              Firstname is <strong>required</strong>.
+            </mat-error>
+            <mat-error *ngIf="firstNameVar.errors?.minlength">
+              Firstname must be at least 3 characters.
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Member Military ID</mat-label>
-          <input matInput
-                 numbersOnly
-                 id="inputMilitaryID"
-                 type="text"
-                 placeholder="Military ID"
-                 required
-                 minlength="5"
-                 maxlength="12"
-                 [(ngModel)]="member.MilitaryRegisterNumber"
-                 name="MilitaryID"
-                 #MilitaryRegisterNumberVar="ngModel">
-          <mat-error *ngIf="MilitaryRegisterNumberVar.errors?.required">
-            Military ID is <strong>required</strong>.
-          </mat-error>
-          <mat-error *ngIf="MilitaryRegisterNumberVar.errors?.minlength">
-            Military ID must be at least 5 digits.
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Member Military ID</mat-label>
+            <input matInput
+                  numbersOnly
+                  id="inputMilitaryID"
+                  type="text"
+                  placeholder="Military ID"
+                  required
+                  minlength="5"
+                  maxlength="12"
+                  [(ngModel)]="member.MilitaryRegisterNumber"
+                  name="MilitaryID"
+                  #MilitaryRegisterNumberVar="ngModel">
+            <mat-error *ngIf="MilitaryRegisterNumberVar.errors?.required">
+              Military ID is <strong>required</strong>.
+            </mat-error>
+            <mat-error *ngIf="MilitaryRegisterNumberVar.errors?.minlength">
+              Military ID must be at least 5 digits.
+            </mat-error>
+          </mat-form-field>
 
-        <app-options-input [options]="rank_options"
-                           placeholder="Rank"
-                           label="Member Rank"
-                           [(option)]="member.rank">
-        </app-options-input>
+          <app-options-input [options]="rank_options"
+                            placeholder="Rank"
+                            label="Member Rank"
+                            [(option)]="member.rank">
+          </app-options-input>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Platoon</mat-label>
-          <mat-select [(ngModel)]="member.platoon"
-                      name="platton"
-                      required
-                      #platoonVar="ngModel">
-            <mat-option *ngFor="let option of platoon_options" [value]="option">
-              {{option}}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="platoonVar.errors?.required">
-            Platoon is <strong>required</strong>.
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Platoon</mat-label>
+            <mat-select [(ngModel)]="member.platoon"
+                        name="platton"
+                        required
+                        #platoonVar="ngModel">
+              <mat-option *ngFor="let option of platoon_options" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="platoonVar.errors?.required">
+              Platoon is <strong>required</strong>.
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Physical fitness class</mat-label>
-          <mat-select [(ngModel)]="member.class_I"
-                      name="class_I"
-                      required
-                      #classIVar="ngModel">
-            <mat-option *ngFor="let option of classI_options" [value]="option">
-              {{option}}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="classIVar.errors?.required">
-            Physical fitness class is <strong>required</strong>.
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Physical fitness class</mat-label>
+            <mat-select [(ngModel)]="member.class_I"
+                        name="class_I"
+                        required
+                        #classIVar="ngModel">
+              <mat-option *ngFor="let option of classI_options" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="classIVar.errors?.required">
+              Physical fitness class is <strong>required</strong>.
+            </mat-error>
+          </mat-form-field>
 
-        <app-chips-autocomplete [alloptions]="specialty_options"
-                                placeholder="New Specialty..."
-                                [(options)]="member.specialty">
-        </app-chips-autocomplete>
+          <app-chips-autocomplete [alloptions]="specialty_options"
+                                  placeholder="New Specialty..."
+                                  appearance="outline"
+                                  [(options)]="member.specialty">
+          </app-chips-autocomplete>
 
-  </div>
+    </div>
   </form>
 </div>
 

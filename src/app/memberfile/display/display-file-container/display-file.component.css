@@ -1,7 +1,7 @@
 .header{
   display: flex;
   align-items: baseline;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
 }
 
 .name{
@@ -11,6 +11,7 @@
 
 .back{
   margin-right: 10px;
+  margin-bottom: 10px;
   height: 40px;
   min-width: 100px;
 }
