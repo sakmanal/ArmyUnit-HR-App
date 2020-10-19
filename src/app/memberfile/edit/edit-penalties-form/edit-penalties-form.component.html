@@ -23,7 +23,7 @@
                       min="1"
                       placeholder="e.g 10"
                       formControlName="total_days" />
-                      <mat-error *ngIf="penaltyFormControls(i).total_days.hasError('min')">
+                      <mat-error *ngIf="penaltyFormControls(i).total_days.invalid">
                         <strong>Invalid number.</strong>
                       </mat-error>
             </mat-form-field>

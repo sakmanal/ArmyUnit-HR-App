@@ -29,8 +29,8 @@ export class EditShotsFormComponent implements OnInit {
       date: ['', Validators.required],
       place: [''],
       gun_type: ['', Validators.required],
-      distance: ['', [Validators.required, Validators.min(50)]],
-      total_shots: ['', Validators.min(1)],
+      distance: ['', [Validators.required, Validators.min(50), Validators.max(1000)]],
+      total_shots: ['', [Validators.min(1), Validators.max(500)]],
       success_rate: [0.1, [Validators.required, Validators.min(0), Validators.max(1)]]
     });
   }

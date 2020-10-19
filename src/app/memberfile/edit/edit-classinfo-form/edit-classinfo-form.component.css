@@ -1,0 +1,27 @@
+mat-form-field{
+  margin: 10px;
+}
+
+mat-card{
+  margin-bottom: 20px;
+}
+
+.forms{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.dates {
+  background: #F5F5F5;
+  border-bottom: solid 1px;
+  padding-bottom: 5px;
+}
+
+mat-slide-toggle{
+  margin: 10px;
+}
+
+mat-card-header{
+  margin-top: 5px;
+}

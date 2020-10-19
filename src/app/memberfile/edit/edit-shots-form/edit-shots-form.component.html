@@ -50,6 +50,9 @@
                       <mat-error *ngIf="shotFormControls(i).distance.hasError('min')">
                         Distance can't be less than <strong>50 metres.</strong>
                       </mat-error>
+                      <mat-error *ngIf="shotFormControls(i).distance.hasError('max')">
+                        Distance can't be higher than <strong>1000 metres.</strong>
+                      </mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -59,7 +62,7 @@
                       min="1"
                       placeholder="e.g 10"
                       formControlName="total_shots" />
-                      <mat-error *ngIf="shotFormControls(i).total_shots.hasError('min')">
+                      <mat-error *ngIf="shotFormControls(i).total_shots.invalid">
                         <strong>Invalid number.</strong>
                       </mat-error>
             </mat-form-field>

@@ -27,7 +27,7 @@ export class EditPenaltiesFormComponent {
   get penaltyForm(): FormGroup {
     return this.formBuilder.group({
       type: ['', Validators.required],
-      total_days: ['', Validators.min(1)],
+      total_days: ['', [Validators.min(1), Validators.max(90)]],
       imposition_date: ['', Validators.required],
       reason: ['', Validators.required],
       imposition_officer: ['Major Rios Alex', Validators.required]

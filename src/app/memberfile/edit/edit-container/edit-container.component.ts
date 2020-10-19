@@ -51,7 +51,8 @@ export class EditContainerComponent implements OnInit {
       try {
         return this.editForm.get(formCtrl).invalid;
       } catch (error) {
-        console.error(`NO formControl with name ${formCtrl}`)
+        // console.error(`NO formControl with name ${formCtrl}`)
+        return false
       }
   }
 

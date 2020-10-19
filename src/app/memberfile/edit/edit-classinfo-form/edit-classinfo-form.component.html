@@ -1,0 +1,91 @@
+<mat-card>
+  <mat-slide-toggle color="primary"
+                   [(ngModel)]="enableClassInfoFormControl"
+                   (change)="handleClassInfoFormControl()">
+     Enable Class Information Form
+  </mat-slide-toggle>
+  <mat-divider></mat-divider>
+    <div *ngIf="enableClassInfoFormControl">
+        <mat-card-header>
+          <h2><i class="fas fa-calendar-minus"></i> Class Info</h2>
+        </mat-card-header>
+        <mat-card-content>
+          <div novalidate [formGroup]="editForm">
+            <div formGroupName="class_info">
+              <div class="forms">
+
+                <div formGroupName="training_series">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Training Class Series</mat-label>
+                    <mat-select name="class_series" formControlName="class_series" required>
+                      <mat-option *ngFor="let type of class_series_types" [value]="type">
+                        {{type}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="classInfoFormControls.training_series.invalid">
+                      Training Class Series is <strong>required.</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="fill">
+                    <mat-label>Training Class Year</mat-label>
+                    <mat-select name="class_year" formControlName="class_year" required>
+                      <mat-option *ngFor="let type of years_array" [value]="type">
+                        {{type}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="classInfoFormControls.training_series.invalid">
+                      Training Class Year is <strong>required.</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="dates">
+                  <mat-form-field>
+                    <mat-label>Military Service Start Date</mat-label>
+                    <input matInput [matDatepicker]="dp" formControlName="start_date" required>
+                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                    <mat-datepicker #dp></mat-datepicker>
+                    <mat-error *ngIf="classInfoFormControls.start_date.invalid">
+                      Military Service Start Date is <strong>required.</strong>
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <mat-label>Months of Service</mat-label>
+                    <input  type="number"
+                            matInput
+                            max="20"
+                            min="1"
+                            required
+                            placeholder="e.g 12"
+                            formControlName="months_of_service" />
+                            <span matSuffix>months</span>
+                            <mat-error *ngIf="classInfoFormControls.months_of_service.hasError('required')">
+                              Months of Service is <strong>required.</strong>
+                            </mat-error>
+                            <mat-error *ngIf="classInfoFormControls.months_of_service.hasError('min')">
+                              Months of Service must be at least <strong>1 month.</strong>
+                            </mat-error>
+                            <mat-error *ngIf="classInfoFormControls.months_of_service.hasError('max')">
+                              Months of Service cant't by more than <strong>20 months.</strong>
+                            </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field style="width: 250px;">
+                    <mat-label>Military Service Dismissal Date</mat-label>
+                    <input matInput [matDatepicker]="dp2" formControlName="dismissal_date" readonly>
+                    <mat-datepicker #dp2></mat-datepicker>
+                    <mat-hint>Provide "months of service" to change the Dismissal Date</mat-hint>
+                  </mat-form-field>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+    </div>
+</mat-card>
+
+

@@ -25,6 +25,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {MatSliderModule} from '@angular/material/slider';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MAT_DATE_FORMATS} from '@angular/material/core';
 
 const MY_FORMATS = {
@@ -44,7 +45,7 @@ const modules = [ MatInputModule, MatProgressBarModule, MatButtonModule, MatGrid
                   MatListModule, MatTableModule, MatDividerModule, MatMenuModule, MatProgressSpinnerModule,
                   MatTooltipModule, MatTabsModule, MatSnackBarModule, MatDialogModule, MatAutocompleteModule,
                   MatSelectModule, MatRadioModule, MatChipsModule, MatDatepickerModule, MatMomentDateModule,
-                  MatSliderModule ]
+                  MatSliderModule, MatSlideToggleModule ]
 @NgModule({
 imports: [...modules ],
 

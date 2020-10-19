@@ -1,19 +1,10 @@
 <div class="header">
   <div>
-    <button
-      mat-raised-button
-      color="primary"
-      [routerLink]="['/memberFile']"
-      class="back"
-    >
+    <button mat-raised-button color="primary" [routerLink]="['/memberFile']" class="back">
       <mat-icon>cancel</mat-icon>
       Cancel
     </button>
-    <button
-      mat-raised-button
-      color="warn"
-      class="back"
-    >
+    <button mat-raised-button color="warn" class="back">
       <mat-icon>delete</mat-icon>
       Delete
     </button>
@@ -26,48 +17,31 @@
 </div>
 <mat-divider></mat-divider>
 
-<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()" autocomplete="off">
   <mat-tab-group>
     <mat-tab>
       <ng-template mat-tab-label>
         <mat-icon class="tab-icon">info</mat-icon>
-        <span [class.formError]="getInValid('member')">Basic Info</span>
-        <mat-icon *ngIf="getInValid('member')" class="formError"
-          >error</mat-icon
-        >
+        <span [class.formError]="getInValid('member') || getInValid('class_info')">Basic Info</span>
+        <mat-icon *ngIf="getInValid('member') || getInValid('class_info')" class="formError">error</mat-icon>
       </ng-template>
       <div class="content">
-        <app-edit-basicinfo-form
-          [editForm]="editForm"
-          [memberData]="file.member"
-        ></app-edit-basicinfo-form>
+        <app-edit-basicinfo-form [editForm]="editForm" [memberData]="file.member"></app-edit-basicinfo-form>
+        <app-edit-classinfo-form [editForm]="editForm" [classInfoData]="file.class_info"></app-edit-classinfo-form>
       </div>
     </mat-tab>
 
     <mat-tab>
       <ng-template mat-tab-label>
         <mat-icon class="tab-icon">account_circle</mat-icon>
-        <span
-          [class.formError]="
+        <span [class.formError]="
             getInValid('medical_info') || getInValid('personal_info')
-          "
-          >General Info</span
-        >
-        <mat-icon
-          *ngIf="getInValid('medical_info') || getInValid('personal_info')"
-          class="formError"
-          >error</mat-icon
-        >
+          ">General Info</span>
+        <mat-icon *ngIf="getInValid('medical_info') || getInValid('personal_info')" class="formError">error</mat-icon>
       </ng-template>
       <div class="content">
-        <app-edit-medicalinfo-form
-          [editForm]="editForm"
-          [medicalData]="file.medical_info"
-        ></app-edit-medicalinfo-form>
-        <app-edit-personalinfo-form
-          [editForm]="editForm"
-          [personalData]="file.personal_info"
-        >
+        <app-edit-medicalinfo-form [editForm]="editForm" [medicalData]="file.medical_info"></app-edit-medicalinfo-form>
+        <app-edit-personalinfo-form [editForm]="editForm" [personalData]="file.personal_info">
         </app-edit-personalinfo-form>
       </div>
     </mat-tab>
@@ -76,15 +50,10 @@
       <ng-template mat-tab-label>
         <mat-icon class="tab-icon">lock</mat-icon>
         <span [class.formError]="getInValid('penalties')">Penalties</span>
-        <mat-icon *ngIf="getInValid('penalties')" class="formError"
-          >error</mat-icon
-        >
+        <mat-icon *ngIf="getInValid('penalties')" class="formError">error</mat-icon>
       </ng-template>
       <div class="content">
-        <app-edit-penalties-form
-          [editForm]="editForm"
-          [penaltiesData]="file.penalties"
-        ></app-edit-penalties-form>
+        <app-edit-penalties-form [editForm]="editForm" [penaltiesData]="file.penalties"></app-edit-penalties-form>
       </div>
     </mat-tab>
 
@@ -92,15 +61,10 @@
       <ng-template mat-tab-label>
         <mat-icon class="tab-icon">directions_walk</mat-icon>
         <span [class.formError]="getInValid('training')">Training</span>
-        <mat-icon *ngIf="getInValid('training')" class="formError"
-          >error</mat-icon
-        >
+        <mat-icon *ngIf="getInValid('training')" class="formError">error</mat-icon>
       </ng-template>
       <div class="content">
-        <app-edit-training-form
-          [editForm]="editForm"
-          [trainingData]="file.training"
-        ></app-edit-training-form>
+        <app-edit-training-form [editForm]="editForm" [trainingData]="file.training"></app-edit-training-form>
       </div>
     </mat-tab>
 
@@ -111,10 +75,7 @@
         <mat-icon *ngIf="getInValid('shots')" class="formError">error</mat-icon>
       </ng-template>
       <div class="content">
-        <app-edit-shots-form
-          [editForm]="editForm"
-          [shotsData]="file.shots"
-        ></app-edit-shots-form>
+        <app-edit-shots-form [editForm]="editForm" [shotsData]="file.shots"></app-edit-shots-form>
       </div>
     </mat-tab>
   </mat-tab-group>

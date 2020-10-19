@@ -79,3 +79,15 @@ export const bloodTypes: string[] = [
   "0+" , "0-" , "A+" , "A-" , "B+" , "B-" , "AB+" , "AB-"
 ]
 
+export const class_series: string[] = [
+  "A' series", "B' series", "C' series", "D' series"
+]
+
+export const years = (): string[] => {
+  const y = []
+  for (let i = 2000; i <= 2050; i++){
+      y.push(i.toString())
+  }
+  return y
+}
+

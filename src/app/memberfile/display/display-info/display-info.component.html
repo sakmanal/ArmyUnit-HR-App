@@ -55,7 +55,10 @@
     <mat-card-content>
       <div class="flex">
         <div class="title2">Training series:</div>
-        <span class="val">{{memberFile.class_info.training_series}}</span>
+        <span class="val">
+          {{memberFile.class_info.training_series.class_series}}
+          {{memberFile.class_info.training_series.class_year}}
+        </span>
       </div>
       <hr>
       <div class="flex">

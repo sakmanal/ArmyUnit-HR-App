@@ -126,7 +126,10 @@ export function createMemberfile(id: string): MemberFile {
   }
 
   const classInfo: ClassInfo  = {
-    training_series: `A' series ${moment().year()}`,
+    training_series: {
+      class_series: "A' series",
+      class_year: `${moment().year()}`
+    },
     start_date: moment().subtract(7, 'months').add(5, 'days').toDate(),
     dismissal_date : moment().add(5, 'months').add(5, 'days').toDate(),
     months_of_service: 12
