@@ -16,7 +16,9 @@ export class EditPersonalinfoFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.editForm.addControl('personal_info', this.personalForm);
-    this.patchData();
+    if (this.personalData){
+      this.patchData();
+    }
   }
 
   private get personalForm(): FormGroup {

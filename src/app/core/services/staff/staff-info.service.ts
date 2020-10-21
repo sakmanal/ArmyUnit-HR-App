@@ -48,7 +48,7 @@ export class StaffInfoService {
         return new Observable(observer => {
           setTimeout(() => {
             observer.next({message: "deleted successfully!"})
-          }, 500);
+          }, 1000);
       })
 
   }

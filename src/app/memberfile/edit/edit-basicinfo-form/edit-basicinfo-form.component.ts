@@ -21,12 +21,14 @@ export class EditBasicinfoFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.editForm.addControl('member', this.memberForm);
-    this.patchData();
+    if (this.memberData){
+      this.patchData();
+    }
   }
 
   private get memberForm(): FormGroup {
     return this.formBuilder.group({
-      id: ['', Validators.required],
+      id: [''],
       firstName: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(3)]],
       lastName: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(3)]],
       rank: ['', Validators.required],
@@ -34,7 +36,7 @@ export class EditBasicinfoFormComponent implements OnInit {
       platoon: ['', Validators.required],
       class_I: ['', Validators.required],
       specialty: ['', Validators.required],
-      armed: ['']
+      armed: [true]
     });
   }
 

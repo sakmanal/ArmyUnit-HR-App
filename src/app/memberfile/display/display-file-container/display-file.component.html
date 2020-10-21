@@ -19,6 +19,10 @@
       <mat-icon>edit</mat-icon>
       Edit
     </button>
+    <button mat-raised-button color="warn" class="back" (click)="removeFile()">
+      <mat-icon>delete</mat-icon>
+      Delete
+    </button>
   </div>
   <h2>
     <i class="fas fa-folder-open" style="color: peru"></i>
@@ -27,5 +31,6 @@
   </h2>
 </div>
 <mat-divider></mat-divider>
+<mat-progress-bar *ngIf="loading" mode="indeterminate" color="warn"></mat-progress-bar>
 
 <app-tabs></app-tabs>

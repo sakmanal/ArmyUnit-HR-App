@@ -7,7 +7,13 @@
       "jasmine"
     ],
     "paths": {
-      "@environments/*": ["src/environments/*"]
+      "@environments/*": ["src/environments/*"],
+      "@core/*": ["src/app/core/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@mock/*": ["src/app/mock-data/*"],
+      "@auth/*": ["src/app/auth/*"],
+      "@app/*": ["src/app/*"],
+      "@assets/*": ["src/assets/*"]
     }
   },
   "files": [

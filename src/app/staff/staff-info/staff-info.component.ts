@@ -6,7 +6,7 @@ import { Staff } from '@core/models/staff.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { NotificationService } from '@core/services/notification/notification.service';
-import { DeleteDialogComponent } from '@shared/components/delete-dialog/delete-dialog.component';
+import { ConfirmDialogComponent } from '@shared/components/confirm-dialog/confirm-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 import { switchMap, filter, map, tap } from 'rxjs/operators';
@@ -80,10 +80,10 @@ export class StaffInfoComponent implements OnInit {
   }
 
   public deleteStaffmember(member: Staff){
-    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '350px',
       data:{
-        message: `Are you sure want to remove ${member.rank} ${member.lastName} from company's power?`,
+        message: `Remove ${member.rank} ${member.lastName} from company's power?`,
         buttonText: {
           ok: 'Yes',
           cancel: 'No'

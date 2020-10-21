@@ -20,7 +20,15 @@ export class MemberfileService {
     // return throwError("server error");
 
     if (id === '0'){
-
+        return of({
+          member: null,
+          days_off: [],
+          personal_info: null,
+          shots:[],
+          training: [],
+          penalties: [],
+          medical_info: null
+        })
     }
 
     return this.dayoffService.getDaysOff().pipe(

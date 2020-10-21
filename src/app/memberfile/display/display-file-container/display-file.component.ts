@@ -3,6 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MemberFile } from '../../models/memberFile.model';
 // import { Location } from '@angular/common';
 import { PreviousCurrentUrlService } from '@core/services/routes-url/previousCurrentUrl.service';
+import { NotificationService } from '@core/services/notification/notification.service';
+import { StaffInfoService } from '@core/services/staff/staff-info.service';
+import { ConfirmDialogService } from '@core/services/confirm-dialog/confirm-dialog.service';
+import { filter, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-display-file',
@@ -15,10 +19,14 @@ export class DisplayFileComponent implements OnInit {
   pageTitle: string = 'File';
   backUrl: string;
   memberId: string;
+  loading: boolean;
 
   constructor(private router: Router,
               // private location: Location,
               private previousCurrentUrlService: PreviousCurrentUrlService,
+              private staffInfoService: StaffInfoService,
+              private confirmDialogService: ConfirmDialogService,
+              private notificationService: NotificationService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -40,6 +48,28 @@ export class DisplayFileComponent implements OnInit {
   public onBack(): void {
     // this.location.back();
     this.router.navigateByUrl(this.backUrl);
+  }
+
+  public removeFile(){
+    this.confirmDialogService.confirm(`Remove ${this.fullnameTitle} from company's power?`, 'delete')
+        .pipe(
+          filter( (confirm: boolean) => confirm),
+          switchMap(() => {
+            this.loading = true;
+            return this.staffInfoService.deleteStaff(this.memberId);
+          })
+        ).subscribe(
+          (success) => {
+            this.loading = false;
+            this.notificationService.showSuccess(success.message);
+            this.router.navigate(['/memberFile']);
+          },
+          (error) => {
+            this.loading = false;
+            this.notificationService.showError(error);
+          }
+      );
+
   }
 
 }

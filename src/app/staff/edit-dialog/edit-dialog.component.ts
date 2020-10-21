@@ -58,6 +58,8 @@ export class EditDialogComponent {
     }
 
     public get isDirty(): boolean {
+      // (Works when we have simple JSON-style objects without methods and DOM nodes inside)
+      // objects MUST have the same order on their properties
       return JSON.stringify(this.member) !== JSON.stringify(this.original_member)
     }
 

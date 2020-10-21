@@ -18,7 +18,9 @@ export class EditMedicalinfoFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.editForm.addControl('medical_info', this.medicalForm);
-    this.patchData();
+    if (this.medicalData){
+      this.patchData();
+    }
   }
 
   private get medicalForm(): FormGroup {

@@ -1,14 +1,8 @@
 <div class="header">
-  <div>
     <button mat-raised-button color="primary" [routerLink]="['/memberFile']" class="back">
       <mat-icon>cancel</mat-icon>
       Cancel
     </button>
-    <button mat-raised-button color="warn" class="back">
-      <mat-icon>delete</mat-icon>
-      Delete
-    </button>
-  </div>
   <h2>
     <i class="fas fa-folder-open" style="color: peru"></i>
     {{ pageTitle }}
@@ -16,6 +10,7 @@
   </h2>
 </div>
 <mat-divider></mat-divider>
+<mat-progress-bar *ngIf="loading" mode="indeterminate" color="warn"></mat-progress-bar>
 
 <form [formGroup]="editForm" (ngSubmit)="onSubmit()" autocomplete="off">
   <mat-tab-group>
@@ -31,7 +26,7 @@
       </div>
     </mat-tab>
 
-    <mat-tab>
+     <mat-tab>
       <ng-template mat-tab-label>
         <mat-icon class="tab-icon">account_circle</mat-icon>
         <span [class.formError]="
@@ -85,3 +80,4 @@
     Save member File
   </button>
 </form>
+
