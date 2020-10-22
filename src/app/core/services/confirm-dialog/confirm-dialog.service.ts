@@ -11,7 +11,7 @@ export class ConfirmDialogService {
 
   constructor(private dialog: MatDialog) { }
 
-  public confirm(message: string, type?: 'delete' | 'save'): Observable<boolean> {
+  public confirm(message: string, type?: 'warning' | 'continue'): Observable<boolean> {
     const dialogConfig: MatDialogConfig = {
       width: '350px',
       data:{

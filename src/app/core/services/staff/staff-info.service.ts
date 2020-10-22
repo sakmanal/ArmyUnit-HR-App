@@ -61,22 +61,26 @@ export class StaffInfoService {
     return this.updateStaff(staff, headers);
   }
 
-  private addStaff(staff:Staff, headers: HttpHeaders): Observable<Staff>{
+  private addStaff(staff: Staff, headers: HttpHeaders): Observable<Staff>{
     //  staff.id = null;
     //  return this.http.post<Staff>(`${environment.apiUrl}/staff`, staff, { headers });
 
-     const _staff: Staff = {
+    //  const _staff: Staff = {
+    //   id: '497F5D21-AEC0-89T4-ED67-6FD0D6AC70AA',
+    //   firstName: staff.firstName,
+    //   lastName: staff.lastName,
+    //   rank: staff.rank,
+    //   MilitaryRegisterNumber: staff.MilitaryRegisterNumber,
+    //   platoon: staff.platoon,
+    //   class_I: staff.class_I,
+    //   specialty: staff.specialty,
+    //   armed: staff.armed,
+    //   foto: staff.foto
+    //  }
+    const _staff: Staff = {
       id: '497F5D21-AEC0-89T4-ED67-6FD0D6AC70AA',
-      firstName: staff.firstName,
-      lastName: staff.lastName,
-      rank: staff.rank,
-      MilitaryRegisterNumber: staff.MilitaryRegisterNumber,
-      platoon: staff.platoon,
-      class_I: staff.class_I,
-      specialty: staff.specialty,
-      armed: staff.armed,
-      foto: staff.foto
-     }
+      ...staff
+    }
 
      return new Observable(observer => {
       setTimeout(() => {
@@ -89,18 +93,21 @@ export class StaffInfoService {
   private updateStaff(staff:Staff, headers: HttpHeaders): Observable<Staff>{
     //  return this.http.put<Staff>(`${environment.apiUrl}/staff/${staff.id}`, staff, { headers });
 
-     const _staff: Staff = {
-      id: staff.id,
-      firstName: staff.firstName,
-      lastName: staff.lastName,
-      rank: staff.rank,
-      MilitaryRegisterNumber: staff.MilitaryRegisterNumber,
-      platoon: staff.platoon,
-      class_I: staff.class_I,
-      specialty: staff.specialty,
-      armed: staff.armed,
-      foto: staff.foto
-     }
+    //  const _staff: Staff = {
+    //   id: staff.id,
+    //   firstName: staff.firstName,
+    //   lastName: staff.lastName,
+    //   rank: staff.rank,
+    //   MilitaryRegisterNumber: staff.MilitaryRegisterNumber,
+    //   platoon: staff.platoon,
+    //   class_I: staff.class_I,
+    //   specialty: staff.specialty,
+    //   armed: staff.armed,
+    //   foto: staff.foto
+    //  }
+    const _staff: Staff = {
+      ...staff
+    }
 
      return new Observable(observer => {
       setTimeout(() => {

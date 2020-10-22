@@ -51,7 +51,7 @@ export class DisplayFileComponent implements OnInit {
   }
 
   public removeFile(){
-    this.confirmDialogService.confirm(`Remove ${this.fullnameTitle} from company's power?`, 'delete')
+    this.confirmDialogService.confirm(`Remove ${this.fullnameTitle} from company's power?`, 'warning')
         .pipe(
           filter( (confirm: boolean) => confirm),
           switchMap(() => {

@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 interface dialogBox{
   message: string;
   buttonText?: { ok: string, cancel: string};
-  type?: "delete" | "save";
+  type?: "warning" | "continue";
 }
 
 @Component({
@@ -17,7 +17,7 @@ export class ConfirmDialogComponent {
   message: string = "Are you sure?";
   confirmButtonText = "Yes";
   cancelButtonText = "Cancel";
-  type = "delete";
+  type = "warning";
 
   constructor(
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,

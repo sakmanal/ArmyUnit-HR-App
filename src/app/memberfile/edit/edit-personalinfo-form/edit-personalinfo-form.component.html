@@ -112,11 +112,15 @@
           <input  type="number"
                   matInput
                   required
+                  min="18"
                   placeholder="e.g 18"
                   formControlName="age" />
                   <mat-icon matSuffix>hourglass_full</mat-icon>
-                  <mat-error *ngIf="personalFormControls.age.invalid">
+                  <mat-error *ngIf="personalFormControls.age.hasError('required')">
                     Age is <strong>required.</strong>
+                  </mat-error>
+                  <mat-error *ngIf="personalFormControls.age.hasError('min')">
+                    Age can't be less than <strong>18 years old.</strong>
                   </mat-error>
         </mat-form-field>
 
@@ -125,11 +129,15 @@
           <input  type="number"
                   matInput
                   required
+                  min="0"
                   placeholder="e.g 2"
                   formControlName="brothers_count" />
                   <mat-icon matSuffix>group_add</mat-icon>
-                  <mat-error *ngIf="personalFormControls.brothers_count.invalid">
+                  <mat-error *ngIf="personalFormControls.brothers_count.hasError('required')">
                     Brothers Number is <strong>required.</strong>
+                  </mat-error>
+                  <mat-error *ngIf="personalFormControls.brothers_count.hasError('min')">
+                    Brothers Number can't be less than 0.
                   </mat-error>
         </mat-form-field>
 

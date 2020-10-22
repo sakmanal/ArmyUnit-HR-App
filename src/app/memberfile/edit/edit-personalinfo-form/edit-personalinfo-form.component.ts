@@ -38,8 +38,8 @@ export class EditPersonalinfoFormComponent implements OnInit {
         zip_code: ['', Validators.required]
       }),
       date_of_birth: ['', Validators.required],
-      age: ['', Validators.required],
-      brothers_count: ['', Validators.required],
+      age: ['', [Validators.required, Validators.min(18)]],
+      brothers_count: ['', [Validators.required, Validators.min(0)]],
     });
   }
 

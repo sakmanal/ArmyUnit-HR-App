@@ -4,6 +4,10 @@ import { MemberFile } from '../../models/memberFile.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ConfirmDialogService } from '@core/services/confirm-dialog/confirm-dialog.service';
 import { NotificationService } from '@core/services/notification/notification.service';
+import { MemberfileService } from '../../services/memberfile.service';
+import { PreviousCurrentUrlService } from '@core/services/routes-url/previousCurrentUrl.service';
+import { filter, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-container',
@@ -23,7 +27,9 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
   constructor(private formBuilder: FormBuilder,
               private confirmDialogService: ConfirmDialogService,
               private router: Router,
-              private cdr: ChangeDetectorRef, // manually update View when changeDetection -> OnPush (e.g this.load = true; this.cdr.detectChanges())
+              private PreviousCurrentUrlService: PreviousCurrentUrlService,
+              private memberfileService: MemberfileService,
+              private cdr: ChangeDetectorRef,
               private notificationService: NotificationService,
               private route: ActivatedRoute) {
     this.createForm();
@@ -61,23 +67,56 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
   }
 
   private onFileRetrieved(file: MemberFile): void {
-    if (file && file.member) {
-      console.log("file", file);
-      this.file = file;
+    this.file = file;
+    if (file.member.id !== '0') {
       this.fullnameTitle = `${file.member.rank} ${file.member.lastName} ${file.member.firstName}`;
       this.pageTitle = 'Edit member file of: ';
     } else {
-      this.file = file;
       this.pageTitle = 'New member file';
     }
   }
 
   public onSubmit(): void {
-    console.log(this.editForm.valid, this.isDirty)
-    //console.log(this.editForm.value);
+    // console.log(this.editForm.valid, this.isDirty)
+    // console.log(this.editForm.value);
+    const file: MemberFile = this.mapFile(this.editForm.value)
+    this.onSave(file).subscribe(
+        (file) => {
+          this.loading = false;
+          // manually update View when changeDetection -> OnPush
+          this.cdr.detectChanges();
+          this.notificationService.showSuccess('File saved successfully');
+          // to make form not dirty and pass the edit-guard
+          this.initFormValue = {...this.editForm.value}
+          this.router.navigate(['/memberFile'/* , file.member.id */]);
+        },
+        (error) => {
+          this.loading = false;
+          this.cdr.detectChanges();
+          this.notificationService.showError(error);
+        }
+    )
+
   }
 
-  public getInValid(formCtrl: string){
+  private onSave(file: MemberFile): Observable<MemberFile> {
+    if (this.editForm.invalid){
+      return this.confirmDialogService.confirm('file contains invalid form fields. Save anyway?')
+       .pipe(
+         filter((confirm: boolean) => confirm),
+         switchMap(() => {
+          this.loading = true;
+          this.cdr.detectChanges();
+          return this.memberfileService.saveMemberFile(file);
+        })
+       )
+    } else {
+      this.loading = true;
+      return this.memberfileService.saveMemberFile(file);
+    }
+  }
+
+  public getInValid(formCtrl: string): boolean{
       try {
         return this.editForm.get(formCtrl).invalid;
       } catch (error) {
@@ -101,6 +140,11 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
         }
       )
     }
+  }
+
+  public onBack(): void {
+    console.log(this.PreviousCurrentUrlService.currentUrl, this.PreviousCurrentUrlService.previousUrl)
+    this.router.navigateByUrl(this.PreviousCurrentUrlService.previousUrl);
   }
 
 }
