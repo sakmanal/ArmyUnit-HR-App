@@ -38,7 +38,7 @@ export class DisplayFileComponent implements OnInit {
       if (file) {
         this.fullnameTitle = `${file.member.rank} ${file.member.lastName} ${file.member.firstName}`;
         this.memberId = file.member.id;
-        this.backUrl = this.previousCurrentUrlService.previousUrl;
+        this.backUrl = this.previousCurrentUrlService.preUrl;
         this.pageTitle = 'Staff member file of: ';
       } else {
         this.pageTitle = 'No member File found';
@@ -47,7 +47,11 @@ export class DisplayFileComponent implements OnInit {
 
   public onBack(): void {
     // this.location.back();
-    this.router.navigateByUrl(this.backUrl);
+    if (this.backUrl === this.router.url){
+      this.router.navigate(['/memberFile'])
+    }else{
+      this.router.navigateByUrl(this.backUrl);
+    }
   }
 
   public removeFile(){

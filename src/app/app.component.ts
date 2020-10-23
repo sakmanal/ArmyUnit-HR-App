@@ -20,8 +20,8 @@ export class AppComponent {
         pairwise()
       )
       .subscribe((events: RoutesRecognized[]) => {
-        this.previousCurrentUrlService.previousUrl = events[0].urlAfterRedirects;
-        this.previousCurrentUrlService.currentUrl = events[1].urlAfterRedirects;
+        this.previousCurrentUrlService.preUrl = events[0].urlAfterRedirects;
+        this.previousCurrentUrlService.currUrl = events[1].urlAfterRedirects;
       });
   }
 

@@ -5,8 +5,24 @@ import { Injectable } from '@angular/core';
 })
 export class PreviousCurrentUrlService {
 
-  public currentUrl: string;
-  public previousUrl: string = 'memberFile';
+  private currentUrl: string;
+  private previousUrl: string = 'memberFile';
   constructor() { }
+
+  public get preUrl(): string{
+    return this. previousUrl;
+  }
+
+  public set preUrl(url: string){
+    this.previousUrl = url;
+  }
+
+  public get currUrl(): string{
+    return this.currentUrl;
+  }
+
+  public set currUrl(url: string){
+    this.currentUrl = url;
+  }
 
 }

@@ -23,6 +23,7 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
   file: MemberFile;
   initFormValue: any;
   load: boolean;
+  backUrl: string;
 
   constructor(private formBuilder: FormBuilder,
               private confirmDialogService: ConfirmDialogService,
@@ -58,6 +59,7 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.backUrl = this.PreviousCurrentUrlService.preUrl;
     const resolvedData  = this.route.snapshot.data['memberfile'];
     this.onFileRetrieved(resolvedData);
   }
@@ -143,8 +145,7 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
   }
 
   public onBack(): void {
-    console.log(this.PreviousCurrentUrlService.currentUrl, this.PreviousCurrentUrlService.previousUrl)
-    this.router.navigateByUrl(this.PreviousCurrentUrlService.previousUrl);
+    this.router.navigateByUrl(this.backUrl);
   }
 
 }
