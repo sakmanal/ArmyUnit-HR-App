@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
   selector: 'app-edit-container',
   templateUrl: './edit-container.component.html',
   styleUrls: ['./edit-container.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditContainerComponent implements OnInit, AfterViewInit {
 
@@ -66,6 +66,7 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(){
     this.initFormValue = this.editForm.value;
+    this.cdr.detectChanges();
   }
 
   private onFileRetrieved(file: MemberFile): void {
@@ -80,13 +81,13 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
 
   public onSubmit(): void {
     // console.log(this.editForm.valid, this.isDirty)
-    // console.log(this.editForm.value);
+     console.log(this.editForm.value);
     const file: MemberFile = this.mapFile(this.editForm.value)
     this.onSave(file).subscribe(
         (file) => {
           this.loading = false;
           // manually update View when changeDetection -> OnPush
-          this.cdr.detectChanges();
+          // this.cdr.detectChanges();
           this.notificationService.showSuccess('File saved successfully');
           // to make form not dirty and pass the edit-guard
           this.initFormValue = {...this.editForm.value}
@@ -94,7 +95,7 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
         },
         (error) => {
           this.loading = false;
-          this.cdr.detectChanges();
+          // this.cdr.detectChanges();
           this.notificationService.showError(error);
         }
     )
@@ -108,7 +109,7 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
          filter((confirm: boolean) => confirm),
          switchMap(() => {
           this.loading = true;
-          this.cdr.detectChanges();
+          // this.cdr.detectChanges();
           return this.memberfileService.saveMemberFile(file);
         })
        )
