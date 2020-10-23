@@ -1,0 +1,56 @@
+<div class="container">
+
+  <ng-container *ngIf="imageUrl; else noImage">
+    <img [src]="imageUrl" />
+  </ng-container>
+  <ng-template #noImage>
+    <img src="../../../../assets/images/Useravatar.jpg">
+  </ng-template>
+
+  <div class="form-wrapper">
+    <mat-form-field [appearance]="appearance">
+      <mat-toolbar>
+        <!-- Readonly Input to show File names -->
+        <input matInput [(ngModel)]="filename" readonly name="memberContactNo" />
+        <!-- Browse Button -->
+        <button mat-flat-button color="primary">
+          Browse
+        </button>
+      </mat-toolbar>
+      <!-- Fetch selected filed on change -->
+      <input type="file"
+             #UploadFileInput
+             id="fileUpload"
+             (change)="onfileChangeEvent($event)"
+             name="fileUpload"
+             accept="image/*" />
+    </mat-form-field>
+    <mat-error *ngIf="imageError">{{imageError}}</mat-error>
+    <button mat-stroked-button color="primary" type="button" [disabled]="!imgLoaded">
+      <mat-icon>file_upload</mat-icon>
+      Upload
+    </button>
+    <button mat-stroked-button
+            color="warn"
+            type="button"
+            (click)="cancel()"
+            [disabled]="!imgLoaded">
+      <mat-icon>cancel</mat-icon>
+      cancel
+    </button>
+    <div class="upload" *ngIf="uploading">
+      <i class="fas fa-spinner fa-spin fa-lg fa-fw"></i> 10 %
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+

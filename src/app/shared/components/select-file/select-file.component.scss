@@ -1,0 +1,44 @@
+.form-wrapper, mat-form-field{
+  width: 100%;
+  max-width: 350px;
+
+  .mat-toolbar-single-row {
+      height: auto !important;
+      background: transparent;
+
+      button {
+          width: 100px;
+      }
+  }
+}
+
+#fileUpload {
+  position: absolute;
+  z-index: 9;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  cursor: pointer;
+}
+
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+img {
+  max-width: 200px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  margin-right: 5px;
+}
+
+.upload{
+  margin-top: 10px;
+}
