@@ -22,7 +22,10 @@
       {{option}}
     </mat-option>
   </mat-autocomplete>
+  <mat-error *ngIf="opts.length == 0">
+    {{placeholder}} is <strong>required</strong>.
+  </mat-error>
 </mat-form-field>
-<span class="invalid-feedback" *ngIf="opts.length == 0 && myControl.touched">
+<mat-error *ngIf="opts.length == 0 && myControl.touched">
   {{placeholder}} is <strong>required</strong>.
-</span>
+</mat-error>
