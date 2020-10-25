@@ -1,55 +1,43 @@
-import { Component, ViewChild, ElementRef, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, ViewChild, ElementRef, Input, OnDestroy } from '@angular/core';
+import { UploadFileService } from '@core/services/upload-file/upload-file.service';
+import { HttpEventType } from '@angular/common/http';
+import { NotificationService } from '@core/services/notification/notification.service';
+import { Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-select-file-form',
   templateUrl: './select-file.component.html',
   styleUrls: ['./select-file.component.scss']
 })
-export class SelectFileComponent {
+export class SelectFileComponent implements OnDestroy{
+
+  constructor(private uploadFileService: UploadFileService, private notificationService: NotificationService) {}
 
   @Input() appearance: 'outline' | 'standard' | 'fill' = "fill";
   @Input() imageUrl: string;
   @Input() showImage:boolean = true;
+  @Input() memberId: string;
 
   @ViewChild('UploadFileInput') uploadFileInput: ElementRef;
   filename = 'Select File';
   imageError: string;
   imgLoaded:boolean;
-  uploading = true;
+  uploading:boolean;
+  uploadProgress: number;
+  uploadSuccess: 'success' | 'fail';
+  private selectedFile: File;
+  private uploadFile$: Subscription;
 
-  /* without file size and type check */
-  // onfileChangeEvent(fileInput: any) {
+  // 2st way -- Unsubscribing Declaratively with takeUntil
+  cancelUpload$: Subject<boolean> = new Subject<boolean>();
 
-  //   if (fileInput.target.files && fileInput.target.files[0]) {
-
-
-  //     this.filename = fileInput.target.files[0].name;
-
-
-  //     const reader = new FileReader();
-  //     reader.onload = (e: any) => {
-  //       const image = new Image();
-  //       image.src = e.target.result;
-  //       image.onload = rs => {
-
-  //         // Return Base64 Data URL
-  //         this.imageUrl = e.target.result;
-  //       };
-  //     };
-  //     reader.readAsDataURL(fileInput.target.files[0]);
-
-  //     // Reset File Input to Selct Same file again
-  //     this.uploadFileInput.nativeElement.value = "";
-  //   } else {
-  //     this.filename = 'Select File';
-  //   }
-  // }
-
-  /* with file size and type check */
-  onfileChangeEvent(fileInput: any) {
+  /* file size and type check */
+  public onfileChangeEvent(fileInput: any): void {
     // reset errors
     this.imageError = null;
+    this.uploadSuccess = null;
+    this.uploadProgress = null;
     if (fileInput.target.files && fileInput.target.files[0]) {
         // Size Filter Bytes (10 MB)
         const max_size = 10485760;
@@ -59,12 +47,12 @@ export class SelectFileComponent {
 
         if (fileInput.target.files[0].size > max_size) {
             this.imageError = `Maximum size allowed is ${max_size / 1000} Mb`;
-            return false;
+            return;
         }
 
         if ( !allowed_types.includes(fileInput.target.files[0].type) ) {
             this.imageError = 'Only Images are allowed ( JPG | PNG )';
-            return false;
+            return;
         }
         const reader = new FileReader();
         reader.onload = (e: any) => {
@@ -74,11 +62,9 @@ export class SelectFileComponent {
                 const img_height = rs.currentTarget['height'];
                 const img_width = rs.currentTarget['width'];
 
-                // console.log(img_height, img_width);
-
                 if (img_height > max_height && img_width > max_width) {
                   this.imageError =  `Maximum dimentions allowed ${max_height} * ${max_width} px`;
-                  return false;
+                  return;
                 } else {
                   this.imageUrl = e.target.result;
                   this.imgLoaded = true;
@@ -87,6 +73,7 @@ export class SelectFileComponent {
         };
         reader.readAsDataURL(fileInput.target.files[0]);
         this.filename = fileInput.target.files[0].name;
+        this.selectedFile = <File>fileInput.target.files[0];
         // Reset File Input to Selct Same file again
         this.uploadFileInput.nativeElement.value = "";
     } else {
@@ -94,10 +81,62 @@ export class SelectFileComponent {
     }
   }
 
-  cancel(){
+  public cancel(): void{
+    // 1st way -- Unsubscribing Manually
+    // if (this.uploadFile$) {
+    //   this.uploadFile$.unsubscribe();
+    // }
+
+    // 2st way -- Unsubscribing Declaratively with takeUntil
+    this.cancelUpload$.next(true);
+
+    this.uploading = false;
     this.imgLoaded = false;
     this.filename = 'Select File';
     this.imageUrl = null;
+    this.selectedFile = null;
+    this.uploadProgress = null;
+    this.uploadSuccess = null;
+  }
+
+  public onFileUpload(){
+     if (this.selectedFile && this.memberId) {
+        this.uploading = true;
+        this.uploadSuccess = null;
+        this.uploadFile$ = this.uploadFileService.imageUpload(this.memberId, this.selectedFile)
+          .pipe(
+            // 2st way -- Unsubscribing Declaratively with takeUntil
+             takeUntil(this.cancelUpload$)
+          )
+          .subscribe(
+             (event) => {
+               if (event.type === HttpEventType.UploadProgress){
+                console.log('Upload Progress: ' + Math.round(event.loaded / event.total * 100) + '%');
+                 this.uploadProgress = Math.round(event.loaded / event.total * 100);
+               } else if (event.type === HttpEventType.Response){
+                 console.log(event.message);
+                 this.uploading = false;
+                 this.imgLoaded = false;
+                 this.uploadSuccess = 'success';
+                 this.notificationService.showSuccess(event.message);
+               }
+             },
+             (error) => {
+              console.log(error);
+              this.uploading = false;
+              this.uploadSuccess = 'fail';
+              this.notificationService.showError(error);
+             }
+          )
+     }
+  }
+
+  ngOnDestroy(){
+    this.uploadFile$.unsubscribe();
+
+    // 2st way -- Unsubscribing Declaratively with takeUntil
+    this.cancelUpload$.next(true);
+    this.cancelUpload$.unsubscribe();
   }
 
 }

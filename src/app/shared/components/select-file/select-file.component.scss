@@ -27,12 +27,12 @@
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
+  border: 2px dashed rgb(185, 184, 184);
 }
 
 img {
   max-width: 200px;
   margin-right: 10px;
-  margin-bottom: 10px;
 }
 
 button {
@@ -40,5 +40,10 @@ button {
 }
 
 .upload{
+  margin-top: 10px;
+  display: flex;
+}
+
+.result{
   margin-top: 10px;
 }

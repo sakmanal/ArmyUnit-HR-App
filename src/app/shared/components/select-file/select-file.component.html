@@ -21,12 +21,17 @@
       <input type="file"
              #UploadFileInput
              id="fileUpload"
+             [disabled]="uploading"
              (change)="onfileChangeEvent($event)"
              name="fileUpload"
              accept="image/*" />
     </mat-form-field>
     <mat-error *ngIf="imageError">{{imageError}}</mat-error>
-    <button mat-stroked-button color="primary" type="button" [disabled]="!imgLoaded">
+    <button mat-stroked-button
+            color="primary"
+            type="button"
+            (click)="onFileUpload()"
+            [disabled]="!imgLoaded">
       <mat-icon>file_upload</mat-icon>
       Upload
     </button>
@@ -39,7 +44,16 @@
       cancel
     </button>
     <div class="upload" *ngIf="uploading">
-      <i class="fas fa-spinner fa-spin fa-lg fa-fw"></i> 10 %
+      <mat-spinner diameter="20"></mat-spinner>
+      <span *ngIf="uploadProgress">{{uploadProgress}}%</span>
+    </div>
+    <div class="result" *ngIf="uploadSuccess" [style.color]="(uploadSuccess === 'success')? 'green': 'red'">
+      <ng-container *ngIf="uploadSuccess === 'success'; else fail">
+        <i class="fas fa-check-circle"></i> Done!
+      </ng-container>
+      <ng-template #fail>
+        <i class="fas fa-times-circle"></i> Fail!
+      </ng-template>
     </div>
   </div>
 
