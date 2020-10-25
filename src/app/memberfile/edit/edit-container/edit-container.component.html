@@ -79,7 +79,7 @@
           color="primary"
           class="save-btn"
           type="submit"
-          [disabled]="getInValid('member') || getInValid('class_info')">
+          [disabled]="getInValid('member') || getInValid('class_info') || !isDirty">
     <mat-icon>save</mat-icon>
     Save member File
     <i *ngIf="loading" class="fas fa-spinner fa-spin fa-lg fa-fw"></i>
