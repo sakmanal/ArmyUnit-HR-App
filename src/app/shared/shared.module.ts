@@ -9,7 +9,6 @@ import { OptionsInputComponent } from './components/options-input/options-input.
 import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chips-autocomplete.component';
 import { FloatingSearchComponent } from './components/floating-search/floating-search.component';
 import { StartEndDatepickerComponent } from './components/start-end-datepicker/start-end-datepicker.component';
-import { SelectFileComponent } from './components/select-file/select-file.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +18,7 @@ import { SelectFileComponent } from './components/select-file/select-file.compon
     OptionsInputComponent,
     ChipsAutocompleteComponent,
     FloatingSearchComponent,
-    StartEndDatepickerComponent,
-    SelectFileComponent
+    StartEndDatepickerComponent
   ],
   imports: [
     CommonModule,
@@ -35,8 +33,7 @@ import { SelectFileComponent } from './components/select-file/select-file.compon
     OptionsInputComponent,
     ChipsAutocompleteComponent,
     FloatingSearchComponent,
-    StartEndDatepickerComponent,
-    SelectFileComponent
+    StartEndDatepickerComponent
   ],
   entryComponents: [
     ConfirmDialogComponent

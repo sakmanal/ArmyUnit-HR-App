@@ -23,6 +23,7 @@ import { EditMedicalinfoFormComponent } from './edit/edit-medicalinfo-form/edit-
 import { EditPersonalinfoFormComponent } from './edit/edit-personalinfo-form/edit-personalinfo-form.component';
 import { EditBasicinfoFormComponent } from './edit/edit-basicinfo-form/edit-basicinfo-form.component';
 import { EditClassinfoFormComponent } from './edit/edit-classinfo-form/edit-classinfo-form.component';
+import { UploadFileComponent } from './edit/upload-file/upload-file.component';
 
 const memberfileRoutes: Routes = [
   { path: '', component: SelectFileComponent },
@@ -57,6 +58,7 @@ const memberfileRoutes: Routes = [
     EditPersonalinfoFormComponent,
     EditBasicinfoFormComponent,
     EditClassinfoFormComponent,
+    UploadFileComponent,
   ],
   imports: [
     CommonModule,

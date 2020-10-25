@@ -6,11 +6,11 @@ import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-select-file-form',
-  templateUrl: './select-file.component.html',
-  styleUrls: ['./select-file.component.scss']
+  selector: 'app-upload-file',
+  templateUrl: './upload-file.component.html',
+  styleUrls: ['./upload-file.component.scss']
 })
-export class SelectFileComponent implements OnDestroy{
+export class UploadFileComponent implements OnDestroy {
 
   constructor(private uploadFileService: UploadFileService, private notificationService: NotificationService) {}
 
@@ -132,7 +132,9 @@ export class SelectFileComponent implements OnDestroy{
   }
 
   ngOnDestroy(){
-    this.uploadFile$.unsubscribe();
+    if (this.uploadFile$) {
+      this.uploadFile$.unsubscribe();
+    }
 
     // 2st way -- Unsubscribing Declaratively with takeUntil
     this.cancelUpload$.next(true);
