@@ -15,6 +15,7 @@ const ShellRoutes: Routes = [
     path: '',
     component: ShellComponent,
     children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       {
         path: 'staff',
         loadChildren: () => import('../staff/staff-info.module').then(m => m.StaffInfoModule)
@@ -30,6 +31,10 @@ const ShellRoutes: Routes = [
       {
         path: 'memberFile',
         loadChildren: () => import('../memberfile/memberfile.module').then(m => m.MemberfileModule)
+      },
+      {
+        path: 'dashboard',
+        loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule)
       }
     ]
   }

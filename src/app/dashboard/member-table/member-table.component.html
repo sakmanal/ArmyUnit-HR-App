@@ -1,0 +1,66 @@
+<div class="container mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="no">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{dataSource.data.indexOf(element) + 1}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fullname">
+      <th mat-header-cell *matHeaderCellDef> Fullname </th>
+      <td mat-cell *matCellDef="let element">
+        <span class="row">
+          <img [src]="element.foto || avatarFoto"  alt="avatar" class="UserPic"> {{element.fullname}}
+        </span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="rank">
+      <th mat-header-cell *matHeaderCellDef> Rank </th>
+      <td mat-cell *matCellDef="let element"> {{element.rank}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="platoon">
+      <th mat-header-cell *matHeaderCellDef> Platoon </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-chip-list>
+          <mat-chip [color]="getChipColor(element.platoon)" selected>{{element.platoon}}</mat-chip>
+        </mat-chip-list>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef> State </th>
+      <td mat-cell *matCellDef="let element" [style.color]="element.state == 'Present'? 'green' : 'red'">
+        <span>
+          <ng-container *ngIf="element.state == 'Present'; else not">
+            <i class="fas fa-check-circle"></i>
+          </ng-container>
+          <ng-template #not>
+            <i class="fas fa-times-circle"></i>
+          </ng-template>
+          <span class="state">{{element.state}}</span>
+        </span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="file">
+      <th mat-header-cell *matHeaderCellDef> File </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-flat-button color="primary"
+              class="btns"
+              [routerLink]="['/memberFile', element.id]">
+        <i class="fas fa-folder-open"></i>
+          Open file
+      </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; let i = index; columns: displayedColumns;" [ngClass]="{'grey': i % 2 == 0}"></tr>
+
+  </table>
+  <mat-paginator [pageSizeOptions]="[10, 20, 30, dataSource.data.length]" showFirstLastButtons></mat-paginator>
+</div>
+
+

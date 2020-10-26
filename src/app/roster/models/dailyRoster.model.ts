@@ -1,7 +1,12 @@
+import { Platoon } from '@core/models/staff.model';
+
 export type MemberDailyState = {
   rank: string;
   fullname: string;
   state: string;
+  foto?: string;
+  id: string;
+  platoon?: Platoon;
 }
 
 export type DailyRosterReport = {

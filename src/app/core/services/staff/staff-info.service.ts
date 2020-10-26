@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Staffbasic } from '../../models/staff.model';
 import { map } from 'rxjs/operators';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,8 @@ export class StaffInfoService {
           lastName: member.lastName,
           rank: member.rank,
           fullnameTitle: `${member.rank} - ${member.lastName} ${member.firstName}`,
-          foto: member.foto
+          foto: member.foto,
+          platoon: member.platoon
         }
       }))
     )

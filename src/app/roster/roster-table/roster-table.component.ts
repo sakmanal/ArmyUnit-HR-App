@@ -1,5 +1,5 @@
 import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
-import { DailyRoster } from '../models/dailyRoster.model';
+import { MemberDailyState } from '../models/dailyRoster.model';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -14,15 +14,10 @@ export class RosterTableComponent implements OnChanges {
    *  If your code only depends on a single @Input() a setter is probably the better approach.
    *
    */
-  // _data: DailyRoster[];
-  // @Input() set data(dataArray: DailyRoster[]){
-  //    this._data = dataArray;
-  //    console.log(this._data);
-  // }
 
-  @Input() data: DailyRoster[];
+  @Input() data: MemberDailyState[];
   @Input() filterValue: string;
-  dataSource = new MatTableDataSource<DailyRoster>();
+  dataSource = new MatTableDataSource<MemberDailyState>();
   displayedColumns = ['no', 'rank', 'fullname', 'state'];
 
   constructor() { }

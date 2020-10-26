@@ -1,0 +1,12 @@
+<h2>
+  Dashboard: Today is
+  <span class="title">{{todayDate | date}}</span>
+</h2>
+<mat-divider></mat-divider>
+<mat-progress-bar *ngIf="loading" mode="indeterminate" color="warn"></mat-progress-bar>
+
+<div *ngIf="memberDailyState.length" class="membertable">
+  <app-search (searchValue)="onFilter($event)"></app-search>
+  <app-member-table [data]="memberDailyState" [filter]="filterValue"></app-member-table>
+</div>
+

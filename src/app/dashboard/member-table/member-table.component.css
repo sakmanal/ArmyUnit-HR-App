@@ -1,0 +1,38 @@
+.container {
+  overflow: auto;
+  position: relative;
+}
+
+table {
+  width: 100%;
+}
+
+tr.mat-header-row {
+  background-color: #d1d1d1;
+}
+
+td.mat-cell, th.mat-header-cell{
+  padding-left: 8px;
+}
+
+.grey {
+  background-color: #EBEBEB;
+}
+
+span{
+  display: flex;
+  align-items: center;
+}
+
+.state{
+  margin-left: 4px;
+}
+
+.UserPic{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border:1px solid rgb(0, 0, 0);
+  vertical-align: middle;
+  margin-right: 15px;
+}

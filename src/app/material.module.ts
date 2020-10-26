@@ -27,6 +27,7 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MAT_DATE_FORMATS} from '@angular/material/core';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 const MY_FORMATS = {
   parse: {
@@ -45,7 +46,7 @@ const modules = [ MatInputModule, MatProgressBarModule, MatButtonModule, MatGrid
                   MatListModule, MatTableModule, MatDividerModule, MatMenuModule, MatProgressSpinnerModule,
                   MatTooltipModule, MatTabsModule, MatSnackBarModule, MatDialogModule, MatAutocompleteModule,
                   MatSelectModule, MatRadioModule, MatChipsModule, MatDatepickerModule, MatMomentDateModule,
-                  MatSliderModule, MatSlideToggleModule ]
+                  MatSliderModule, MatSlideToggleModule, MatPaginatorModule ]
 @NgModule({
 imports: [...modules ],
 
