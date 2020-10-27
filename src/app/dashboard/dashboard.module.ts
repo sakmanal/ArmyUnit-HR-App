@@ -5,13 +5,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import { MemberTableComponent } from './member-table/member-table.component';
 import { SharedModule } from '@shared/shared.module';
+import { RosterChartComponent } from './roster-chart/roster-chart.component';
 
 const dashboardRoutes: Routes = [
   { path: '', component: DashContainerComponent }
 ]
 
 @NgModule({
-  declarations: [DashContainerComponent, MemberTableComponent],
+  declarations: [DashContainerComponent, MemberTableComponent, RosterChartComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(dashboardRoutes),

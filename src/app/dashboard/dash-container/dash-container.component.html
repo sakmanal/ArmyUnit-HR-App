@@ -5,8 +5,29 @@
 <mat-divider></mat-divider>
 <mat-progress-bar *ngIf="loading" mode="indeterminate" color="warn"></mat-progress-bar>
 
-<div *ngIf="memberDailyState.length" class="membertable">
+<div class="upcontent">
+  <div class="btn-actions">
+    <button mat-raised-button class="btn" color="primary">
+      <mat-icon>add</mat-icon>
+      New Staff Member
+    </button>
+    <button mat-raised-button class="btn" color="primary">
+      <mat-icon>add</mat-icon>
+      New Day off Document
+    </button>
+    <button mat-raised-button class="btn" color="primary">
+      <mat-icon>pageview</mat-icon>
+      View Daily Roster
+    </button>
+  </div>
+  <mat-card *ngIf="report" class="chartjs-card">
+    <app-roster-chart [reportData]="report"></app-roster-chart>
+  </mat-card>
+</div>
+
+<mat-card *ngIf="memberDailyState.length" class="membertable mat-elevation-z8">
   <app-search (searchValue)="onFilter($event)"></app-search>
   <app-member-table [data]="memberDailyState" [filter]="filterValue"></app-member-table>
-</div>
+</mat-card>
+
 

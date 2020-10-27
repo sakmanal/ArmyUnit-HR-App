@@ -5,3 +5,27 @@
 .membertable{
   margin: 10px;
 }
+
+/* make chartjs canvas responsive inside flexbox div*/
+.chartjs-card{
+  min-width: 0;
+  width: 300px;
+}
+
+.upcontent{
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.btn-actions{
+  margin-right: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn{
+  margin: 5px;
+  height: 50px;
+}

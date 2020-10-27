@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
-import { MemberDailyState, DailyRoster } from '@app/roster/models/dailyRoster.model';
+import { MemberDailyState, DailyRoster, wholeDailyRoster } from '@app/roster/models/dailyRoster.model';
 import { Staffbasic } from '../../models/staff.model';
 import { combineLatest, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
@@ -17,10 +17,10 @@ export class DailyRosterService {
               private staffInfoService: StaffInfoService) { }
 
   private IsBetween(start: Date, end: Date, current: Date): boolean{
-  return moment(current).isBetween(moment(start), moment(end), 'days', '[]')
+    return moment(current).isBetween(moment(start), moment(end), 'days', '[]')
   }
 
-  public getWholeDailyRoster(date: Date): Observable<MemberDailyState[]>{
+  public getDailyRoster(date: Date): Observable<MemberDailyState[]>{
     const daysOff$ =  this.dayoffService.getDaysOff()
     .pipe(
       // tap(() => console.log('daysoff retrieved')),
@@ -38,7 +38,7 @@ export class DailyRosterService {
     .pipe(
       map( ([daysOff, staffmembers]) =>
           staffmembers.map((member: Staffbasic) => {
-              const dayoff = daysOff.find(dayoff => dayoff.staffmember.staff_id == member.id);
+              const dayoff = daysOff.find(dayoff => dayoff.staffmember.staff_id === member.id);
               const isPresent = !dayoff;
               return {
                 id: member.id,
@@ -53,31 +53,64 @@ export class DailyRosterService {
     )
   }
 
-  public getDailyRoster(date: Date): Observable<DailyRoster>{
-    return this.getWholeDailyRoster(date)
+  public getDailySeperateRosterReport(date: Date): Observable<DailyRoster>{
+    return this.getDailyRoster(date)
     .pipe(
         map((membersState: MemberDailyState[]) => {
-          return this.separateRoster(membersState)
+          return this.separateRosterReport(membersState)
         })
     )
-
   }
 
-  private separateRoster(membersState: MemberDailyState[]): DailyRoster {
+  public getDailyRosterReport(date: Date): Observable<wholeDailyRoster>{
+    return this.getDailyRoster(date)
+    .pipe(
+        map((membersState: MemberDailyState[]) => {
+          return this.report(membersState)
+        })
+    )
+  }
+
+  private report(membersState: MemberDailyState[]): wholeDailyRoster {
+    let count = 0
+    membersState.forEach( member => {
+      if (member.state === 'Present'){
+        count ++;
+      }
+    })
+    return {
+      roster: membersState,
+      report: {
+        count_total: membersState.length,
+        count_present: count,
+        count_unpresent: membersState.length - count,
+        percentage: {
+          present_per: this.differencePercentage(membersState.length,  membersState.length - count),
+          unpresent_per: this.differencePercentage(membersState.length, count)
+        }
+      }
+    }
+  }
+
+  private differencePercentage(total: number, subtract: number): number {
+      return Math.round(((total - subtract) / total) * 100)
+  }
+
+  private separateRosterReport(membersState: MemberDailyState[]): DailyRoster {
     const officersRoster = [];
     const soldiersRoster = [];
-    let count = 0
+    let count = 0;
     membersState.forEach( member => {
 
       // seperate members
-      if (member.rank == 'Lance Corporal' || member.rank == 'Private'){
+      if (member.rank === 'Lance Corporal' || member.rank === 'Private'){
           soldiersRoster.push(member);
       }else{
         officersRoster.push(member);
       }
 
       // count members
-      if (member.state == 'Present'){
+      if (member.state === 'Present'){
         count ++;
       }
     })

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DailyRosterService } from '@core/services/roster/daily-roster.service';
-import { MemberDailyState } from '@app/roster/models/dailyRoster.model';
+import { MemberDailyState, wholeDailyRoster, DailyRosterReport } from '@app/roster/models/dailyRoster.model';
 
 @Component({
   selector: 'app-dash-container',
@@ -12,6 +12,7 @@ export class DashContainerComponent implements OnInit {
   todayDate:Date = new Date();
   loading:boolean;
   memberDailyState: MemberDailyState[] = [];
+  report: DailyRosterReport;
   filterValue: string;
 
   constructor(private dailyRosterService: DailyRosterService) { }
@@ -22,10 +23,11 @@ export class DashContainerComponent implements OnInit {
 
   private getDailyRoster(date: Date){
     this.loading = true;
-    this.dailyRosterService.getWholeDailyRoster(date).subscribe(
-      (data: MemberDailyState[]) => {
+    this.dailyRosterService.getDailyRosterReport(date).subscribe(
+      (data: wholeDailyRoster) => {
          this.loading = false;
-         this.memberDailyState = [...data];
+         this.memberDailyState = data.roster;
+         this.report = data.report;
        },
        (error) => {
         this.loading = false;

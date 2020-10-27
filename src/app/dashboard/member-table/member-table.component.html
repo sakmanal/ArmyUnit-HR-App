@@ -1,4 +1,4 @@
-<div class="container mat-elevation-z8">
+<div class="container">
   <table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="no">
@@ -57,7 +57,7 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; let i = index; columns: displayedColumns;" [ngClass]="{'grey': i % 2 == 0}"></tr>
+    <tr mat-row *matRowDef="let row; let i = index; columns: displayedColumns;" [ngClass]="{'grey': i % 2 !== 0}"></tr>
 
   </table>
   <mat-paginator [pageSizeOptions]="[10, 20, 30, dataSource.data.length]" showFirstLastButtons></mat-paginator>

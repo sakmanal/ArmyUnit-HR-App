@@ -36,7 +36,7 @@ export class DailyRosterComponent implements OnInit {
 
   private getDailyRoster(date: Date){
     this.loading = true;
-    this.dailyRosterService.getDailyRoster(date).subscribe(
+    this.dailyRosterService.getDailySeperateRosterReport(date).subscribe(
       (roster: DailyRoster) => {
          this.loading = false;
          this.officersRoster = [...roster.officersRoster];

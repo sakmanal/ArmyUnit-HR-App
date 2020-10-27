@@ -9,6 +9,8 @@ import { OptionsInputComponent } from './components/options-input/options-input.
 import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chips-autocomplete.component';
 import { FloatingSearchComponent } from './components/floating-search/floating-search.component';
 import { StartEndDatepickerComponent } from './components/start-end-datepicker/start-end-datepicker.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { StartEndDatepickerComponent } from './components/start-end-datepicker/s
     OptionsInputComponent,
     ChipsAutocompleteComponent,
     FloatingSearchComponent,
-    StartEndDatepickerComponent
+    StartEndDatepickerComponent,
+    PieChartComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
   ],
   exports: [
     NumberDirective,
@@ -33,7 +37,8 @@ import { StartEndDatepickerComponent } from './components/start-end-datepicker/s
     OptionsInputComponent,
     ChipsAutocompleteComponent,
     FloatingSearchComponent,
-    StartEndDatepickerComponent
+    StartEndDatepickerComponent,
+    PieChartComponent
   ],
   entryComponents: [
     ConfirmDialogComponent
