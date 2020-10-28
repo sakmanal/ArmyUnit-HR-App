@@ -9,7 +9,9 @@
 /* make chartjs canvas responsive inside flexbox div*/
 .chartjs-card{
   min-width: 0;
-  width: 300px;
+  width: 350px;
+  height: 170px;
+  background-color: #EBEBEB;
 }
 
 .upcontent{
@@ -28,4 +30,9 @@
 .btn{
   margin: 5px;
   height: 50px;
+}
+
+.weather{
+  margin-right: 10px;
+  margin-bottom: 10px;
 }

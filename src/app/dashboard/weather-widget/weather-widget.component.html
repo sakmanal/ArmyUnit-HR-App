@@ -1,0 +1,27 @@
+<mat-card *ngIf="weather$ | async as weather">
+  <div *ngIf="weather.isDay" class="weatherWidgetRow">
+    <i class="fas fa-3x fa-sun sun"></i>
+  </div>
+  <div *ngIf="!weather.isDay" class="weatherWidgetRow">
+    <i class="fas fa-3x fa-moon moon"></i>
+  </div>
+  <div class="weatherWidgetRow cloudDiv">
+    <i class="fas fa-cloud fa-3x cloud"></i>
+  </div>
+
+   <div class="weatherWidgetRow" style="font-size: 22px;margin-top: -15px;">
+    {{weather.temp_celcius}}° | {{weather.description}} <img [src]="weather.icon">
+  </div>
+ <div class="weatherWidgetRow" style="font-size: 12px; margin-top: 2px;">
+    {{weather.temp_min}}° / {{weather.temp_max}}°
+  </div>
+  <div class="weatherWidgetRow" style="font-size: 12px;">
+    Feels Like: {{weather.temp_feels_like}}°
+  </div>
+  <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">
+    {{weather.name}}
+  </div>
+  <div class="weatherWidgetRow" style="font-size: 12px; margin-top: 2px;">
+    Humidity: {{weather.humidity}}%
+  </div>
+</mat-card>

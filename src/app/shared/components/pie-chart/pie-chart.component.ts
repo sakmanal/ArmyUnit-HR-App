@@ -11,7 +11,6 @@ export class PieChartComponent implements OnInit {
 
   pieChartOptions: ChartOptions = {
     responsive: true,
-    maintainAspectRatio: false,
     legend: {
       position: 'top',
     },

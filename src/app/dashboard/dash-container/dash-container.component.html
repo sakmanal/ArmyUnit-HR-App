@@ -7,19 +7,20 @@
 
 <div class="upcontent">
   <div class="btn-actions">
-    <button mat-raised-button class="btn" color="primary">
+    <button mat-raised-button class="btn" color="primary" [routerLink]="['/memberFile', 0, 'edit']">
       <mat-icon>add</mat-icon>
       New Staff Member
     </button>
-    <button mat-raised-button class="btn" color="primary">
+    <button mat-raised-button class="btn" color="primary" [routerLink]="['/dayoff']">
       <mat-icon>add</mat-icon>
       New Day off Document
     </button>
-    <button mat-raised-button class="btn" color="primary">
+    <button mat-raised-button class="btn" color="primary" [routerLink]="['/dailyRoster']">
       <mat-icon>pageview</mat-icon>
       View Daily Roster
     </button>
   </div>
+  <app-weather-widget class="weather"></app-weather-widget>
   <mat-card *ngIf="report" class="chartjs-card">
     <app-roster-chart [reportData]="report"></app-roster-chart>
   </mat-card>
