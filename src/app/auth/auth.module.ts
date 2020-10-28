@@ -6,9 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../material.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { TestUserComponent } from './test-user/test-user.component';
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, TestUserComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
