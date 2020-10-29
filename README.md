@@ -9,7 +9,7 @@ A simplified HR App for managing Army Unit Staff members build with Angular.
 - Dynamic Nested Reactive Forms 
 - File Upload with validation & upload progress
 - Route Guards & Resolve guards
-- Data Composition & Http requests cashing with RxJS
+- Data Composition & Http requests caching with RxJS
 - JWT Authentication
 - JWT & HttpError Interceptors
 - Client side PDF generation with [pdfmake](https://github.com/bpampuch/pdfmake)
