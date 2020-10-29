@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { WeatherData } from '../models/weatherdata.model';
 import { Weather } from '../models/weather.model';
 import { map, shareReplay } from 'rxjs/operators';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +16,10 @@ export class WheatherService {
 
   weather$: Observable<Weather> = this.http.get<WeatherData>(environment.weatherApiUrl).pipe(
     map( data => {
-      const sunsetTime = new Date(data.sys.sunset * 1000);
-      const currentDate = new Date();
-      const isDay = Date.parse(currentDate.toLocaleTimeString()) >
-                    Date.parse(sunsetTime.toLocaleTimeString());
+      const sunsetTime = moment(data.sys.sunset * 1000);
+      const currentDate = moment();
+      const isDay = currentDate.isBefore(sunsetTime);
+      // console.log(isDay)
       return {
        isDay: isDay,
        temp_celcius: Math.round(data.main.temp),
