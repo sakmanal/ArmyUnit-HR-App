@@ -2,6 +2,8 @@
 
 A simplified HR App for managing Army Unit Staff members build with Angular.
 
+Check demo [here](https://armyhr-app.web.app) !! 
+
 ## Features
 
 - Angular Material UI component library
