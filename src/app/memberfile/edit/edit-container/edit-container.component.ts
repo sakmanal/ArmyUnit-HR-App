@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MemberFile } from '../../models/memberFile.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -12,8 +12,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-edit-container',
   templateUrl: './edit-container.component.html',
-  styleUrls: ['./edit-container.component.css'],
-  //changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./edit-container.component.css']
 })
 export class EditContainerComponent implements OnInit, AfterViewInit {
 
@@ -80,14 +79,11 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
   }
 
   public onSubmit(): void {
-    // console.log(this.editForm.valid, this.isDirty)
-     console.log(this.editForm.value);
+    console.log(this.editForm.value);
     const file: MemberFile = this.mapFile(this.editForm.value)
     this.onSave(file).subscribe(
         (file) => {
           this.loading = false;
-          // manually update View when changeDetection -> OnPush
-          // this.cdr.detectChanges();
           this.notificationService.showSuccess('File saved successfully');
           // to make form not dirty and pass the edit-guard
           this.initFormValue = {...this.editForm.value}
@@ -95,7 +91,6 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
         },
         (error) => {
           this.loading = false;
-          // this.cdr.detectChanges();
           this.notificationService.showError(error);
         }
     )
@@ -109,7 +104,6 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
          filter((confirm: boolean) => confirm),
          switchMap(() => {
           this.loading = true;
-          // this.cdr.detectChanges();
           return this.memberfileService.saveMemberFile(file);
         })
        )
@@ -123,25 +117,33 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
       try {
         return this.editForm.get(formCtrl).invalid;
       } catch (error) {
-        // console.error(`NO formControl with name ${formCtrl}`)
         return false
       }
   }
 
-  private mapFile(file): MemberFile{
-    return {
-      ...file,
-      training: file.training.map(
-        d => {
-          return {
-            ...d,
-            dates: {
-              start_date: d.dates.start_date,
-              complete_date: d.dates.end_date
+  private mapFile(file): MemberFile {
+
+    const f = (file, start: Date, end: Date) => {
+      return {
+        ...file,
+        training: file.training.map(
+          d => {
+            return {
+              ...d,
+              dates: {
+                start_date: start,
+                complete_date: end
+              }
             }
           }
-        }
-      )
+        )
+      }
+    }
+
+    if (file && file.training.start_date && file.training.end_date) {
+      return f(file, file.dates.start_date, file.dates.end_date)
+    } else {
+      return f(file, null, null)
     }
   }
 
