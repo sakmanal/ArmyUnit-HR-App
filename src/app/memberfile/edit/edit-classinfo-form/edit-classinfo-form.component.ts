@@ -41,25 +41,6 @@ export class EditClassinfoFormComponent implements OnInit {
       this.patchData();
     }
 
-    /* 1st way -- valueChanges subscription on whole FormGroup */
-    // this.editForm.get('class_info').valueChanges
-    //      .pipe(
-    //        // distinctUntilChanged - Only emit when the current value is different than the last.
-    //        distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
-    //        map( data => {
-    //          return { months:data.months_of_service, start_date:data.start_date }
-    //         })
-    //      )
-    //      .subscribe(
-    //        data => {
-    //         const dismissal_date = moment(data.start_date).add(data.months, 'months').toDate();
-    //         // modify the value of a field inside of valueChanges event handler
-    //         // for that same field is causing the event to be triggered again
-    //         // emitEvent: false -- will not trigger another change detection
-    //         this.classInfoFormControls.dismissal_date.setValue(dismissal_date, {emitEvent: false});
-    //        }
-    //      )
-
     /*  2nd way -- valueChanges subscription on its formControl separately */
     this.editForm.get('class_info').get('months_of_service').valueChanges
       .subscribe( value => this.setDismissal_date(this.classInfoFormControls.start_date.value, value))

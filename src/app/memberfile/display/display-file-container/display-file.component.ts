@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MemberFile } from '../../models/memberFile.model';
-// import { Location } from '@angular/common';
 import { PreviousCurrentUrlService } from '@core/services/routes-url/previousCurrentUrl.service';
 import { NotificationService } from '@core/services/notification/notification.service';
 import { StaffInfoService } from '@core/services/staff/staff-info.service';
@@ -22,7 +21,6 @@ export class DisplayFileComponent implements OnInit {
   loading: boolean;
 
   constructor(private router: Router,
-              // private location: Location,
               private previousCurrentUrlService: PreviousCurrentUrlService,
               private staffInfoService: StaffInfoService,
               private confirmDialogService: ConfirmDialogService,
@@ -46,7 +44,6 @@ export class DisplayFileComponent implements OnInit {
   }
 
   public onBack(): void {
-    // this.location.back();
     if (this.backUrl === this.router.url){
       this.router.navigate(['/memberFile'])
     }else{

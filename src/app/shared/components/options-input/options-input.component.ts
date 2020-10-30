@@ -21,7 +21,6 @@ export class OptionsInputComponent implements OnInit {
   filteredOptions: Observable<string[]>;
 
   ngOnInit() {
-    // this.myControl.setValue("some @input initvalue");
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))

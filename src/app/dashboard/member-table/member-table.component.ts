@@ -21,19 +21,6 @@ export class MemberTableComponent implements OnInit, AfterViewInit{
     }
   }
 
-  /*
-      Best way when we have an @input() that changes dynamically from parent component.
-      Another way would be ngOnChanges() whice is suitable when we have several @Input()s.
-      Also, the setter is working even if we don't check ( *ngIf="data.length" ) on parent component.
-   */
-  // @Input() set data(dataArray: MemberDailyState[]){
-  //    this.dataSource = new MatTableDataSource(dataArray);
-  // }
-
-  /*
-      for non-changing @Input() from parent component.
-      Must check if data exists ( *ngIf="data.length" ) on parent component.
-   */
   @Input() data: MemberDailyState[];
 
   constructor() { }

@@ -32,20 +32,6 @@ export class EditTrainingFormComponent implements OnInit {
   }
 
   private patchData(){
-    /* 1st way */
-    // this.editForm.patchValue({
-    //   training: this.trainingData
-    // });
-    // for(let i=0; i<this.trainings.length; i++){
-    //   this.trainings.controls[i].patchValue({
-    //     dates: {
-    //             start_date: this.trainingData[i].dates.start_date,
-    //             end_date: this.trainingData[i].dates.complete_date
-    //           }
-    //   }, {emitEvent: false})
-    // }
-
-    /* 2nd way */
     const data = this.trainingData.map(
       (d: Training) => {
         return {

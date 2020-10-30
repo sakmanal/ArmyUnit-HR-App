@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { StaffInfoService } from '@core/services/staff/staff-info.service';
-import { DeleteDialogService } from '@core/services/deleteDialog/delete-dialog.service';
-// import { tableData } from '../models/tableData.model';
 import { Staff } from '@core/models/staff.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -9,7 +7,7 @@ import { NotificationService } from '@core/services/notification/notification.se
 import { ConfirmDialogComponent } from '@shared/components/confirm-dialog/confirm-dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
-import { switchMap, filter, map, tap } from 'rxjs/operators';
+import { switchMap, filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-staff-info',
@@ -29,13 +27,12 @@ export class StaffInfoComponent implements OnInit {
   constructor( private staffInfoService: StaffInfoService,
                private notificationService: NotificationService,
                private dialog: MatDialog,
-               private deleteDialogService : DeleteDialogService ) { }
+             ) { }
 
   ngOnInit(): void {
     this.loading = true;
     this.staffInfoService.getAllStaff().subscribe(
       (staff) => {
-        // this.dataSource = new MatTableDataSource(this.mapData(staff));
         this.dataSource = new MatTableDataSource(staff);
         this.initDataSort();
         this.loading = false;
@@ -57,23 +54,6 @@ export class StaffInfoComponent implements OnInit {
       }
     }
   }
-
-  // private mapData(staffdata: Staff[]): tableData[]{
-  //        return staffdata.map(
-  //             d => {
-  //               return {
-  //                 id: d.id,
-  //                 fullname: `${d.lastName} ${d.firstName}`,
-  //                 rank: d.rank,
-  //                 platton: d.platton,
-  //                 militaryID: d.MilitaryRegisterNumber,
-  //                 class_I: d.class_I,
-  //                 specialty: d.specialty[0],
-  //                 foto: d.foto
-  //               }
-  //             }
-  //        )
-  // }
 
   public getfilter(filterValue:string){
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -99,15 +79,7 @@ export class StaffInfoComponent implements OnInit {
       })
     ).subscribe(
         (success) => {
-          /* 1st way */
           this.removeMemberFromTable(member.id);
-
-          /* 2nd way */
-          // const data = this.dataSource.data;
-          // const index = data.indexOf(member);
-          // data.splice(index, 1);
-          // this.dataSource.data = data;
-
           this.load = false;
           this.notificationService.showSuccess(success.message);
         },
@@ -116,19 +88,6 @@ export class StaffInfoComponent implements OnInit {
           this.notificationService.showError(error);
         }
     );
-
-
-    /* open dialog from deleteDialogService */
-    /* works but we can't begin the load-bar after the diolog is closed */
-    // this.deleteDialogService.deleteStaffmember(member).subscribe(
-    //          (success) => {
-    //             this.removeMemberFromTable(member.id);
-    //             this.notificationService.showSuccess(success.message);
-    //          },
-    //          (error) => {
-    //             this.notificationService.showError(error);
-    //          }
-    // )
   }
 
   private removeMemberFromTable(id: string){
@@ -160,24 +119,6 @@ export class StaffInfoComponent implements OnInit {
   private _editStaffmember(options: MatDialogConfig){
     const dialogRef = this.dialog.open(EditDialogComponent, options);
 
-    /* works but we have nested subscribe into subscribe */
-    // dialogRef.afterClosed().subscribe( (data) => {
-    //   if (data.event == 'Confirm'){
-    //     this.load = true;
-    //     this.staffInfoService.saveStaff(data.member)
-    //        .subscribe(
-    //          (staffmember) => {
-    //             this.updateTableWithMember(staffmember);
-    //             this.load = false;
-    //             this.notificationService.showSuccess('Staff Updated');
-    //          },
-    //          (error) => {
-    //             this.load = false;
-    //             this.notificationService.showError(error);
-    //          }
-    //        )
-    //   }
-
     dialogRef.afterClosed().pipe(
       filter( (data: {event: string, member: Staff} ) => data && data.event == 'Confirm' ),
       map( data => { return data.member }),
@@ -196,21 +137,20 @@ export class StaffInfoComponent implements OnInit {
           this.notificationService.showError(error);
         }
     );
-
   }
 
   private updateTableWithMember(member: Staff){
     const data = this.dataSource.data;
     const index = data.findIndex(d => d.id == member.id);
-    if (index >= 0 ){                                          /* if member exists, update it */
+    /* if member exists, update it */
+    if (index >= 0 ){
       data[index] = member;
-    }else{                                                     /* else add new member "sorting" by rank*/
+    }else{
+    /* else add new member "sorting" by rank*/                                                 /* else add new member "sorting" by rank*/
       const index = data.findIndex(d => d.rank == member.rank)
       data.splice(index, 0, member);
     }
     this.dataSource.data = [...data];
-    // this.dataSource._updateChangeSubscription();        /* also works insteed of above line */
   }
-
 
 }

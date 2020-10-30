@@ -63,14 +63,6 @@ export class SelectFileComponent implements OnInit {
     } else {
       return this.staffnames;
     }
-
-    /* 2nd way (searchs all objects keys but it's slower) */
-    // return this.staffnames.filter(o =>
-    //   Object.keys(o).some(k => {
-    //     if (typeof o[k] === 'string')
-    //       return o[k].toLowerCase().includes(filterBy.toLowerCase());
-    //   })
-    // );
   }
 
   public onOrderByChange(orderBy:MatSelectChange ){

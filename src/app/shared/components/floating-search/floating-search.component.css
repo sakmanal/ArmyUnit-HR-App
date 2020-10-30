@@ -2,7 +2,6 @@
   position:fixed;
   z-index: 99 !important;
   bottom: 50px;
-/*   left:0; */
   right: 50px;
   transition: all ease-in-out 0.2s;
   transform: translate(-50%, -50%);
@@ -12,7 +11,6 @@
   position: relative;
   width:auto;
   height: auto;
-/*   TODO: Center anchor */
 }
 .search__submit {
  opacity:0;

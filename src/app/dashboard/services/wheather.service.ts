@@ -19,7 +19,7 @@ export class WheatherService {
       const sunsetTime = moment(data.sys.sunset * 1000);
       const currentDate = moment();
       const isDay = currentDate.isBefore(sunsetTime);
-      // console.log(isDay)
+
       return {
        isDay: isDay,
        temp_celcius: Math.round(data.main.temp),

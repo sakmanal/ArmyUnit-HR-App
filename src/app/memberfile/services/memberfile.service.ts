@@ -30,11 +30,12 @@ export class MemberfileService {
         penalties: [],
         medical_info: null
       })
-  }
+    }
 
+    /* Http GET request to a real server */
     // return this.http.get<MemberFile>(`${environment.apiUrl}/memberfile/${id}`)
-    // return throwError("server error");
 
+    /* simulate server responce with RxJS data composition */
     return this.dayoffService.getDaysOff().pipe(
       map( (days_off: Day_off[]) => {
          const file = createMemberfile(id);
@@ -70,17 +71,20 @@ export class MemberfileService {
   }
 
   private updateMemberFile(file: MemberFile, headers: HttpHeaders): Observable<MemberFile>{
+    /* Http PUT request to a real server */
     // return this.http.put<MemberFile>(`${environment.apiUrl}/memberfile/${file.member.id}`, file, { headers });
 
+    /* simulate server responce */
     return of({...file}).pipe(delay(1000));
   }
 
   private addMemberFile(file: MemberFile, headers: HttpHeaders): Observable<MemberFile>{
+    /* Http POST request to a real server */
     //  file.member.id = null;
     //  return this.http.post<MemberFile>(`${environment.apiUrl}/memberfile`, file, { headers });
 
+    /* simulate server responce */
     file.member.id = 'custom-id-ajshfkdjshg';
     return of({...file}).pipe(delay(1000));
-
   }
 }

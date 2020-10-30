@@ -11,7 +11,6 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class DisplayShotsComponent implements OnInit {
 
-
   dataSource = new MatTableDataSource<Shots>();
   displayedColumns = ['no', 'place', 'gun_type', 'distance', 'total_shots', 'success_rate'];
 
