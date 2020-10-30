@@ -15,39 +15,31 @@ export class DayoffService {
   constructor(private http: HttpClient, private staffInfoService: StaffInfoService) { }
 
   public saveDayOffDocument(doc: Day_off): Observable<{message:string}>{
+    /* Http POST request to a real server */
     // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     // return this.http.post<{message:string}>(`${environment.apiUrl}/dayoff/${doc.staffmember.staff_id}`, doc, { headers });
 
+    /* simulate server Error responce */
     // return throwError(`Private Travor has only 3 days of ${doc.type} left`);
 
-    return new Observable(observer => {
-      setTimeout(() => {
-        observer.next({message: "request saved successfully!"})
-      }, 500);
-    })
-
+    /* simulate server responce */
+    return of({message: "request saved successfully!"}).pipe(delay(500));
   }
 
   public cancelDayOffDocument(id: string): Observable<{message:string}>{
-      // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-      // return this.http.delete<{message:string}>(`${environment.apiUrl}/dayoff/${id}`, { headers });
+    /* Http DELETE request to a real server */
+    // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    // return this.http.delete<{message:string}>(`${environment.apiUrl}/dayoff/${id}`, { headers });
 
-      return new Observable(observer => {
-        setTimeout(() => {
-          observer.next({message: "request canceled successfully!"})
-        }, 500);
-      })
+    /* simulate server responce */
+    return of({message: "request canceled successfully!"}).pipe(delay(500));
   }
 
   public getDaysOff(): Observable<Day_off[]>{
+    /* Http GET request to a real server */
     // return this.http.get<Day_off[]>(`${environment.apiUrl}/daysoff`)
 
-    // return new Observable(observer => {
-    //   setTimeout(() => {
-    //      observer.next([...daysOff])
-    //   }, 500);
-    // })
-
+    /* simulate server responce */
     return of([...daysOff]).pipe(delay(500));
   }
 

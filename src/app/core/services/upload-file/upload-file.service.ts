@@ -18,13 +18,17 @@ export class UploadFileService {
 
     // if API accepts binary Data, we can directly post the 'uploadFile'
     // below we post Form Data
+
+    /* Http POST request to a real server */
     // return this.http.post(`${environment.apiUrl}/memberfoto/${id}`, fileData, {
     //   reportProgress: true,
     //   observe: 'events'
     // });
 
+    /* simulate server Error responce */
     // return throwError("server error");
 
+    /* simulate server responce */
     const response = [];
     for (let i=0.1; i<=1; i+=0.1){
       response.push({type: HttpEventType.UploadProgress, loaded: i, total: 1 })

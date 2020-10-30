@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Staff } from '../../models/staff.model';
+import { Staff, Staffbasic } from '../../models/staff.model';
 import { staff } from '@mock/staff';
 import { environment } from '@environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { Staffbasic } from '../../models/staff.model';
-import { map } from 'rxjs/operators';
-import { MatMenuTrigger } from '@angular/material/menu';
+import { Observable, of, throwError } from 'rxjs';
+import { delay, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +14,13 @@ export class StaffInfoService {
   constructor(private http: HttpClient) { }
 
   public getAllStaff():Observable<Staff[]>{
+    /* Http GET request to a real server */
     // return this.http.get<Staff[]>(`${environment.apiUrl}/allstaff`)
 
+    /* simulate server Error responce */
     // return throwError("server error");
 
+    /* simulate server responce */
     return new Observable(observer => {
        setTimeout(() => {
           observer.next([...staff])
@@ -44,15 +45,12 @@ export class StaffInfoService {
   }
 
   public deleteStaff(id: string): Observable<{message:string}> {
+    /* Http DELETE request to a real server */
     //  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     //  return this.http.delete<{message:string}>(`${environment.apiUrl}/staff/${id}`, { headers })
 
-        return new Observable(observer => {
-          setTimeout(() => {
-            observer.next({message: "deleted successfully!"})
-          }, 1000);
-      })
-
+    /* simulate server responce */
+    return of({message: "deleted successfully!"}).pipe(delay(1000));
   }
 
   public saveStaff(staff: Staff){
@@ -64,58 +62,27 @@ export class StaffInfoService {
   }
 
   private addStaff(staff: Staff, headers: HttpHeaders): Observable<Staff>{
+    /* Http POST request to a real server */
     //  staff.id = null;
     //  return this.http.post<Staff>(`${environment.apiUrl}/staff`, staff, { headers });
 
-    //  const _staff: Staff = {
-    //   id: '497F5D21-AEC0-89T4-ED67-6FD0D6AC70AA',
-    //   firstName: staff.firstName,
-    //   lastName: staff.lastName,
-    //   rank: staff.rank,
-    //   MilitaryRegisterNumber: staff.MilitaryRegisterNumber,
-    //   platoon: staff.platoon,
-    //   class_I: staff.class_I,
-    //   specialty: staff.specialty,
-    //   armed: staff.armed,
-    //   foto: staff.foto
-    //  }
+    /* simulate server responce */
     const _staff: Staff = {
       id: '497F5D21-AEC0-89T4-ED67-6FD0D6AC70AA',
       ...staff
     }
-
-     return new Observable(observer => {
-      setTimeout(() => {
-         observer.next(_staff)
-      }, 1000);
-   })
-
+    return of(_staff).pipe(delay(1000));
   }
 
   private updateStaff(staff:Staff, headers: HttpHeaders): Observable<Staff>{
+    /* Http PUT request to a real server */
     //  return this.http.put<Staff>(`${environment.apiUrl}/staff/${staff.id}`, staff, { headers });
 
-    //  const _staff: Staff = {
-    //   id: staff.id,
-    //   firstName: staff.firstName,
-    //   lastName: staff.lastName,
-    //   rank: staff.rank,
-    //   MilitaryRegisterNumber: staff.MilitaryRegisterNumber,
-    //   platoon: staff.platoon,
-    //   class_I: staff.class_I,
-    //   specialty: staff.specialty,
-    //   armed: staff.armed,
-    //   foto: staff.foto
-    //  }
+    /* simulate server responce */
     const _staff: Staff = {
       ...staff
     }
-
-     return new Observable(observer => {
-      setTimeout(() => {
-         observer.next(_staff)
-      }, 1000);
-   })
+    return of(_staff).pipe(delay(1000));
   }
 
   public getEmptyStaff(): Staff {
@@ -130,6 +97,5 @@ export class StaffInfoService {
       specialty: []
     }
   }
-
 
 }
