@@ -1,6 +1,6 @@
 # Army Unit HR Management App
 
-A simplified HR App for managing Army Unit Staff members build with Angular.
+A simplified HR App for managing Military Unit Staff build with Angular.
 
 Check demo [here](https://armyhr-app.web.app) !! 
 
