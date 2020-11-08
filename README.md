@@ -1,6 +1,6 @@
 # Army Unit HR Management App
 
-A simplified HR App for managing Army Unit Staff members build with Angular.
+A simplified HR App for managing Military Unit Staff build with Angular.
 
 Check demo [here](https://armyhr-app.web.app) !! 
 
@@ -17,7 +17,7 @@ Check demo [here](https://armyhr-app.web.app) !!
 - Client side PDF generation with [pdfmake](https://github.com/bpampuch/pdfmake)
 - Business logic with Services for reusability and maintainability
 - Modular design - Lazy-Loading Modules (Dividing the application into Core, Shared & Feature Modules)
-- Unidirectional data flow with Smart and Dumb components pattern
+- Unidirectional data flow with Container and Presentation components pattern
 
 ## Sample Images
 
