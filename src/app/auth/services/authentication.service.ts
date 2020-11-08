@@ -23,6 +23,7 @@ export class AuthenticationService {
   }
 
   public login(militaryRegistryNum: string, password: string):Observable<User> {
+    /* Http GET request to a real server */
     // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     // return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { militaryRegistryNum, password }, {headers})
     //     .pipe(
@@ -34,28 +35,29 @@ export class AuthenticationService {
     //         // catchError(this.handleError)
     //     );
 
-       if ( militaryRegistryNum !== "12345" || password !== "1993"){
-          return throwError("Wrong Military ID or Password")
-       }
+      /* simulate server responce */
+      if ( militaryRegistryNum !== "12345" || password !== "1993"){
+        return throwError("Wrong Military ID or Password")
+      }
 
-        const user:User = {
-            id: 'str12356',
-            firstName: 'Nikolaos',
-            lastName: 'Papas',
-            rank: 'Master Sergeant',
-            MilitaryRegisterNumber: militaryRegistryNum,
-            token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzUwMDAwMDk3MTQiLCJuYW1lIjoiTmlrb2xhb3MgUGFwYXMiLCJpYXQiOjE1MTYyMzkwMjJ9.Kl6KfICgBHeqyRGpNwwFifM4AhkuYgHu9bQipkyDmh0',
-            role: 'admin'
-          }
+      const user:User = {
+          id: 'str12356',
+          firstName: 'Nikolaos',
+          lastName: 'Papas',
+          rank: 'Master Sergeant',
+          MilitaryRegisterNumber: militaryRegistryNum,
+          token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzUwMDAwMDk3MTQiLCJuYW1lIjoiTmlrb2xhb3MgUGFwYXMiLCJpYXQiOjE1MTYyMzkwMjJ9.Kl6KfICgBHeqyRGpNwwFifM4AhkuYgHu9bQipkyDmh0',
+          role: 'admin'
+      }
 
 
-        return new Observable(observer => {
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          this.currentUserSubject.next(user);
-           setTimeout(() => {
-              observer.next(user)
-           }, 1000);
-        })
+      return new Observable(observer => {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+          setTimeout(() => {
+            observer.next(user)
+          }, 1000);
+      })
 
   }
 
