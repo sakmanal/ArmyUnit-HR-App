@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClassInfo } from '../../models/classInfo.model';
 import { class_series, years } from '@shared/options/options';
-import { distinctUntilChanged, map } from 'rxjs/operators';
 import * as moment from 'moment';
 
 @Component({
@@ -41,7 +40,6 @@ export class EditClassinfoFormComponent implements OnInit {
       this.patchData();
     }
 
-    /*  2nd way -- valueChanges subscription on its formControl separately */
     this.editForm.get('class_info').get('months_of_service').valueChanges
       .subscribe( value => this.setDismissal_date(this.classInfoFormControls.start_date.value, value))
 
