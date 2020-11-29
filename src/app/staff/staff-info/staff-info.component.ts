@@ -146,7 +146,7 @@ export class StaffInfoComponent implements OnInit {
     if (index >= 0 ){
       data[index] = member;
     }else{
-    /* else add new member "sorting" by rank*/                                                 /* else add new member "sorting" by rank*/
+    /* else add new member "sorting" by rank*/
       const index = data.findIndex(d => d.rank == member.rank)
       data.splice(index, 0, member);
     }
