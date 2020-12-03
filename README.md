@@ -8,13 +8,14 @@ Check demo [here](https://armyhr-app.web.app) !!
 
 - Angular Material UI component library
 - Responsive Design
-- Dynamic Nested Reactive Forms 
+- Dynamic Nested Reactive Forms with Validation 
 - File Upload with validation & upload progress
 - Route Guards & Resolve guards
 - Data Composition & Http requests caching with RxJS
 - JWT Authentication
 - JWT & HttpError Interceptors
 - Client side PDF generation with [pdfmake](https://github.com/bpampuch/pdfmake)
+- Reusable Components
 - Business logic with Services for reusability and maintainability
 - Modular design - Lazy-Loading Modules (Dividing the application into Core, Shared & Feature Modules)
 - Unidirectional data flow with Container and Presentation components pattern
