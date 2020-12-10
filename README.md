@@ -6,7 +6,7 @@ Check demo [here](https://armyhr-app.web.app) !!
 
 ## Features
 
-- Angular Material UI component library
+- Admin Template with Angular Material UI component library
 - Responsive Design
 - Login page
 - Add/Remove/Edit/Search/Sort staff member-files
