@@ -8,13 +8,18 @@ Check demo [here](https://armyhr-app.web.app) !!
 
 - Angular Material UI component library
 - Responsive Design
+- Login page
+- Add/Remove/Edit/Search/Sort staff member-files
+- Create day-off documents
+- Date-Picker for selecting Unit’s Daily Roster
 - Dynamic Nested Reactive Forms with Validation 
 - File Upload with validation & upload progress
+- Custom Directives (for numeric only input)
 - Route Guards & Resolve guards
 - Data Composition & Http requests caching with RxJS
 - JWT Authentication
 - JWT & HttpError Interceptors
-- Client side PDF generation with [pdfmake](https://github.com/bpampuch/pdfmake)
+- Client side PDF generation with [pdfmake](https://github.com/bpampuch/pdfmake) for day off docs and unit's daily roster report
 - Reusable Components
 - Business logic with Services for reusability and maintainability
 - Modular design - Lazy-Loading Modules (Dividing the application into Core, Shared & Feature Modules)
