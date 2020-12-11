@@ -15,6 +15,7 @@ Check demo [here](https://armyhr-app.web.app) !!
 - Dynamic Nested Reactive Forms with Validation 
 - File Upload with validation & upload progress
 - Custom Directives (for numeric only input)
+- Custom notification service
 - Route Guards & Resolve guards
 - Data Composition & Http requests caching with RxJS
 - JWT Authentication
