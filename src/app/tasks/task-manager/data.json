@@ -1,0 +1,124 @@
+[
+  {
+    "title": "Available soldiers",
+    "id": "soldiers",
+    "tasks": [
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      },
+      {
+        "id": "first-task",
+        "title": "Private Sakis Manal",
+        "description": "This is my Private Sakis Manal"
+      }
+    ]
+  },
+  {
+    "title": "Gate guards",
+    "id": "gate",
+    "tasks": [
+
+    ]
+  },
+  {
+    "title": "Barrack guards",
+    "id": "barack",
+    "tasks": [
+
+    ]
+  },
+  {
+    "title": "Patrol guards",
+    "id": "patrol",
+    "tasks": [
+
+    ]
+  }
+]

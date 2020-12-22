@@ -35,6 +35,10 @@ const ShellRoutes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'tasks',
+        loadChildren: () => import('../tasks/tasks.module').then(m => m.TasksModule)
       }
     ]
   }
@@ -47,7 +51,8 @@ const ShellRoutes: Routes = [
     FooterComponent,
     SidebarComponent,
     PageNotFoundComponent,
-    SidenavComponent],
+    SidenavComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,

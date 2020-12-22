@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DailyRosterService } from '@core/services/roster/daily-roster.service';
-import { MemberDailyState, wholeDailyRoster, DailyRosterReport } from '@app/roster/models/dailyRoster.model';
+import { MemberDailyState, wholeDailyRoster, DailyRosterReport } from '@core/models/dailyRoster.model';
 
 @Component({
   selector: 'app-dash-container',

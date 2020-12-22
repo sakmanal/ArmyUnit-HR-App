@@ -1,6 +1,6 @@
 import { logo } from '@assets/images/logo.dataurl';
 import { DailyRosterDoc } from '@app/roster/models/dailyRosterDoc.model';
-import { MemberDailyState } from '@app/roster/models/dailyRoster.model';
+import { MemberDailyState } from '@core/models/dailyRoster.model';
 import { signaturedataURL } from '@assets/images/signature.dataurl';
 import { stamp } from '@assets/images/stamp.dataurl';
 import * as moment from 'moment';

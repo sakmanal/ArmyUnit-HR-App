@@ -1,4 +1,4 @@
-import { DailyRoster } from '../models/dailyRoster.model';
+import { DailyRoster } from '@core/models/dailyRoster.model';
 
 export interface DailyRosterDoc{
   date: Date;

@@ -1,4 +1,4 @@
-import { Platoon } from '@core/models/staff.model';
+import { Platoon } from './staff.model';
 
 export type MemberDailyState = {
   rank: string;

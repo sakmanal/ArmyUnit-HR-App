@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild, OnInit, Input } from '@angular/core';
-import { MemberDailyState } from '@app/roster/models/dailyRoster.model';
+import { MemberDailyState } from '@core/models/dailyRoster.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Platoon } from '@core/models/staff.model';

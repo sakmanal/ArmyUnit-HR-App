@@ -28,6 +28,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MAT_DATE_FORMATS} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 const MY_FORMATS = {
   parse: {
@@ -46,7 +47,7 @@ const modules = [ MatInputModule, MatProgressBarModule, MatButtonModule, MatGrid
                   MatListModule, MatTableModule, MatDividerModule, MatMenuModule, MatProgressSpinnerModule,
                   MatTooltipModule, MatTabsModule, MatSnackBarModule, MatDialogModule, MatAutocompleteModule,
                   MatSelectModule, MatRadioModule, MatChipsModule, MatDatepickerModule, MatMomentDateModule,
-                  MatSliderModule, MatSlideToggleModule, MatPaginatorModule ]
+                  MatSliderModule, MatSlideToggleModule, MatPaginatorModule, DragDropModule ]
 @NgModule({
 imports: [...modules ],
 

@@ -19,6 +19,10 @@
       <mat-icon>pageview</mat-icon>
       View Daily Roster
     </button>
+    <button mat-raised-button class="btn" color="primary" [routerLink]="['/tasks']">
+      <mat-icon>assignment</mat-icon>
+      Daily Task Manager
+    </button>
   </div>
   <app-weather-widget class="weather"></app-weather-widget>
   <mat-card *ngIf="report" class="chartjs-card">

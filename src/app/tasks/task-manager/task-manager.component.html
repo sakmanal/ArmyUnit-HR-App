@@ -1,0 +1,48 @@
+<div class="container">
+  <header>
+    <h2>Daily Task Manager</h2>
+  </header>
+  <mat-divider></mat-divider>
+  <mat-progress-bar
+    *ngIf="loading"
+    mode="indeterminate"
+    color="warn"
+  ></mat-progress-bar>
+  <div class="head">
+    <button mat-raised-button color="primary" (click)="submitTasks()">
+      Submit tasks
+    </button>
+    <mat-icon>info_outline</mat-icon
+    ><span>Drag Soldiers to assign them tasks</span>
+  </div>
+</div>
+
+<ng-container *ngIf="tasks">
+  <div
+    class="board"
+    cdkDropList
+    [cdkDropListData]="tasks"
+    (cdkDropListDropped)="onTrackDrop($event)"
+    cdkDropListOrientation="horizontal"
+  >
+    <div class="card-list mat-elevation-z1" *ngFor="let task of tasks">
+      <h2 cdkDragHandle class="mat-h2">{{ task.title }}</h2>
+
+      <div
+        class="card-list-content"
+        cdkDropList
+        [id]="task.taskId"
+        [cdkDropListData]="task.soldiers"
+        [cdkDropListConnectedTo]="taskIds"
+        (cdkDropListDropped)="onTalkDrop($event)"
+      >
+        <mat-card *ngFor="let soldier of task.soldiers" cdkDrag>
+          <mat-card-content>
+            <img [src]="soldier.foto || avatarFoto"  alt="avatar" class="UserPic">
+            <div>{{ soldier.rank }} {{ soldier.fullname }}</div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</ng-container>

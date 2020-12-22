@@ -1,5 +1,5 @@
 import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
-import { MemberDailyState } from '../models/dailyRoster.model';
+import { MemberDailyState } from '@core/models/dailyRoster.model';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({

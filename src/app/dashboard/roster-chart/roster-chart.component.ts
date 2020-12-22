@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DailyRosterReport } from '@app/roster/models/dailyRoster.model';
+import { DailyRosterReport } from '@core/models/dailyRoster.model';
 
 @Component({
   selector: 'app-roster-chart',
