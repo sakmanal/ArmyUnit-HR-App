@@ -11,6 +11,7 @@ Check demo [here](https://armyhr-app.web.app) !!
 - Login page
 - Add/Remove/Edit/Search/Sort staff member-files
 - Create day-off documents
+- Drag and Drop Daily Task Manager
 - Date-Picker for selecting Unit’s Daily Roster
 - Dynamic Nested Reactive Forms with Validation 
 - File Upload with validation & upload progress
@@ -33,6 +34,8 @@ Check demo [here](https://armyhr-app.web.app) !!
 ![edit](https://user-images.githubusercontent.com/32598290/97626664-d8a04080-1a32-11eb-980b-e49bcf5c07cb.JPG)
 
 ![dialog](https://user-images.githubusercontent.com/32598290/97626673-da6a0400-1a32-11eb-8387-a678c48759a4.JPG)
+
+![tasks](https://user-images.githubusercontent.com/32598290/102935922-bfa29180-44af-11eb-8b6f-0a2f219b76d9.gif)
 
 ## Development server
 
