@@ -70,6 +70,7 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
 
   private onFileRetrieved(file: MemberFile): void {
     this.file = file;
+    // console.log(this.file)
     if (file.member.id !== '0') {
       this.fullnameTitle = `${file.member.rank} ${file.member.lastName} ${file.member.firstName}`;
       this.pageTitle = 'Edit member file of: ';
@@ -79,8 +80,9 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
   }
 
   public onSubmit(): void {
-    console.log(this.editForm.value);
+    // console.log(this.editForm.value);
     const file: MemberFile = this.mapFile(this.editForm.value)
+    // console.log(file);
     this.onSave(file).subscribe(
         (file) => {
           this.loading = false;
@@ -123,7 +125,6 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
 
   private mapFile(file): MemberFile {
 
-    const f = (file, start: Date, end: Date) => {
       return {
         ...file,
         training: file.training.map(
@@ -131,20 +132,13 @@ export class EditContainerComponent implements OnInit, AfterViewInit {
             return {
               ...d,
               dates: {
-                start_date: start,
-                complete_date: end
+                start_date: d.dates.start_date || null,
+                complete_date: d.dates.end_date || null
               }
             }
           }
         )
       }
-    }
-
-    if (file && file.training.start_date && file.training.end_date) {
-      return f(file, file.dates.start_date, file.dates.end_date)
-    } else {
-      return f(file, null, null)
-    }
   }
 
   public onBack(): void {
