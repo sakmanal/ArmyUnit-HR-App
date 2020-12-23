@@ -9,7 +9,11 @@ export class PreviousCurrentUrlService {
   private previousUrl: string = 'memberFile';
   constructor() { }
 
-  public get preUrl(): string{
+  public get preUrl(): string {
+    // prevent navigate again to edit page with back-button
+    if (this.previousUrl.endsWith('/edit')) {
+      return 'memberFile';
+    }
     return this. previousUrl;
   }
 
