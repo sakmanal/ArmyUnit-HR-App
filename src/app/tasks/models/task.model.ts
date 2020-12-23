@@ -5,5 +5,6 @@ export interface TaskData {
   title: string;
   taskId: string;
   description?: string;
+  maxItems?: number;
   soldiers: MemberDailyState[];
 }
