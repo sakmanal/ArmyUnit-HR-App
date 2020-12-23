@@ -16,9 +16,9 @@ export class StaffInfoService {
 
   constructor(private http: HttpClient) { }
 
-  public getAllStaff():Observable<Staff[]>{
+  public getAllStaff(): Observable<Staff[]>{
     /* Http GET request to a real server */
-    // return this.http.get<Staff[]>(`${environment.apiUrl}/allstaff`)
+    // return this.http.get<Staff[]>(`${environment.apiUrl}/staff`)
 
     /* simulate server Error responce */
     // return throwError("server error");
@@ -29,6 +29,22 @@ export class StaffInfoService {
     }
     this.staff = [...staff];
     return of(this.staff).pipe(delay(1000));
+  }
+
+  public getStaff(id: string): Observable<Staff> {
+    /* Http GET request to a real server */
+    // return this.http.get<Staff[]>(`${environment.apiUrl}/staff/${id}`)
+
+    /* simulate server Error responce */
+     const index = this.staff.findIndex(member => member.id === id);
+     if (index > 0) {
+       return of(this.staff[index]);
+     }
+     return this.getAllStaff().pipe(
+       map( member => {
+         return member.find(m => m.id === id);
+       })
+     )
   }
 
   public getAllStaffnames(): Observable<Staffbasic[]>{
@@ -77,7 +93,7 @@ export class StaffInfoService {
     return of(newMember).pipe(delay(1000));
   }
 
-  private updateStaff(member:Staff, headers: HttpHeaders): Observable<Staff>{
+  private updateStaff(member: Staff, headers: HttpHeaders): Observable<Staff>{
     /* Http PUT request to a real server */
     //  return this.http.put<Staff>(`${environment.apiUrl}/staff/${staff.id}`, staff, { headers });
 
@@ -101,6 +117,12 @@ export class StaffInfoService {
       class_I: null,
       specialty: []
     }
+  }
+
+  saveNewStaff(member: Staff): Observable<Staff> {
+    const newMember = {...member};
+    this.staff.push(newMember);
+    return of(newMember);
   }
 
 }

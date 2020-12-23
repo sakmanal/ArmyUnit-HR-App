@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { combineLatest, Observable, of, throwError } from 'rxjs';
 import { MemberFile } from '../models/memberFile.model';
 import { environment } from '@environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -8,11 +8,15 @@ import { delay, map } from 'rxjs/operators';
 import { Day_off, _DayOff } from '@core/models/day_off.model';
 import { DayoffService } from '@core/services/dayOff/dayoff.service';
 import { StaffInfoService } from '@core/services/staff/staff-info.service';
+import { Staff } from '@core/models/staff.model';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MemberfileService {
+
+  memberFiles: MemberFile[] = [];
 
   constructor(private http: HttpClient,
               private staffInfoService: StaffInfoService,
@@ -36,29 +40,44 @@ export class MemberfileService {
     // return this.http.get<MemberFile>(`${environment.apiUrl}/memberfile/${id}`)
 
     /* simulate server responce with RxJS data composition */
-    return this.dayoffService.getDaysOff().pipe(
-      map( (days_off: Day_off[]) => {
-         const file = createMemberfile(id);
-         if (!file){
-           return null
-         }
-         const daysOff: Day_off[] = days_off.filter( member => member.staffmember.staff_id == id);
-         const _daysOff: _DayOff[]  = daysOff.map(d => {
-           return {
-             type: d.type,
-             start_date: d.start_date,
-             end_date: d.end_date,
-             destination: d.destination,
-             id: d.id
-           }
-         });
 
-         return {
-           ...file,
-           days_off: _daysOff
-         }
-      }),
-      delay(1000)
+    const memberDaysOff$: Observable<_DayOff[]> = this.dayoffService.getDaysOff()
+    .pipe(
+      map((days_off: Day_off[]) => {
+        const memberDaysOff = days_off.filter( member => member.staffmember.staff_id == id);
+        return memberDaysOff.map(d => {
+          return {
+            type: d.type,
+            start_date: d.start_date,
+            end_date: d.end_date,
+            destination: d.destination,
+            id: d.id
+          }
+        });
+      })
+    );
+
+    const memberFile$: Observable<MemberFile> = this.staffInfoService.getStaff(id)
+    .pipe(
+      map( (member: Staff) => {
+        const file = this.memberFiles.find(file => file.member.id === member.id)
+        if (file) {
+          return file;
+        }
+        const fakefile = createMemberfile(member);
+        this.memberFiles.push(fakefile);
+        return fakefile;
+      })
+    );
+
+    return combineLatest( [memberFile$, memberDaysOff$] ).pipe(
+      map(([memberFile, memberDaysOff]) => {
+        memberFile.days_off = memberDaysOff;
+        return {
+          ...memberFile,
+          days_off: memberDaysOff
+        }
+      })
     )
   }
 
@@ -75,7 +94,13 @@ export class MemberfileService {
     // return this.http.put<MemberFile>(`${environment.apiUrl}/memberfile/${file.member.id}`, file, { headers });
 
     /* simulate server responce */
-    return of({...file}).pipe(delay(1000));
+    const updatedFile: MemberFile = {
+      ...file
+    }
+    const index = this.memberFiles.findIndex(file => file.member.id === updatedFile.member.id);
+    this.memberFiles[index] = updatedFile;
+    this.staffInfoService.saveStaff(updatedFile.member).subscribe();
+    return of(updatedFile).pipe(delay(1000));
   }
 
   private addMemberFile(file: MemberFile, headers: HttpHeaders): Observable<MemberFile>{
@@ -84,7 +109,10 @@ export class MemberfileService {
     //  return this.http.post<MemberFile>(`${environment.apiUrl}/memberfile`, file, { headers });
 
     /* simulate server responce */
-    file.member.id = 'custom-id-ajshfkdjshg';
-    return of({...file}).pipe(delay(1000));
+    const newFile = {...file};
+    newFile.member.id = uuidv4();
+    this.memberFiles.push(newFile);
+    this.staffInfoService.saveNewStaff(newFile.member).subscribe();
+    return of(newFile).pipe(delay(1000));
   }
 }

@@ -9,13 +9,7 @@ import { MemberFile } from '../memberfile/models/memberFile.model';
 import { ClassInfo } from '../memberfile/models/classInfo.model';
 import * as moment from 'moment';
 
-export function createMemberfile(id: string): MemberFile {
-  const member: Staff = staff.find(member => member.id == id);
-
-  if (!member){
-     console.error('wrong member id')
-     return null
-  }
+export function createMemberfile(member: Staff): MemberFile {
 
   const isSoldier = (rank: string): boolean => {
     return (rank == 'Private' || rank == 'Lance Corporal')
