@@ -98,6 +98,7 @@ export class MemberfileService {
       ...file
     }
     const index = this.memberFiles.findIndex(file => file.member.id === updatedFile.member.id);
+    updatedFile.member.foto = this.memberFiles[index].member.foto;
     this.memberFiles[index] = updatedFile;
     this.staffInfoService.saveStaff(updatedFile.member).subscribe();
     return of(updatedFile).pipe(delay(1000));
