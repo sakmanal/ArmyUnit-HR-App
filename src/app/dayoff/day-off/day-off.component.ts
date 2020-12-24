@@ -8,6 +8,8 @@ import { dayoffTypes } from '@shared/options/options';
 import { CreatepdfService } from '@core/services/createPdf/createpdf.service';
 import { DayoffDoc } from '../models/dayoffdoc.model';
 import { StaffInfoService } from '@core/services/staff/staff-info.service';
+import { merge, Observable, Subject } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-day-off',
@@ -23,6 +25,8 @@ export class DayOffComponent implements OnInit {
   minDate: Date = new Date();
   maxDate: Date = new Date(new Date().getFullYear() + 1, 11, 31);
   submited: boolean = false;
+  memberDaysOff$: Observable<Day_off[]>;
+  reload$: Subject<boolean> = new Subject();
 
   constructor( private formBuilder: FormBuilder,
                private dayoffService: DayoffService,
@@ -35,7 +39,7 @@ export class DayOffComponent implements OnInit {
 
   private createForm(): void {
     this.dayOffForm = this.formBuilder.group({
-      fullname: [null, Validators.required],
+      staffMember: [null, Validators.required],
       type: ['', Validators.required],
       destination: ['', Validators.required],
       start_date: [null, Validators.required],
@@ -47,6 +51,12 @@ export class DayOffComponent implements OnInit {
     this.dayOffForm.valueChanges.subscribe(() => {
          this.submited = false;
     });
+
+    this.memberDaysOff$ = merge(this.dayOffForm.controls.staffMember.valueChanges, this.reload$)
+    .pipe(
+      switchMap(() => this.dayoffService.getMemberDaysOff(this.form.staffMember.value))
+    )
+
   }
 
   ngOnInit(): void {
@@ -78,7 +88,7 @@ export class DayOffComponent implements OnInit {
       destination: this.form.destination.value,
       start_date: this.form.start_date.value.toDate(),
       end_date: this.form.end_date.value.toDate(),
-      staffmember: { staff_id: this.form.fullname.value }
+      staffmember: { staff_id: this.form.staffMember.value }
     }
 
     this.dayoffService.saveDayOffDocument(doc).subscribe(
@@ -86,6 +96,7 @@ export class DayOffComponent implements OnInit {
         this.loading = false;
         this.notificationService.showSuccess(success.message);
         this.submited = true;
+        this.reload$.next();
       },
       (error) => {
         this.loading = false;

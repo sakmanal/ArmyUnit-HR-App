@@ -4,6 +4,21 @@
   </header>
   <mat-divider></mat-divider>
   <mat-progress-bar *ngIf="loading" mode="indeterminate" color="warn"></mat-progress-bar>
+  <ng-container *ngIf="memberDaysOff$ | async as memberDaysOff">
+    <mat-card *ngIf="memberDaysOff.length">
+      <h3>
+        Previous arranged Days-off for
+        {{memberDaysOff[0].staffmember.rank}}
+        {{memberDaysOff[0].staffmember.fullname}}
+      </h3>
+      <mat-card-content>
+        <div *ngFor="let item of memberDaysOff">
+           <li>{{item.start_date | date}} - {{item.end_date | date}}</li>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+
   <mat-card class="main" *ngIf="staffnames">
 
       <form novalidate [formGroup]="dayOffForm" (ngSubmit)="onSubmit()" autocomplete="off">
@@ -15,18 +30,20 @@
                        [selectOnTab]="true"
                        #select
                        bindLabel="fullnameTitle"
-                       placeholder="Select staff memeber"
+                       placeholder="Select staff member"
                        [virtualScroll]="true"
                        bindValue="id"
-                       formControlName="fullname"
-                       [ngClass]="{'ng-invalid': form.fullname.invalid}">
+                       formControlName="staffMember"
+                       [ngClass]="{'ng-invalid': form.staffMember.invalid}">
                        <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
-                        <div class="item"><img src="{{item.foto}}" height="25"><span>{{item.fullnameTitle}}</span></div>
+                        <div class="item">
+                          <img src="{{item.foto}}" height="25"><span>{{item.fullnameTitle}}</span>
+                        </div>
                        </ng-template>
 
             </ng-select>
           </p>
-          <div class="invalid" *ngIf="form.fullname.invalid && form.fullname.touched">
+          <div class="invalid" *ngIf="form.staffMember.invalid && form.staffMember.touched">
             Staff member <strong>not found.</strong>
           </div>
         </div>

@@ -16,7 +16,7 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class MemberfileService {
 
-  memberFiles: MemberFile[] = [];
+  private memberFiles: MemberFile[] = [];
 
   constructor(private http: HttpClient,
               private staffInfoService: StaffInfoService,

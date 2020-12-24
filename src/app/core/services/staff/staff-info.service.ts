@@ -12,7 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class StaffInfoService {
 
-  staff: Staff[] = [];
+  private staff: Staff[] = [];
 
   constructor(private http: HttpClient) { }
 
