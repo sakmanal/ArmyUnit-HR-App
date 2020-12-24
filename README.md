@@ -29,13 +29,13 @@ Check demo [here](https://armyhr-app.web.app) !!
 
 ## Sample Images
 
+![tasks](https://user-images.githubusercontent.com/32598290/102935922-bfa29180-44af-11eb-8b6f-0a2f219b76d9.gif)
+
 ![dashboard](https://user-images.githubusercontent.com/32598290/97626629-c9b98e00-1a32-11eb-8992-0147f7ae5b78.JPG)
 
 ![edit](https://user-images.githubusercontent.com/32598290/97626664-d8a04080-1a32-11eb-980b-e49bcf5c07cb.JPG)
 
 ![dialog](https://user-images.githubusercontent.com/32598290/97626673-da6a0400-1a32-11eb-8387-a678c48759a4.JPG)
-
-![tasks](https://user-images.githubusercontent.com/32598290/102935922-bfa29180-44af-11eb-8b6f-0a2f219b76d9.gif)
 
 ## Development server
 

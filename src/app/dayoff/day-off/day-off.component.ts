@@ -9,7 +9,7 @@ import { CreatepdfService } from '@core/services/createPdf/createpdf.service';
 import { DayoffDoc } from '../models/dayoffdoc.model';
 import { StaffInfoService } from '@core/services/staff/staff-info.service';
 import { merge, Observable, Subject } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-day-off',
@@ -20,6 +20,7 @@ export class DayOffComponent implements OnInit {
 
   dayOffForm: FormGroup;
   loading:boolean = false;
+  avatarFoto:string = '../../../assets/images/Useravatar.jpg';
   staffnames: Staffbasic[];
   dayoff_Types: string[] = dayoffTypes;
   minDate: Date = new Date();
@@ -54,7 +55,7 @@ export class DayOffComponent implements OnInit {
 
     this.memberDaysOff$ = merge(this.dayOffForm.controls.staffMember.valueChanges, this.reload$)
     .pipe(
-      switchMap(() => this.dayoffService.getMemberDaysOff(this.form.staffMember.value))
+      switchMap(() => this.dayoffService.getMemberDaysOff(this.form.staffMember.value.id))
     )
 
   }
@@ -88,7 +89,11 @@ export class DayOffComponent implements OnInit {
       destination: this.form.destination.value,
       start_date: this.form.start_date.value.toDate(),
       end_date: this.form.end_date.value.toDate(),
-      staffmember: { staff_id: this.form.staffMember.value }
+      staffmember: {
+        staff_id: this.form.staffMember.value.id,
+        rank: this.form.staffMember.value.rank,
+        fullname: `${this.form.staffMember.value.firstName} ${this.form.staffMember.value.lastName}`
+      }
     }
 
     this.dayoffService.saveDayOffDocument(doc).subscribe(

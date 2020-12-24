@@ -32,12 +32,11 @@
                        bindLabel="fullnameTitle"
                        placeholder="Select staff member"
                        [virtualScroll]="true"
-                       bindValue="id"
                        formControlName="staffMember"
                        [ngClass]="{'ng-invalid': form.staffMember.invalid}">
                        <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
                         <div class="item">
-                          <img src="{{item.foto}}" height="25"><span>{{item.fullnameTitle}}</span>
+                          <img [src]="item.foto || avatarFoto" height="25"><span>{{item.fullnameTitle}}</span>
                         </div>
                        </ng-template>
 
