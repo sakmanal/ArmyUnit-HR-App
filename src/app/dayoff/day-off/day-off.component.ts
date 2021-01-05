@@ -114,7 +114,7 @@ export class DayOffComponent implements OnInit {
   public createpdf(action: 'export' | 'print'){
       if (this.submited){
         const pdfdoc: DayoffDoc = {
-          fullnameTitle: this.staffnames.find( name => name.id == this.form.fullname.value).fullnameTitle,
+          fullnameTitle: this.staffnames.find( name => name.id === this.form.staffMember.value.id).fullnameTitle,
           destination: this.form.destination.value,
           startDate: this.form.start_date.value,
           endDate: this.form.end_date.value,
