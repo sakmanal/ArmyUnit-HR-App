@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DayoffService } from '@core/services/dayOff/dayoff.service';
 import { Staffbasic } from '@core/models/staff.model';
@@ -16,7 +16,7 @@ import { switchMap } from 'rxjs/operators';
   templateUrl: './day-off.component.html',
   styleUrls: ['./day-off.component.css']
 })
-export class DayOffComponent implements OnInit {
+export class DayOffComponent implements OnInit, OnDestroy {
 
   dayOffForm: FormGroup;
   loading:boolean = false;
@@ -122,6 +122,10 @@ export class DayOffComponent implements OnInit {
         }
         this.createpdfService.dayoffPdf(pdfdoc, action);
       }
+  }
+
+  ngOnDestroy(): void {
+    this.reload$.unsubscribe()
   }
 
 }
