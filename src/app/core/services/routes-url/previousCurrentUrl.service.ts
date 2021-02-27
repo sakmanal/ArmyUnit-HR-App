@@ -14,7 +14,7 @@ export class PreviousCurrentUrlService {
     if (this.previousUrl.endsWith('/edit')) {
       return 'memberFile';
     }
-    return this. previousUrl;
+    return this.previousUrl;
   }
 
   public set preUrl(url: string){

@@ -33,7 +33,7 @@ export class StaffInfoService {
 
   public getStaff(id: string): Observable<Staff> {
     /* Http GET request to a real server */
-    // return this.http.get<Staff[]>(`${environment.apiUrl}/staff/${id}`)
+    // return this.http.get<Staff>(`${environment.apiUrl}/staff/${id}`)
 
     /* simulate server Error responce */
      const index = this.staff.findIndex(member => member.id === id);
@@ -41,8 +41,8 @@ export class StaffInfoService {
        return of(this.staff[index]);
      }
      return this.getAllStaff().pipe(
-       map( member => {
-         return member.find(m => m.id === id);
+       map( members => {
+         return members.find(m => m.id === id);
        })
      )
   }

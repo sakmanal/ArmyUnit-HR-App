@@ -91,7 +91,7 @@ export class StaffInfoComponent implements OnInit {
   }
 
   private removeMemberFromTable(id: string){
-    const tmpData = this.dataSource.data.filter(d => d.id != id)
+    const tmpData = this.dataSource.data.filter(d => d.id !== id)
     this.dataSource = new MatTableDataSource(tmpData);
   }
 

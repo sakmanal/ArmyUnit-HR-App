@@ -41,7 +41,7 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Rank</mat-label>
-            <mat-select name="platoon" formControlName="rank" required>
+            <mat-select name="rank" formControlName="rank" required>
               <mat-option *ngFor="let type of rank_types" [value]="type">
                 {{type}}
               </mat-option>

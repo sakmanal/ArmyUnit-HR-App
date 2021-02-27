@@ -67,7 +67,7 @@ export class DayoffService {
 
     /* simulate server responce */
     return this.getDaysOff().pipe(
-      map((days_off: Day_off[]) => days_off.filter( doc => doc.staffmember.staff_id == memberId))
+      map((days_off: Day_off[]) => days_off.filter( doc => doc.staffmember.staff_id === memberId))
     )
   }
 

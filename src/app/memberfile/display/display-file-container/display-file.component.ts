@@ -33,13 +33,14 @@ export class DisplayFileComponent implements OnInit {
   }
 
   private onFileRetrieved(file: MemberFile): void {
-      if (file) {
+      if (file && file.member.id !== '0') {
         this.fullnameTitle = `${file.member.rank} ${file.member.lastName} ${file.member.firstName}`;
         this.memberId = file.member.id;
         this.backUrl = this.previousCurrentUrlService.preUrl;
         this.pageTitle = 'Staff member file of: ';
       } else {
-        this.pageTitle = 'No member File found';
+        this.notificationService.showError('No member File found');
+        this.onBack();
       }
   }
 

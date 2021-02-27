@@ -5,7 +5,7 @@ import { PreviousCurrentUrlService } from '@core/services/routes-url/previousCur
 @Injectable({
   providedIn: 'root'
 })
-export class MovieEditGuard implements CanDeactivate<EditContainerComponent> {
+export class EditGuard implements CanDeactivate<EditContainerComponent> {
 
   constructor(private previousCurrentUrlService: PreviousCurrentUrlService) {}
 

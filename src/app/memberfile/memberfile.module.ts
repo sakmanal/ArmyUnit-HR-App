@@ -14,7 +14,7 @@ import { DisplayTrainingComponent } from './display/display-training/display-tra
 import { DisplayShotsComponent } from './display/display-shots/display-shots.component';
 import { DisplayDaysoffsComponent } from './display/display-daysoffs/display-daysoffs.component';
 import { EditContainerComponent } from './edit/edit-container/edit-container.component';
-import { MovieEditGuard } from './edit/edit-memberfile.guard';
+import { EditGuard } from './edit/edit-memberfile.guard';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditPenaltiesFormComponent } from './edit/edit-penalties-form/edit-penalties-form.component';
 import { EditShotsFormComponent } from './edit/edit-shots-form/edit-shots-form.component';
@@ -35,7 +35,7 @@ const memberfileRoutes: Routes = [
   {
     path: ':id/edit',
     resolve: { memberfile: MemberFileResolver },
-    canDeactivate: [MovieEditGuard],
+    canDeactivate: [EditGuard],
     component: EditContainerComponent,
   },
 ];
